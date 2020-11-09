@@ -1,2 +1,2 @@
-# first_year
-first year HSE AMI
+# first-year
+my first year HSE AMI
