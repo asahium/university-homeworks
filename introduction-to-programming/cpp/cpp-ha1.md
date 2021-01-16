@@ -406,6 +406,38 @@ int main() {
     }
     return 0;
 }
-
 ```
 
+
+___
+# J
+Напишите программу, которая прибавляет 1 к натуральному числу N (длина числа N до 1000 знаков)
+
+**Формат ввода**
+
+Дано чиcло N.
+
+**Формат вывода**
+
+Выведите число N+1. 
+```c++
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string number;
+    getline(std::cin, number);
+    long unsigned int i = 1;
+    while (number[number.length() - i] == '9' && i <= number.length()) {
+        number[number.length() - i] = '0';
+        ++i;
+    }
+    if (i <= number.length()) {
+        number[number.length() - i] += 1;
+    } else {
+        number = '1' + number;
+    }
+    std::cout << number;
+    return 0;
+}
+```
