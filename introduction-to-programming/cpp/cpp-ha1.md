@@ -263,7 +263,116 @@ implementation → implmnttn → i51455335 → i514535 → i514
 
 Напечатайте четырёхбуквенный код, соответствующий слову.
 ```c++
+#include <iostream>
+#include <string>
+#include <cstring>
 
+int main() {
+    std::string str, str1;
+    getline(std::cin, str);
+    int n;
+    n = str.length();
+
+    for (int i = 1; i < n; ++i) {
+        if ((str[i] == 'a') ||
+             (str[i] == 'e') ||
+             (str[i] == 'h') ||
+             (str[i] == 'i') ||
+             (str[i] == 'o') ||
+             (str[i] == 'u') ||
+             (str[i] == 'w') ||
+             (str[i] == 'y') ||
+             (str[i] == 'A') ||
+             (str[i] == 'E') ||
+             (str[i] == 'H') ||
+             (str[i] == 'I') ||
+             (str[i] == 'O') ||
+             (str[i] == 'U') ||
+             (str[i] == 'W') ||
+             (str[i] == 'Y')) {
+            str.erase(i, 1);
+            i--;
+        }
+    }
+
+    str1 = str[0];
+
+    for (long unsigned int i = 1; i < str.length(); ++i) {
+        if ((str[i] == 'b') ||
+             (str[i] == 'f') ||
+             (str[i] == 'p') ||
+             (str[i] == 'v') ||
+             (str[i] == 'B') ||
+             (str[i] == 'F') ||
+             (str[i] == 'P') ||
+             (str[i] == 'V')) {
+            if (str[i-1] != '1') {
+                str1 += '1';
+            }
+            str[i] = '1';
+        } else if ((str[i] == 'c') ||
+                   (str[i] == 'g') ||
+                   (str[i] == 'j') ||
+                   (str[i] == 'k') ||
+                   (str[i] == 'q') ||
+                   (str[i] == 's') ||
+                   (str[i] == 'x') ||
+                   (str[i] == 'z') ||
+                   (str[i] == 'C') ||
+                   (str[i] == 'G') ||
+                   (str[i] == 'J') ||
+                   (str[i] == 'K') ||
+                   (str[i] == 'Q') ||
+                   (str[i] == 'S') ||
+                   (str[i] == 'X') ||
+                   (str[i] == 'Z')) {
+            if (str[i-1] != '2') {
+                str1 += '2';
+            }
+            str[i] = '2';
+        } else if ((str[i] == 'd') ||
+                    (str[i] == 't') ||
+                    (str[i] == 'D') ||
+                    (str[i] == 'T')) {
+            if (str[i-1] != '3') {
+                str1 += '3';
+            }
+            str[i] = '3';
+        } else if ((str[i] == 'l') ||
+                    (str[i] == 'L')) {
+            if (str[i-1] != '4') {
+                str1 += '4';
+            }
+            str[i] = '4';
+        } else if  ((str[i] == 'm') ||
+                     (str[i] == 'n') ||
+                     (str[i] == 'M') ||
+                     (str[i] == 'N')) {
+            if (str[i-1] != '5') {
+                str1 += '5';
+            }
+            str[i] = '5';
+        } else if ((str[i] == 'r') ||
+                    (str[i] == 'R')) {
+            if (str[i-1] != '6') {
+                str1 += '6';
+            }
+            str[i] = '6';
+        }
+    }
+
+    if (str1.length() >= 4) {
+        std::cout << str1[0] << str1[1] << str1[2] << str1[3];
+    } else if (str1.length() == 3) {
+        std::cout << str1[0] << str1[1] << str1[2] << '0';
+    } else if (str1.length() == 2) {
+        std::cout << str1[0] << str1[1] << '0' << '0';
+    } else if (str1.length() == 1) {
+        std::cout << str1[0] << '0' << '0' << '0';
+    }
+
+    return 0;
+}
 ```
 
 ___
