@@ -444,6 +444,43 @@ int main() {
 
 
 ___
+# K
+Вам даны строки текстового файла. Отсортируйте набор этих строк по убыванию.
+
+**Формат ввода**
+
+Количество строк не превосходит 1000. Каждая строка состоит из символов ASCII с кодами от 32 до 126, длина строки не превосходит 100.
+
+**Формат вывода**
+
+Напечатайте строки в отсортированном по убыванию порядке. Для сравнения строк друг с другом достаточно использовать стандартные операторы сравнения, определённые для std::string. 
+```c++
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::string s;
+    std::ifstream file("input.txt");
+    std::vector<std::string> str;
+    while (getline(file, s)) {
+        str.push_back(s);
+    }
+
+    file.close();
+    std::sort(str.begin(), str.end());
+    std::reverse(str.begin(), str.end());
+    for (std::string k : str) {
+        std::cout << k << "\n";
+    }
+    return 0;
+}
+```
+
+
+___
 # L
 По данной перестановке требуется найти .
 
