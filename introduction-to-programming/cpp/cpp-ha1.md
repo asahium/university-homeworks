@@ -441,3 +441,48 @@ int main() {
     return 0;
 }
 ```
+
+
+___
+# M
+Дан файл. Определите сколько в нем букв (латинского алфавита), слов, строк. Выведите три найденных числа в формате, приведенном в примере. Строки можно посчитать через количество срабатываний std::getline. Словом считается последовательность из подряд идущих букв латинского алфавита. 
+```c++
+#include <fstream>
+#include <iostream>
+#include <string>
+
+int main() {
+    int num_words = 0;
+    int num_letters = 0;
+    int num_strings = 0;
+    bool F = false;
+    std::ifstream file("input.txt");
+    char current;
+    while (file) {
+        current = file.get();
+        if (current == EOF) {
+            break;
+        } else {
+            if (isalpha(current)) {
+                ++num_letters;
+                F = true;
+            } else {
+                if (F == true) {
+                    ++num_words;
+                    F = false;
+                }
+            }
+
+            if (current == '\n') {
+                num_strings++;
+            }
+        }
+    }
+    file.close();
+    std::cout<< "Input file contains:" << "\n";
+    std::cout << num_letters << " letters" << "\n";
+    std::cout << num_words << " words" << "\n";
+    std::cout << num_strings << " lines" << "\n";
+    return 0;
+}
+```
