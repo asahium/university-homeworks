@@ -135,7 +135,23 @@ ___
 
 Выведите ответ на задачу. 
 ```c++
+#include <iostream>
 
+int main() {
+    long int n;
+    double sum_odd = 0;
+    double sum_even = 0;
+    std::cin >> n;
+    for (long int i = 1; i <= n; i += 2) {
+        sum_odd += (1.0 / i);
+    }
+
+    for (long int i = 2; i <= n; i += 2) {
+        sum_even += (1.0 / i);
+    }
+    std::cout << sum_odd - sum_even << "\n";
+    return 0;
+}
 ```
 
 ___
