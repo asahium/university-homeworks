@@ -1,13 +1,11 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <vector>
 
-using namespace std;
-
-vector<int> prefix_function(const string& s) {
-    vector<int> pi(s.length(), 0);
-
+std::vector<int> prefix_function(const std::string& s) {
+    std::vector<int> pi(s.length(), 0);
     for (int i = 1; i < s.length(); i++) {
         int j = pi[i - 1];
-
         while (j > 0 && s[i] != s[j]) {
             j = pi[j - 1];
         }
@@ -23,18 +21,12 @@ vector<int> prefix_function(const string& s) {
 }
 
 int main() {
-    string s, t;
-    cin >> s >> t;
+    std::string s;
+    std::cin >> s;
 
-    vector<int> pi = prefix_function(s);
+    std::vector<int> pi = prefix_function(s);
     for (int i = 0; i < s.length(); ++i) {
-        cout << pi[i] << " ";
+        std::cout << pi[i] << " ";
     }
-    int t_len = t.length();
-
-    for (int i = 0; i < s.length(); i++) {
-        if (pi[t_len + 1 + i] == t_len) {
-            cout << "s[" << i - t_len + 1 << ".." << i << "] = t" << "\n";
-        }
-    }
+    return 0;
 }
