@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp
+iostream
+-
+vector
+-
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/B.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/C.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/D.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/E.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/A.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/B.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/C.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/D.cpp
+
+/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/E.cpp
+
