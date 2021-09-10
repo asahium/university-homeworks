@@ -82,34 +82,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/B.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/C.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/D.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/E.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
 		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/A.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/B.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/C.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/D.cpp">
-			<Option target="algorithms_and_data_structures"/>
-		</Unit>
-		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/E.cpp">
 			<Option target="algorithms_and_data_structures"/>
 		</Unit>
 		<Unit filename="/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/CMakeLists.txt">
