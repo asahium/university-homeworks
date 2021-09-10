@@ -66,74 +66,9 @@ include CMakeFiles/algorithms_and_data_structures.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/algorithms_and_data_structures.dir/flags.make
 
-CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o: ../1/A.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp > CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp -o CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o: ../1/B.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/B.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/B.cpp > CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/B.cpp -o CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o: ../1/C.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/C.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/C.cpp > CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/C.cpp -o CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o: ../1/D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/D.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/D.cpp > CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/D.cpp -o CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o: ../1/E.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/E.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/E.cpp > CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/E.cpp -o CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.s
-
 CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
 CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o: ../2/A.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/A.cpp
 
 CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.i: cmake_force
@@ -144,87 +79,17 @@ CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/A.cpp -o CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.s
 
-CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o: ../2/B.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/B.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/B.cpp > CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/B.cpp -o CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o: ../2/C.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/C.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/C.cpp > CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/C.cpp -o CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o: ../2/D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/D.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/D.cpp > CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/D.cpp -o CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.s
-
-CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o: CMakeFiles/algorithms_and_data_structures.dir/flags.make
-CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o: ../2/E.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o -c /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/E.cpp
-
-CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/E.cpp > CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.i
-
-CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/E.cpp -o CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.s
-
 # Object files for target algorithms_and_data_structures
 algorithms_and_data_structures_OBJECTS = \
-"CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o" \
-"CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o"
+"CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o"
 
 # External object files for target algorithms_and_data_structures
 algorithms_and_data_structures_EXTERNAL_OBJECTS =
 
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/1/B.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/1/C.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/1/D.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/1/E.cpp.o
 algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/2/B.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/2/C.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/2/D.cpp.o
-algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/2/E.cpp.o
 algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/build.make
 algorithms_and_data_structures: CMakeFiles/algorithms_and_data_structures.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable algorithms_and_data_structures"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable algorithms_and_data_structures"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/algorithms_and_data_structures.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
