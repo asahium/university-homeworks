@@ -1,8 +1,35 @@
+#include <iostream>
+#include <vector>
 
-func gen
-const
+bool gen(int k, int s, std::vector<std::vector<int>> v) {
+    int i = 0;
+    int j = 0;
+    int CurS = 0;
+    for (size_t i = 1; i < k; ++i) {
+        for (size_t j = 0; j < k; ++j) {
+            if (CurS < s) {
+                v[i, j] = 1;
+                CurS += 1;
+            }
+        }
+    }
+}
 
-MaxK=100;
+int main() {
+    int n, k, s;
+    std::cin >> n >> k >> s;
+    std::vector<std::vector<int>> v;
+    if (gen(k, s, v)) {
+
+    }
+    return 0;
+}
+
+
+/*
+
+
+const MaxK=100;
 
 type
 
@@ -59,3 +86,4 @@ write(a[(i-1) mod k+1,(j-1) mod k+1], ' ');
 writeln;
 
 end;
+*/
