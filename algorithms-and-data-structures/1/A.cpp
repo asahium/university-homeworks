@@ -8,7 +8,7 @@ bool gen(int k, int s, std::vector<std::vector<int>> v) {
     for (size_t i = 1; i < k; ++i) {
         for (size_t j = 0; j < k; ++j) {
             if (CurS < s) {
-                v[i, j] = 1;
+                v[i][j] = 1;
                 CurS += 1;
             }
         }
