@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o"
+  "CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o"
   "algorithms_and_data_structures"
   "algorithms_and_data_structures.pdb"
 )

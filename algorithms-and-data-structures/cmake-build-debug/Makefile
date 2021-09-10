@@ -129,29 +129,29 @@ algorithms_and_data_structures/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/build
 .PHONY : algorithms_and_data_structures/fast
 
-2/A.o: 2/A.cpp.o
-.PHONY : 2/A.o
+1/A.o: 1/A.cpp.o
+.PHONY : 1/A.o
 
 # target to build an object file
-2/A.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o
-.PHONY : 2/A.cpp.o
+1/A.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o
+.PHONY : 1/A.cpp.o
 
-2/A.i: 2/A.cpp.i
-.PHONY : 2/A.i
+1/A.i: 1/A.cpp.i
+.PHONY : 1/A.i
 
 # target to preprocess a source file
-2/A.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.i
-.PHONY : 2/A.cpp.i
+1/A.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.i
+.PHONY : 1/A.cpp.i
 
-2/A.s: 2/A.cpp.s
-.PHONY : 2/A.s
+1/A.s: 1/A.cpp.s
+.PHONY : 1/A.s
 
 # target to generate assembly for a file
-2/A.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.s
-.PHONY : 2/A.cpp.s
+1/A.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/algorithms_and_data_structures.dir/build.make CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.s
+.PHONY : 1/A.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... algorithms_and_data_structures"
-	@echo "... 2/A.o"
-	@echo "... 2/A.i"
-	@echo "... 2/A.s"
+	@echo "... 1/A.o"
+	@echo "... 1/A.i"
+	@echo "... 1/A.s"
 .PHONY : help
 
 

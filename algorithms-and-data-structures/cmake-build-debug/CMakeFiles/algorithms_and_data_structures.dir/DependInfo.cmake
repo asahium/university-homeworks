@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/2/A.cpp" "/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles/algorithms_and_data_structures.dir/2/A.cpp.o"
+  "/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/1/A.cpp" "/home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug/CMakeFiles/algorithms_and_data_structures.dir/1/A.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
