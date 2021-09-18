@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  18 SEP 2021 02:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  18 SEP 2021 03:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,10 +307,10 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./tw-1.aux) ) 
 Here is how much of TeX's memory you used:
- 5814 strings out of 478994
- 75536 string characters out of 5864751
- 378295 words of memory out of 5000000
- 23203 multiletter control sequences out of 15000+600000
+ 5821 strings out of 478994
+ 75629 string characters out of 5864751
+ 380295 words of memory out of 5000000
+ 23210 multiletter control sequences out of 15000+600000
  415728 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,6n,78p,1743b,689s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -326,7 +326,7 @@ m/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf
 -dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/cm-super/sfrm1728.pfb>
-Output written on tw-1.pdf (1 page, 112141 bytes).
+Output written on tw-1.pdf (1 page, 114712 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  41 compressed objects within 1 object stream
