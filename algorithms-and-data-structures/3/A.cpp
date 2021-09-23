@@ -1,9 +1,8 @@
-
 #include <bits/stdc++.h>
+
 using namespace std;
 
-vector<int> generateHammingCode(
-        vector<int> msgBits, int m, int r) {
+vector<int> generateHammingCode(vector<int> msgBits, int m, int r) {
     vector<int> hammingCode(r + m);
 
     for (int i = 0; i < r; ++i) {
@@ -12,14 +11,14 @@ vector<int> generateHammingCode(
 
     int j = 0;
 
-    for (int i = 0; i < (r + m); i++) {
+    for (int i = 0; i < (r + m); ++i) {
         if (hammingCode[i] != -1) {
             hammingCode[i] = msgBits[j];
             j++;
         }
     }
 
-    for (int i = 0; i < (r + m); i++) {
+    for (int i = 0; i < (r + m); ++i) {
         if (hammingCode[i] != -1)
             continue;
 
@@ -36,15 +35,14 @@ vector<int> generateHammingCode(
         }
         if (one_count % 2 == 0) {
             hammingCode[i] = 0;
-        }
-        else {
+        } else {
             hammingCode[i] = 1;
         }
     }
     return hammingCode;
 }
 
-void findHammingCode(vector<int>& msgBit) {
+void findCode(vector<int>& msgBit) {
     int m = msgBit.size();
     int r = 1;
     while (pow(2, r) < (m + r + 1)) {
@@ -52,19 +50,20 @@ void findHammingCode(vector<int>& msgBit) {
     }
     vector<int> ans
             = generateHammingCode(msgBit, m, r);
-    cout << "Message bits are: ";
-    for (int i = 0; i < msgBit.size(); i++)
-        cout << msgBit[i] << " ";
 
-    cout << "\nHamming code is: ";
-    for (int i = 0; i < ans.size(); i++)
-        cout << ans[i] << " ";
+    for (int i = 0; i < ans.size(); ++i)
+        cout << ans[i];
 }
 
 int main() {
-    vector<int> msgBit = { 1, 0, 1, 0 };
+    std::string str;
+    std::cin >> str;
+    std::vector<int> msgBit;
+    for (size_t i = 0; i < str.size(); ++i) {
+        msgBit.push_back(str[i] - '0');
+    }
 
-    findHammingCode(msgBit);
+    findCode(msgBit);
 
     return 0;
 }
