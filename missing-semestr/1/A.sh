@@ -1,24 +1,9 @@
-#! /bin/bash
-
-echo "Enter a String"
-# Taking input from user
 file='input.txt'
-read file
+word=`wc -w < $file`
+char=$(grep -o "[[:alpha:]]" "$file" | wc -l)
+lines=`wc -l < $file`
 
-# Counting words
-word=$(echo -n "$file" | wc -w)
-# Counting characters
-char=$(echo -n "$file" | wc -c)
-
-# Counting Number of white spaces (Here,specificly " ")
-# sed "s/ change this to whitespace//g"
-space=$(expr length "$file" - length `echo "$file" | sed "s/ //g"`)
-
-# Counting special characters
-special=$(expr length "${file//[^\~!@#$&*()]/}")
-
-# Output
-echo "Number of Words = $word"
-echo "Number of Characters = $char"
-echo "Number of White Spaces = $space"
-echo "Number of Special symbols = $special"
+echo "Input file contains:" > 'output.txt'
+echo "$char letters" >> 'output.txt'
+echo "$word words" >> 'output.txt'
+echo "$lines lines" >> 'output.txt'
