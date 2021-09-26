@@ -1,18 +1,21 @@
 #!/bin/bash
-i=0
-res=0
-while read str
+file="input.txt"
+y=0
+pwr=1
+ans=0
+x=0
+md=$(( 10**9 + 7))
+for line in $(cat $file)
 do
-if [$i -eq 0]
+if [ $y -eq 0 ]
 then
-x=$str
-$res=$(res + $str)
-$i++
-fi
-if [$i -ne 0]
-then
-$res=$($res + $str * ( $x ** $i ))
-$i++
+ x=$line
+ y=1
+else
+ ans=$(( $ans+$line*$pwr ))
+ ans=$(( $ans % $md))
+ pwr=$(( $pwr*$x ))
+ pwr=$(( $pwr % $md ))
 fi
 done
-echo "$res" > 'output.txt'
+echo $ans > ./output.txt
