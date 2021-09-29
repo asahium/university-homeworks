@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+
+\makeatletter
+\newcommand{\skipitems}[1]{%
+	\addtocounter{\@enumctr}{#1}%
+}
+\makeatother
+
+\newcommand{\numpy}{{\tt numpy}}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{amsthm,amstext,amsfonts,bm,amssymb}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{indentfirst}
+\setlength{\parindent}{5ex}
+\setlength{\parskip}{1em}
+\usepackage[utf8x]{inputenc} 
+\usepackage[russian]{babel}
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+
+\begin{document}
+	
+	\author{Биктимиров Данила, группа 204}
+	\title{ДЗ 2}
+	\date{}
+	\maketitle
+	
+	\medskip
+	
+	\begin{enumerate}
+		
+		\item Чтобы никто не принес свой ноут домой надо, чтоб каждый кто взял свой его потерял. Пусть $m$ человек взяли свой ноут. Это 
+		$$C^m_n \cdot !(n-m) = C^m_n \cdot \left(\sum_{k=0}^{n-m}\frac{(-1)^k}{k!}\right) \cdot (n-m)!$$
+		
+		Ну и чтоб все $m$ потеряли свой ноут нужна "удача" в $p^m$. Так как общее число исходов $n!$, то получаем:
+		$$\frac{\sum_{m=0}^{n}\left(C^m_n\cdot \left( \sum_{k=0}^{n-m} \frac{(-1)^k}{k!} \right) \cdot (n-m)!\cdot p^m \right)}{n!}$$
+		
+		\item
+		$$P(A, \text{отр.})=(0.9 \cdot 0.05 + 0.1 \cdot 1)=0.145\:\:\: P(A, \text{пол.})=0.855$$
+		$$P(B, \text{отр.})=(0.5 \cdot 0.05 + 0.5 \cdot 1)=0.525\:\:\: P(A, \text{пол.})=0.475$$
+		$$P(C, \text{отр.})=(0.2 \cdot 0.05 + 0.8 \cdot 1)=0.81\:\:\: P(A, \text{пол.})=0.19$$
+		$$P(D, \text{отр.})=1\:\:\: P(A, \text{пол.})=0$$
+		$P(X,Y)=P(X,\text{отр.})\cdot P(Y,\text{отр.})\cdot P(Y,\text{пол.})$, тогда
+		$$P(A,B)=0.145^2\cdot 0.475\:\:\: P(A,C)=0.145^2\cdot 0.19$$
+		$$P(B,A)=0.525^2\cdot 0.855\:\:\: P(B,C)=0.525^2\cdot 0.19$$
+		$$P(C,A)=0.81^2\cdot 0.855\:\:\: P(C,B)=0.81^2\cdot 0.475$$
+		$$P(D,A)=1^2\cdot 0.855\:\:\: P(D,B)=1^2\cdot 0.475\:\:\: P(D,C)=1\cdot 0.19$$
+		Тогда с учетом того, что все исходы равновероятны $P(\text{отр.},\text{отр.},\text{пол.})=\frac{1}{12}\cdot \sum_{XY} P(X,Y)=\frac{2.69462275}{12}$, тогда
+		$$P(A\:\text{второй}|\text{отр.},\text{отр.},\text{пол.})=\frac{P(B,A) + P(C,A)+P(D,A)}{12P}=0.61...$$
+		$$P(B\:\text{второй}|\text{отр.},\text{отр.},\text{пол.})=\frac{P(A,B) + P(C,B)+P(D,B)}{12P}=0.29...$$
+		$$P(C\:\text{второй}|\text{отр.},\text{отр.},\text{пол.})=\frac{P(B,C) + P(A,C)+P(D,C)}{12P}=0.09...$$
+		$$P(D\:\text{второй}|\text{отр.},\text{отр.},\text{пол.})=\frac{P(B,D) + P(C,D)+P(A,D)}{12P}=0$$
+		
+	\end{enumerate}
+\end{document}
