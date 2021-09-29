@@ -39,7 +39,11 @@
 		\item Бахнем индикатор $I_i=\begin{cases}
 			1, &\text{если i-ый ящик пуст}\\
 			0, &\text{иначе}
-		\end{cases}$, тогда получим $E$
+		\end{cases}$, тогда получим $E\xi=E\sum_{i}^{m}=\sum_{i}^{m}EI_i$.
+	
+		Мат ожидание индикатора это его вероятность. Ну а она $EI_i=\frac{C^{m-2}_{m+k-2}}{C^{m-1}_{m+k-1}}=\frac{m-1}{m+k-1}$. А значит что $E\xi=m\cdot \frac{m-1}{m+k-1}$, $D\xi = E\xi^2-E^2\xi$
+		
+		Считаем $E\xi^2=E(\sum_{i}^{m}I_i)^2=E\left(\sum_{i}^{m}I^2_i + 2\sum_{0\le i\le j\le m}I_iI_j\right)$
 		
 	\end{enumerate}
 \end{document}
