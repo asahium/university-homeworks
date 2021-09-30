@@ -61,5 +61,12 @@
 			$$=\frac{(m-1)^k m^{k-1} + (m-1)(m-2)^km^{k-1}-(m-1)^{2k}}{m^{2(k-1)}}$$
 		\end{enumerate}
 		\item $$E\xi = \sum_{i}^{n}i\cdot P(\xi = i)$$
+		$$P(\xi=i)=\frac{C^{k-1}_{i-1}\cdot k!\cdot (n-k)!}{C^{k}_{n}\cdot k!\cdot (n-k)!}=\frac{C^{k-1}_{i-1}}{C^{k}_{n}}$$
+		Имеем $$E\xi = \sum_{i}^{n}i\cdot \frac{C^{k-1}_{i-1}}{C^{k}_{n}}=\frac{k}{C^{k}_{n}}\sum_{i}^{n}C^k_i=\frac{k}{C^k_n}\cdot C^{k+1}_{n+1}=\frac{k(n+1)}{k+1}$$
+		И теперь дисперсию: $$D\xi=E\xi^2-E^2\xi$$
+		$$E\xi^2=\sum_{i}^{n}i^2\cdot P(\xi =i)=\sum_{i}^{n}i(i+1)\cdot P(\xi=i)-\sum_{i}^{n}i\cdot P(\xi=i)=$$
+		$$=\sum_{i}^{n}i(i+1)\cdot \frac{C^{k-1}_{i-1}}{C^k_n}-\frac{k(n+1)}{k+1}=\frac{k(k+1)}{C^k_n}\sum_{i}^{n}C^{k+1}_{i+1}-\frac{k(n+1)}{k+1}=\frac{k(k+1)C^{k+2}_{n+2}}{C^k_n}-\frac{k(n+1)}{k+1}=$$
+		$$=\frac{k(n+2)(n+1)}{k+2}-\frac{k(n+1)}{k+1}$$
+		Тогда: $$D\xi=\frac{k(n+2)(n+1)}{k+2}-\frac{k(n+1)}{k+1}-\frac{k^2(n+1)^2}{(k+1)^2}=\frac{k(n+1)(n-k)}{(k+1)^2(k+2)}$$
 	\end{enumerate}
 \end{document}
