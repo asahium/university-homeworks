@@ -36,14 +36,30 @@
 	
 	\begin{enumerate}
 		
-		\item Бахнем индикатор $I_i=\begin{cases}
-			1, &\text{если i-ый ящик пуст}\\
-			0, &\text{иначе}
-		\end{cases}$, тогда получим $E\xi=E\sum_{i}^{m}=\sum_{i}^{m}EI_i$.
-	
-		Мат ожидание индикатора это его вероятность. Ну а она $EI_i=\frac{C^{m-2}_{m+k-2}}{C^{m-1}_{m+k-1}}=\frac{m-1}{m+k-1}$. А значит что $E\xi=m\cdot \frac{m-1}{m+k-1}$, $D\xi = E\xi^2-E^2\xi$
-		
-		Считаем $E\xi^2=E(\sum_{i}^{m}I_i)^2=E\left(\sum_{i}^{m}I^2_i + 2\sum_{0\le i\le j\le m}I_iI_j \right)$
-		
+		\item \begin{enumerate}
+			\item Бахнем индикатор $I_i=\begin{cases}
+				1, &\text{если i-ый ящик пуст}\\
+				0, &\text{иначе}
+			\end{cases}$, тогда получим $$E\xi=E\sum_{i}^{m}=\sum_{i}^{m}EI_i$$.
+			
+			Мат ожидание индикатора это его вероятность. Ну а она $EI_i=\frac{C^{m-2}_{m+k-2}}{C^{m-1}_{m+k-1}}=\frac{m-1}{m+k-1}$. А значит что $$E\xi=m\cdot \frac{m-1}{m+k-1}, \:D\xi = E\xi^2-E^2\xi$$
+			
+			Считаем $$E\xi^2=E(\sum_{i}^{m}I_i)^2=E\left(\sum_{i}^{m}I^2_i + 2\sum_{0\le i\le j\le m}I_iI_j \right)=\sum_{i}^{m}EI^2_i+2\sum_{0\le i\le j\le m}EI_iI_j$$
+			
+			$$EI^2_i=Ei_i=\frac{m-1}{m+k-1}$$ как мы посчитали ранее.
+			
+			$$EI_iI_j=\frac{C^{m-3}_{m+k-3}}{C^{m-1}_{m+k-1}}=\frac{(m-1)(m-2)}{(m+k-1)(m+k-2)}$$
+			
+			И отсюда $$E \xi^2 = m \left(\frac{m - 1}{m + k - 1}\right)+\frac{m(m-1)}{2}\cdot2\cdot\frac{(m-1)(m-2)}{(m+k-1)(m+k-2)}$$
+			
+			И в итоге $$D\xi = \frac{m(m-1)}{m+k-1}+\frac{m(m-1)^2(m-2)}{(m+k-1)(m+k-2)}-\left(\frac{m(m-1)}{m+k-1}\right)^2 = \frac{m(m-1)(k-1)k}{(m + k- 1)^2(m+k-2)}$$
+			
+			\item Делаем все то же самое, но будут другие вероятности:
+			$$EI_i=\left(\frac{m-1}{m}\right)^k\Rightarrow E\xi =m\cdot\left(\frac{m-1}{m}\right)^k$$
+			А с дисперсией:
+			$$EI_iI_j=\left(\frac{m-2}{m}\right)^k,\:\text{откуда: } D\xi =m\cdot \left(\frac{m-1}{m}\right)^k + \frac{m(m-1)}{2}\cdot 2\cdot \left(\frac{m-2}{m}\right)^k - m^2\cdot \left(\frac{m-1}{m}\right)^{2k}=$$
+			$$=\frac{(m-1)^k m^{k-1} + (m-1)(m-2)^km^{k-1}-(m-1)^{2k}}{m^{2(k-1)}}$$
+		\end{enumerate}
+		\item $$E\xi = \sum_{i}^{n}i\cdot P(\xi = i)$$
 	\end{enumerate}
 \end{document}
