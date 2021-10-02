@@ -51,9 +51,18 @@
 		
 		Ограничим ее ближайшими $n(p+q)$ суммами. И все внутри будет колыхаться на $\overline{\overline{o}}(1)$, ведь к этому стремится разность при $n\to \infty$. И значит все стремится к $\ln 2 + \ln \frac{p}{q}$.
 		
-		\item
+		\item Ряд $$\left(\frac1{1}+\frac1{3}+\frac1{5}-\frac1{2}\right)+...+\left(\frac1{{6n-5}}+\frac1{{6n-3}}+\frac1{{6n-1}}-\frac1{{2n}}\right)+...$$ Расходится, поскольку $$ \frac1{{6n-5}}+\left(\frac1{{6n-3}}+\frac1{{6n-1}}\right)-\frac1{{2n}}>\frac1{{6n-5}}+\frac2{{6n-1}}-\frac1{{2n}}=$$
+		$$=\frac1{{6n-5}}+\left(\frac1{{1.5n-0.75}}-\frac1{{2n}}\right)>\frac1{{6n-5}}\sim\frac1{6}n^{-1}. $$
 		
-		\item
+		\item \begin{enumerate}
+			\item $$\sum_{n=1}^{\infty} (-1)^{n-1} \frac{n-1}{n+1} \frac{1}{\sqrt[100]{n}} = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{\sqrt[100]{n}} \cdot \left( 1+o\left(\frac{1}{n}\right)\right) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{\sqrt[100]{n}} +o\left(\frac{1}{n^{1+\frac{1}{100}}}\right)$$
+			Ну а это сходится по признаку Лейбница. А абсолютно очевидно расходится.
+			
+			\item 
+			
+			\item
+			
+		\end{enumerate}
 		
 	\end{enumerate}
 \end{document}
