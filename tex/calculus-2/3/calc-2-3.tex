@@ -36,10 +36,15 @@
 	
 	\begin{enumerate}
 		
-		\item $\sum_{n=1}^{\infty} \left(p^{\frac{1}{n}}-\frac{q^{\frac{1}{n}} + r^{\frac{1}{n}}}{2} \right)$
-		$$p^{\frac{1}{n}} = e^{\frac{1}{n}\ln p}=1+\frac{\ln p}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)$$
-		Тогда: $$ \left(p^{\frac{1}{n}} - \frac{q^{\frac{1}{n}} + r^{\frac{1}{n}}}{2} \right) = \left(1+\frac{\ln p}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)-\left( 1+\frac{\ln \sqrt{qr}}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right) \right)=\frac{\ln{\frac{p}{\sqrt{qr}}}}{n}+\overline{\overline{o}}\left(\frac{1}{n^2}\right)$$
-		И тогда, если $\ln \frac{p}{\sqrt{qr}}\not=0$ то ряд расходится. Иначе $p=\sqrt{qr}$. Тогда: $$-\frac{q^\frac{1}{n}-2\sqrt{qr}^{\frac{1}{n}}+r^\frac{1}{n}}{2}=-\frac{\left(q^{\frac{1}{n}}-r^{\frac{1}{n}}\right)^2}{2}$$
+		\item \begin{enumerate}
+			\item $\sum_{n=1}^{\infty} \left(p^{\frac{1}{n}}-\frac{q^{\frac{1}{n}} + r^{\frac{1}{n}}}{2} \right)$
+			$$p^{\frac{1}{n}} = e^{\frac{1}{n}\ln p}=1+\frac{\ln p}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)$$
+			Тогда: $$ \left(p^{\frac{1}{n}} - \frac{q^{\frac{1}{n}} + r^{\frac{1}{n}}}{2} \right) = \left(1+\frac{\ln p}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)-\left( 1+\frac{\ln \sqrt{qr}}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right) \right)=\frac{\ln{\frac{p}{\sqrt{qr}}}}{n}+\overline{\overline{o}}\left(\frac{1}{n^2}\right)$$
+			И тогда, если $\ln \frac{p}{\sqrt{qr}}\not=0$ то ряд расходится. Иначе $p=\sqrt{qr}$. Тогда: $$-\frac{q^\frac{1}{n}-2\sqrt{qr}^{\frac{1}{n}}+r^\frac{1}{n}}{2}=-\frac{\left(q^{\frac{1}{n}}-r^{\frac{1}{n}}\right)^2}{2}$$
+			И снова разложим: $$-\frac{\left(\left(1+\frac{\ln q}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)-\left(1+\frac{\ln r}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)\right)^2}{2}=-\frac{\left(\ln q - \ln r\right)^2}{8n^2}$$
+			Ну а это очевидно сходится, как $\frac{1}{n^2}$.
+			\item
+		\end{enumerate}
 		\item
 		
 		\item
