@@ -43,9 +43,13 @@
 			И тогда, если $\ln \frac{p}{\sqrt{qr}}\not=0$ то ряд расходится. Иначе $p=\sqrt{qr}$. Тогда: $$-\frac{q^\frac{1}{n}-2\sqrt{qr}^{\frac{1}{n}}+r^\frac{1}{n}}{2}=-\frac{\left(q^{\frac{1}{n}}-r^{\frac{1}{n}}\right)^2}{2}$$
 			И снова разложим: $$-\frac{\left(\left(1+\frac{\ln q}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)-\left(1+\frac{\ln r}{n} + \overline{\overline{o}} \left(\frac{1}{n^2}\right)\right)\right)^2}{2}=-\frac{\left(\ln q - \ln r\right)^2}{8n^2}$$
 			Ну а это очевидно сходится, как $\frac{1}{n^2}$.
+			
 			\item
 		\end{enumerate}
-		\item
+		\item Смотрим на первые $n(p+q)$ членов: $$ \sum_{i=1}^{np} \frac{1}{2i-1} - \sum_{j=1}^{nq} \frac{1}{2j} =\left(\sum_{i=1}^{2np} \frac{1}{i} - \frac{1}{2} \sum_{j=1}^{np} \frac{1}{k}\right) - \frac{1}{2} \sum_{i=1}^{nq} \frac{1}{i} =$$ $$ =\ln (2np) + C +\overline{o}(1) - \frac{1}{2} \ln (np) - \frac{1}{2}C-\overline{o}(1)-\frac{1}{2}\ln (nq) -  \frac{1}{2} C -\overline{o}(1) =$$ $$ = \ln \left(\frac{2np}{n\sqrt{pq}}\right) + \overline{o}(1) = \ln 2 + \frac{1}{2}\ln\frac{p}{q} + \overline{o}(1)$$
+		Осталось разобрались со случаем где мы берем не первые $n(p+q)$ членов.
+		
+		Ограничим ее ближайшими $n(p+q)$ суммами. И все внутри будет колыхаться на $\overline{\overline{o}}(1)$, ведь к этому стремится разность при $n\to \infty$. И значит все стремится к $\ln 2 + \ln \frac{p}{q}$.
 		
 		\item
 		
