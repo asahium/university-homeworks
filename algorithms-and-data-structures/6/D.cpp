@@ -14,6 +14,7 @@ std::vector<bool> used;
 struct Edge {
     int a, b, c, f;
 };
+
 std::vector<Edge> edges;
 
 int dfs(int u, int flow) {
@@ -84,9 +85,8 @@ void dfs2(int u) {
     }
 }
 
-void printPath() {
+void print() {
     dfs2(s);
-
     for (int i : path) {
         std::cout << i + 1 << " ";
     }
@@ -119,8 +119,8 @@ int main() {
     } else {
         std::cout << "YES\n";
         used.assign(2 * m, false);
-        printPath();
-        printPath();
+        print();
+        print();
     }
     return 0;
 }
