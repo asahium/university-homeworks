@@ -2,8 +2,8 @@
 #include <vector>
 
 size_t n, m;
-std::vector<std::vector<int>> graph;
-std::vector<int> matching;
+std::vector<std::vector<int>> g;
+std::vector<int> m;
 std::vector<char> used;
 
 bool kun(int u) {
@@ -11,10 +11,10 @@ bool kun(int u) {
         return false;
     }
     used[u] = true;
-    for (int i = 0; i < graph[u].size(); ++i) {
-        int v = graph[u][i];
-        if (matching[v] == -1 || kun(matching[v])) {
-            matching[v] = u;
+    for (int i = 0; i < g[u].size(); ++i) {
+        int v = g[u][i];
+        if (m[v] == -1 || kun(m[v])) {
+            m[v] = u;
             return true;
         }
     }
@@ -23,13 +23,13 @@ bool kun(int u) {
 
 int main() {
     std::cin >> n >> m;
-    graph.resize(n);
-    matching.assign(m, -1);
+    g.resize(n);
+    m.assign(m, -1);
     for (int i = 0; i < n; ++i) {
         int v;
         std::cin >> v;
         while (v != 0) {
-            graph[i].push_back(v - 1);
+            g[i].push_back(v - 1);
             std::cin >> v;
         }
     }
@@ -41,15 +41,15 @@ int main() {
 
     int count = 0;
     for (int i = 0; i < m; ++i) {
-        if (matching[i] != -1) {
+        if (m[i] != -1) {
             count++;
         }
     }
     std::cout << count << "\n";
 
     for (int i = 0; i < m; ++i) {
-        if (matching[i] != -1) {
-            std::cout << matching[i] + 1 << " " << i + 1 << "\n";
+        if (m[i] != -1) {
+            std::cout << m[i] + 1 << " " << i + 1 << "\n";
         }
     }
     return 0;
