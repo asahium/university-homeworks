@@ -43,9 +43,8 @@ bool bfs() {
         int u = q.front();
         q.pop();
         for (int i = 0; i < graph[u].size(); ++i) {
-            int id = graph[u][i];//number of edge (uv)
+            int id = graph[u][i];
             int v = edges[id].b;
-
             if (d[v] == INF && edges[id].f < edges[id].c) {
                 d[v] = d[u] + 1;
                 q.push(v);
@@ -77,7 +76,6 @@ void dfs2(int u) {
 
     for (int id : graph[u]) {
         int v = edges[id].b;
-
         if (!used[id] && edges[id].f == 1) {
             used[id] = true;
             dfs2(v);
@@ -93,7 +91,6 @@ void printPath() {
         std::cout << i + 1 << " ";
     }
     std::cout << "\n";
-
     path.clear();
 }
 
@@ -105,14 +102,11 @@ int main() {
     std::cin >> s >> t;
     s--;
     t--;
-
     for (int i = 0; i < m; ++i) {
         int ai, bi;
         std::cin >> ai >> bi;
         ai--;
         bi--;
-
-
         graph[ai].push_back(edges.size());
         edges.push_back({ai, bi, 1, 0});
         graph[bi].push_back(edges.size());
@@ -120,16 +114,12 @@ int main() {
     }
 
     int maxFlow = algoDinic();
-
     if (maxFlow < 2) {
         std::cout << "NO";
     } else {
         std::cout << "YES\n";
-
         used.assign(2 * m, false);
-
         printPath();
-
         printPath();
     }
     return 0;
