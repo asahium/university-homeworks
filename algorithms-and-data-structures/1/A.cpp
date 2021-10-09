@@ -1,89 +1,65 @@
+#include <algorithm>
 #include <iostream>
-#include <vector>
 
-bool gen(int k, int s, std::vector<std::vector<int>> v) {
-    int i = 0;
-    int j = 0;
-    int CurS = 0;
-    for (size_t i = 1; i < k; ++i) {
-        for (size_t j = 0; j < k; ++j) {
-            if (CurS < s) {
-                v[i][j] = 1;
-                CurS += 1;
-            }
-        }
+struct Point {
+    int x;
+    int y;
+};
+
+struct SegmentIntersection {
+    inline bool intersect(Point x1, Point x2, Point x3, Point x4) {
+        int d1 = direction(x3, x4, x1);
+        int d2 = direction(x3, x4, x2);
+        int d3 = direction(x1, x2, x3);
+        int d4 = direction(x1, x2, x4);
+
+        if ((d1 < 0 || d2 > 0) && (d3 < 0 || d4 > 0))
+            return true;
+
+        else if (d1 == 0 && on_segment(x3, x4, x1))
+            return true;
+
+        else if (d2 == 0 && on_segment(x3, x4, x2))
+            return true;
+
+        else if (d3 == 0 && on_segment(x1, x2, x3))
+            return true;
+
+        else if (d3 == 0 && on_segment(x1, x2, x4))
+            return true;
+
+        else
+            return false;
     }
-}
+
+    inline int direction(Point x1, Point x2, Point x3) {
+        return ((x3.x - x1.x) * (x2.y - x1.y)) -
+               ((x2.x - x1.x) * (x3.y - x1.y));
+    }
+
+    inline bool on_segment(Point x1, Point x2,
+                           Point x3) {
+        if (std::min(x1.x, x2.x) <= x3.x &&
+            x3.x <= std::max(x1.x, x2.x) &&
+            std::min(x1.y, x2.y) <= x3.y &&
+            x3.y <= std::max(x1.y, x2.y))
+            return true;
+
+        else
+            return false;
+    }
+};
 
 int main() {
-    int n, k, s;
-    std::cin >> n >> k >> s;
-    std::vector<std::vector<int>> v;
-    if (gen(k, s, v)) {
-
+    SegmentIntersection segment;
+    Point x1, x2, x3, x4;
+    std::cin >> x1.x >> x1.y;
+    std::cin >> x2.x >> x2.y;
+    std::cin >> x3.x >> x3.y;
+    std::cin >> x4.x >> x4.y;
+    if (segment.intersect(x1, x2, x3, x4)) {
+        std::cout << "YES";
+    } else {
+        std::cout << "NO";
     }
-    return 0;
 }
-
-
-/*
-
-
-const MaxK=100;
-
-type
-
-Square = array [1..MaxK, 1..MaxK] of byte;
-{квадрат KxK, повторением которого получаем ответ}
-
-function gen(k, s : word; var a : Square) : boolean;
-
-var
-
-i, j : integer;
-
-CurS : word; { сколько единиц уже удалось поставить в квадрате KxK }
-
-Begin
-
-CurS:=0;
-
-fillchar(a, sizeof(a), 0); {вначале заполняем квадрат нулями}
-
-for i := 1 to k do
-
-for j := 1 to k do
-
-if CurS < s then {если число поставленных единиц меньше необходимого}
-
-begin
-
-a[i, j] := 1; {то ставим очередную единицу}
-
-inc(CurS);
-
-end
-
-end;
-
-if CurS < s then gen := false else gen := true;
-
-end;
-
-
-
-
- if gen(k, s, a) then {генерируем образец}
-
-for i := 1 to n do {заполняем образцом квадрат размером N*N}
-
-begin {результат выводим сразу в файл}
-
-for j := 1 to n do
-
-write(a[(i-1) mod k+1,(j-1) mod k+1], ' ');
-
-writeln;
-
-end;
-*/

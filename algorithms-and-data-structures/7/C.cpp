@@ -48,9 +48,21 @@ void del(int ind) {
 
 void make_output() {
     sort(answer.begin(), answer.end());
-    cout << "Yes\n";
-    for(int i = 0; i < answer.size(); ++i) {
-        cout << answer[i] + 1 << ' ';
+    for(int i = 0; i < n && answer.size() < k; ++i) {
+        auto p = lower_bound(answer.begin(), answer.end(), i);
+        if(p != answer.end() && *p != i) {
+            answer.push_back(i);
+            sort(answer.begin(), answer.end());
+        }
+    }
+    if(answer.size() < k) {
+        cout << "No\n";
+    }
+    else {
+        cout << "Yes\n";
+        for (int i = 0; i < answer.size(); ++i) {
+            cout << answer[i] + 1 << ' ';
+        }
     }
     exit(0);
 }
@@ -62,12 +74,29 @@ void perebor() {
         make_output();
         return;
     }
+    int siz, ind;
+    //if-pathes
+    auto p = que.lower_bound({1, 100000});
+    if(p != que.end()) {
+        siz = p->first, ind = p->second;
+        if (siz == 1) {
+            int v = *graph[ind].begin();
+            add(v);
+            perebor();
+            del(v);
+            return;
+        }
+    }
+    siz = que.begin()->first, ind = que.begin()->second;
 
-    int siz = que.begin()->first, ind = que.begin()->second;
     //left path
     add(ind);
     perebor();
     del(ind);
+
+    if(siz > k - answer.size()) {
+        return;
+    }
 
     //right path
     if(siz > 2) {
@@ -100,28 +129,6 @@ int main() {
 
     for(int i = 0; i < n; ++i) {
         que.insert({graph[i].size(), i});
-    }
-
-    while(k && !que.empty()) {
-        auto p = que.end();
-        --p;
-        int siz = p->first, ind = p->second;
-        if(siz == 1) {
-            add(*graph[ind].begin());
-        }
-        else {
-            break;
-        }
-    }
-
-    while(k && !que.empty()) {
-        int siz = que.begin()->first, ind = que.begin()->second;
-        if (siz > k) {
-            add(ind);
-        }
-        else {
-            break;
-        }
     }
 
     perebor();
