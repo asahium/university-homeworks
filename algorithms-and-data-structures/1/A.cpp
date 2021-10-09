@@ -13,7 +13,7 @@ struct SegmentIntersection {
         int d3 = direction(x1, x2, x3);
         int d4 = direction(x1, x2, x4);
 
-        if ((d1 < 0 || d2 > 0) && (d3 < 0 || d4 > 0))
+        if ((((d1 > 0) && (d2 < 0)) || ((d1 < 0) && (d2 > 0))) && (((d3 > 0) && (d4 < 0)) || ((d3 < 0) && (d4 > 0))))
             return true;
 
         else if (d1 == 0 && on_segment(x3, x4, x1))
@@ -25,7 +25,7 @@ struct SegmentIntersection {
         else if (d3 == 0 && on_segment(x1, x2, x3))
             return true;
 
-        else if (d3 == 0 && on_segment(x1, x2, x4))
+        else if (d4 == 0 && on_segment(x1, x2, x4))
             return true;
 
         else
