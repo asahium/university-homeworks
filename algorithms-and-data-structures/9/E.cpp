@@ -3,7 +3,6 @@
 using namespace std;
 bool parall(double a1, double a2, double b1, double b2) {
     if ((a1 / a2) == (b1 / b2)) {
-        cout << "Lines parallel!";
         return true;
     } else {
         return false;
@@ -26,16 +25,18 @@ int main() {
     a2 = y3 - y4;
     b2 = x4 - x3;
     c2 = x3 * y4 - x4 * y3;
-    
-    if (parall(a1, a2, b1, b2)) {
-        
-    }
-    
-    parall(a1, a2, b1, b2);
 
-    intersect(a1, a2, b1, b2, c1, c2, x, y);
-    cout << "point of intersection " << x << " " << y << endl;
-    system("pause");
+    if (parall(a1, a2, b1, b2)) {
+        if (c1 == c2) {
+            std::cout << '2';
+        } else {
+            std::cout << '0';
+        }
+    } else {
+        intersect(a1, a2, b1, b2, c1, c2, x, y);
+        cout << '1' << ' ' << x << ' ' << y << endl;
+    }
+
     return 0;
 }
 

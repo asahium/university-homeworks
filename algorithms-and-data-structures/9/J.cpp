@@ -5,14 +5,13 @@
 #include <set>
 
 using namespace std;
-typedef long long ll;
 
 class point {
 public:
-    ll x, y;
+    int x, y;
     point() :x(), y() {
     }
-    point(ll x, ll y) :x(x), y(y) {
+    point(int x, int y) :x(x), y(y) {
 
     }
     point operator+(point b) {
@@ -33,29 +32,29 @@ public:
 };
 
 int main() {
-    ll n, m, r;
+    int n, m, r;
     cin >> n >> m >> r;
 
     vector<point> a(n);
-    vector<set<point> > kek(1);
+    vector<vector<point> > kek(1);
     for(int i = 0; i < n; ++i) {
         cin >> a[i].x >> a[i].y;
-        kek[0].insert(a[i]);
+        kek[0].push_back(a[i]);
     }
 
     for(int i = 0; i < m; ++i) {
-        ll A, B, C;
+        int A, B, C;
         cin >> A >> B >> C;
 
         int Q = kek.size();
         for(int q = 0; q < Q; ++q) {
-            set<point> &lol = kek[q];
-            set<point> l, r;
+            vector<point> &lol = kek[q];
+            vector<point> l, r;
             for(auto d : lol) {
                 if(A * d.x + B * d.y + C > 0)
-                    l.insert(d);
+                    l.push_back(d);
                 else
-                    r.insert(d);
+                    r.push_back(d);
             }
             if(l.empty() || r.empty())
                 continue;
