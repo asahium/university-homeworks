@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+
+\makeatletter
+\newcommand{\skipitems}[1]{%
+	\addtocounter{\@enumctr}{#1}%
+}
+\makeatother
+
+\newcommand{\numpy}{{\tt numpy}}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{amsthm,amstext,amsfonts,bm,amssymb}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{indentfirst}
+\setlength{\parindent}{5ex}
+\setlength{\parskip}{1em}
+\usepackage[utf8x]{inputenc} 
+\usepackage[russian]{babel}
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+
+\begin{document}
+	
+	\author{Биктимиров Данила, группа 204}
+	\title{ДЗ 4}
+	\date{}
+	\maketitle
+	
+	\medskip
+	
+	\begin{enumerate}
+		
+		\item \begin{enumerate}
+			\item Заметим, что $A_1 + \dots + A_n = a_1+\dots + a_{p_{n+1}-1}$. Тогда $\lim_{n\to \infty} \left(A_1 + \dots + A_n\right) =$\\ $= \lim_{n\to \infty} \left(a_1+\dots + a_{p_{n+1}-1}\right)$. И значит если $\sum_{n=1}^{\infty}a_n$ сходится, то сходится и $\sum_{n=1}^{\infty}A_n$
+
+			\item Возьмем ряд $\sum_{n=1}^{\infty}(-1)^n$ -- он расходится. И возьмем числа $p_n=2n-1$. Тогда\\ $A_n=0=(-1+1)$, но $\sum_{n=1}^{\infty} 0 $ - сходится. 
+			
+			\item Возьмем первые $n$ членов ряда $a_n$
+			$$-|A_{k+1}|+A_n+\dots +A_k\le a_1 + \dots + a_n \le A_1+\dots +A_k + |A_{k+1}|$$
+			где $p_{k+1}-1\le n \le p_{k+2}-1$
+			
+			Так как $\sum_{n=1}^{\infty}A_n$ -- сходится $\Rightarrow \: \: \lim_{n\to \infty}A_n=0$
+			
+			И пусть $\sum_{n=1}^{\infty} A_n = S$.
+			
+			Тогда берем $\frac{\varepsilon}{2}$ и $N$, что $\forall n \ge N \:\: A_n<\frac{\varepsilon}{2}$
+			
+			Тогда $\forall n > p{N+1}-1$
+			$$A_1+\dots +A_k-|A_k|\le a_1+\dots +a_n\le A_1+\dots +A_k +|A_k|$$
+			$$A_1+\dots +A_k-\frac{\varepsilon}{2}\le a_1+\dots +a_n\le A_1+\dots +A_k +\frac{\varepsilon}{2}$$
+			Устремляя к бесконечности
+			$$\lim_{n\to \infty}|S-(a_1+\dots +a_n)|<\frac{\varepsilon}{2}$$
+			И значит $\lim_{n\to \infty}(a_1+\dots +a_n)=S$
+		\end{enumerate}
+	
+		\item $$\sum_{n=1}^{\infty}\frac{(-1)^{\left \lceil \sqrt{n} \right \rceil}}{n^p}$$
+		При $p\le 0$ общий член не стремится к 0, значит смотрим $p>0$
+		
+		При $p>1$ -- абсолютная сходимость. При $0<p\le 1$ абсолютной сходимости нет. Разобьем на суммы, где все члены одного знака: $$\sum_{n=0}^{\infty} (-1)^n A_n \text{, где } A_n = \frac{1}{(n^2+1)^p} + \dots + \frac{1}{(n+1)^{2p}}$$
+		$$\frac{2n+1}{(n+1)^{2p}}\le A_n \le \frac{2n+1}{(n^2+1)^p}$$
+		При $p\le \frac{1}{2}$ ряд расходится, ведь будет "лучше" гармонического.
+		\item \begin{enumerate}
+			\item $$\sum_{n=1}^{\infty} (-1)^{n-1} \frac{n-1}{n+1} \frac{1}{\sqrt[2020]{n}} = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{\sqrt[2020]{n}} \cdot \left( 1+o\left(\frac{1}{n}\right)\right) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{\sqrt[2020]{n}} +o\left(\frac{1}{n^{1+\frac{1}{2020}}}\right)$$
+			Ну а это сходится по признаку Лейбница. А абсолютно очевидно расходится.
+			
+			\item $$\sum_{n+1}^{\infty} \sin \ln \left(1 + \frac{(-1)^{n+1}}{\sqrt{n}}\right) = \sum_{n=1}^{\infty} \sin n \left(\frac{(-1)^{n+1}}{\sqrt{n}}-\frac{1}{n}+\overline{\overline{o}}\left(\frac{1}{n^{\frac{3}{2}}}\right)\right)=$$
+			$$=\sum_{n=1}^{\infty} \frac{(-1)^{n+1}\sin n}{\sqrt{n}}-\frac{\sin n}{n}+\overline{\overline{o}}\left(\frac{1}{n^{\frac{3}{2}}}\right)$$
+			$\frac{\sin n}{n}$ -- сходится к $\frac{\pi -1}{2}$
+			
+			Тогда надо просто понять что с $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}\sin n}{\sqrt{n}}$
+			
+			$$(-1)^{n+1}\sin n = \sin (\pi (n+1) + n) = \sin ((\pi +1)n+\pi) = -\sin ((\pi +1)n)$$ -- мы доказывали что это ограничено. Тогда по Дирихле ряд сходится. А абсолютно это как $$\sum_{n=1}^{\infty}|\sin n|\cdot |\ln \left(1+ \frac{(-1)^{n+1}}{\sqrt{n}}\right)|= \sum_{n=1}^{\infty} |\sin n|\cdot |\frac{(-1)^{n+1}}{\sqrt{n}}+ \overline{\overline{o}}\left(\frac{1}{n}\right)| = $$
+			$$= \sum_{n=1}^{\infty} |\sin n|\cdot\frac{1}{\sqrt{n}} = \sum_{n=1}^{\infty} \frac{|\sin n|}{\sqrt{n}}\ge \sum_{n=1}^{\infty} \frac{\sin^2 n}{\sqrt{n}} = \frac{1}{2}\sum_{n=1}^{\infty} \frac{1}{\sqrt{n}} - \frac{1}{2}\sum_{n=1}^{\infty} \frac{\cos 2n}{\sqrt{n}}$$
+			Первое расходится, а второе сходится, значит в итоге абсолютно расходится.
+			\item 
+			
+			\item $$ \sum_{n=1}^{\infty}\ln \left(1+ \frac{1}{\sqrt[3]{n}} \right)\arctg \frac{\sin n}{n}= \sum_{n=1}^{\infty} \left( \frac{1}{\sqrt[3]{n}} + \overline{\overline{o}}\left(\frac{1}{\sqrt[3]{n^2}}\right) \right)\cdot \left( \frac{\sin n}{n} + \overline{\overline{o}}\left(\frac{1}{n^3}\right)  \right) = $$
+			$$= \sum_{n=1}^{\infty} \left(\frac{\sin n }{n\cdot \sqrt[3]{n}}+\overline{\overline{o}}\left(\frac{1}{\sqrt[3]{n^5}}\right)\right)\text{ -- это абсолютно сходится}$$
+			
+		\end{enumerate}
+		
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+
+\makeatletter
+\newcommand{\skipitems}[1]{%
+	\addtocounter{\@enumctr}{#1}%
+}
+\makeatother
+
+\newcommand{\numpy}{{\tt numpy}}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{amsthm,amstext,amsfonts,bm,amssymb}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{indentfirst}
+\setlength{\parindent}{5ex}
+\setlength{\parskip}{1em}
+\usepackage[utf8x]{inputenc} 
+\usepackage[russian]{babel}
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+
+\begin{document}
+	
+	\author{Биктимиров Данила, группа 204}
+	\title{ДЗ 4}
+	\date{}
+	\maketitle
+	
+	\medskip
+	
+	\begin{enumerate}
+		
+		\item \begin{enumerate}
+			\item $$\int \sin^n(x)dx = \left| u(x) = \sin^{n-1}x \:\: v(x)= -\cos(x) \right| = -\frac{\sin^{n-1}(x)\cos(x)}{n} + \int \frac{n-1}{n}\sin^{n-2}(x)dx = $$
+			$$= -\frac{\sin^{n-1}(x)\cos(x)}{n} + \frac{n-1}{n} \int \sin^{n-2}(x)dx$$
+			$$\int_{0}^{\frac{\pi}{2}}\sin^n (x)dx = \frac{-\sin^{n-1}(x)\cos (x)}{n}\Bigr|_0^{\frac{\pi}{2}} +  \frac{n-1}{n} \int_0^{\frac{\pi}{2}} \sin^{n-2}(x)dx = $$
+			$$=\frac{n-1}{n} \int_0^{\frac{\pi}{2}} \sin^{n-2}(x)dx, \text{ при } n\ge 2$$
+			Дальше по индукции
+			$$n = 1\:\:\: \int_{0}^{\frac{\pi}{2}}\sin (x)dx = \cos(\frac{\pi}{2})-\cos 0 = 1 = \frac{0!!}{1!!}$$
+			$$n = 2\:\:\: \int_{0}^{\frac{\pi}{2}}\sin^2 (x)dx = \frac{\pi}{4}- 0 -\frac{\sin \pi}{4} + \frac{\sin 0}{4}= \frac{\pi}{4} \cdot \frac{0!!}{1!!}$$
+			Пусть верно для $k = 2n-1$
+			$$\int_{0}^{\frac{\pi}{2}}\sin^{2n+1}(x)dx = \frac{2n}{2n+1} \int_{0}^{\frac{\pi}{2}}\sin^{2n-1}dx = \frac{2n}{2n+1}\cdot \frac{(2n-2)!!}{(2n-1)!!} = \frac{2n!!}{(2n+1)!!}$$
+			
+			\item 
+			
+			\item 
+			
+		\end{enumerate}
+	
+	\item \begin{enumerate}
+		\item 
+		
+		$$\prod_{n=1}^{\infty} \left(1 + \frac{(-1)^{\frac{n(n-1)}{2}}}{n} \right) =
+		\sum_{n=1}^{\infty} \operatorname{ln}\left(1 + \frac{(-1)^{\frac{n(n-1)}{2}}}{n} \right) = $$
+		$$ = \sum_{n=1}^{\infty} \left( \frac{(-1)^{\frac{n(n-1)}{2}}}{n}\right) + o \left(\frac{1}{n^2} \right) \text{ - абсолютно очевидно расходится}$$
+		
+		$$\sum_{n=1}^{\infty} \left( \frac{(-1)^{\frac{n(n-1)}{2}}}{n}\right) = \sum_{n=1}^{\infty} \left(\frac{1}{4n} -\frac{1}{4n+1} -\frac{1}{4n+2} +\frac{1}{4n+3}  \right) =$$ $$ =\sum_{n=1}^{\infty} \frac{1}{4n(4n+1)} - \frac{1}{(4n+2)(4n+3)} = \sum_{n=1}^{\infty} \frac{16n^2 + 20n+6 -16n^2 -4n}{4n(4n+1)(4n+2)(4n+3)} = \sum_{n=1}^{\infty} \frac{16n +6}{o(n^4)} \text{ - сходится}$$
+		
+		\item    
+		
+		$$\prod_{n=1}^{\infty} \left(
+		\frac{\sqrt{n}}{\sqrt{n} + (-1)^{n-1}} \right) = \prod_{n=1}^{\infty} \left( 1 - 
+		\frac{(-1)^{n-1}}{\sqrt{n} + (-1)^{n-1}} \right) = \sum_{n=1}^{\infty} \operatorname{ln} \left( 1 + 
+		\frac{(-1)^{n}}{\sqrt{n} + (-1)^{n-1}} \right) = \sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}} - \frac{1}{n} = $$ $$= \underbrace{\sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}}}_{\text{сходится по Лейбницу}} -\underbrace{\sum_{n=1}^{\infty} \frac{1}{n}}_{\text{расходится}} \Rightarrow \text{ ряд сходится условно и абсолютно}$$
+	\end{enumerate}
+	\item  $$\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^{\alpha}} \cdot \sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^{\beta}} =\sum_{n=1}^{\infty} c_n $$
+
+	$$c_n = \sum_{k=1}^{n} a_k \cdot b_{n+1-k} = \sum_{k=1}^{n} \frac{(-1)^{k-1}}{k^{\alpha}} \cdot \frac{(-1)^{n+1 - k-1}}{(n+1-k)^{\beta}} = (-1)^{n+1} \sum_{k=1}^{n} \frac{1}{k^{\alpha}(n+1-k)^{\beta}}$$
+
+	$$\forall k \in [1;n] : 0 < k^{\alpha}(n+1-k)^{\beta} \leq n^{\alpha} n^{\beta} =  n^{\alpha + \beta}$$
+
+	$$\sum_{k=1}^{n} \frac{1}{k^{\alpha}(n+1-k)^{\beta}} \geq \frac{n}{n^{\alpha + \beta}} \cdot n^{1- \alpha - \beta}$$
+
+Очевидно, общий член не стремится к 0, значит, ряд расходится.
+		
+	\end{enumerate}
+\end{document}
