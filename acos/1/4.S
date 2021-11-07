@@ -1,17 +1,23 @@
-    .text
     .global main
 main:
-    movl    $0, %ebx
-    movl    $0, %ecx
+    mov    $0, %eax
+    mov    $0, %ebx
+    mov    $0, %ecx
+
 read_dir:
-    call    readi32
-    jc      fin
-    addl    %eax, %ebx
-    jno     read_dir
-    adcl    $0, %ecx
-    movl    $0x7ffffffe, %ebx
-    addl    %ecx, %ebx
-fin:
-    movl    %ebx, %eax
+    mov    %eax, %ecx
+    add    %eax, %ebx
+    jo     overflow
+    call   readi32
+    jnc    read_dir
+    mov    %ebx, %eax
+    call   writei32
+    call   finish
+
+overflow:
+    mov    $2147483647, %eax
+    mov    $-2147483648, %edx
+    cmp    %ecx, %ebx
+    cmovg  %edx, %eax
     call    writei32
     call    finish
