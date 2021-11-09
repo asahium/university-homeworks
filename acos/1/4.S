@@ -15,8 +15,8 @@ read_dir:
     call   finish
 
 overflow:
-    mov    $2147483647, %eax
-    mov    $-2147483648, %edx
+    mov    $0x7fffffff, %eax
+    mov    $0x80000000, %edx
     cmp    %ecx, %ebx
     cmovg  %edx, %eax
     call    writei32
