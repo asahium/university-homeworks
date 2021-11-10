@@ -1,2 +1,2 @@
 # first-year
-my first year HSE AMI
+my first year at HSE AMI
