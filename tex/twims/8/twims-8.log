@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  15 NOV 2021 14:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  15 NOV 2021 14:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**twims-6.tex
-(./twims-6.tex
+**twims-8.tex
+(./twims-8.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
@@ -452,13 +452,13 @@ Package babel Info: Default for \cyrdash is provided on input line 163.
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 \l__pdf_internal_box=\box60
-) (./twims-6.aux
+) (./twims-8.aux
 LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 5
 .
 (/usr/share/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
-\openout1 = `twims-6.aux'.
+\openout1 = `twims-8.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
 LaTeX Font Info:    ... okay on input line 29.
@@ -552,37 +552,26 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-(/usr/share/texmf-dist/tex/latex/ucs/data/uni-34.def
-File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
-)
-(/usr/share/texmf-dist/tex/latex/ucs/data/uni-32.def
-File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./twims-6.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./twims-8.aux) ) 
 Here is how much of TeX's memory you used:
- 16360 strings out of 478994
- 297145 string characters out of 5864751
- 576164 words of memory out of 5000000
- 33532 multiletter control sequences out of 15000+600000
- 415728 words of font info for 66 fonts, out of 8000000 for 9000
+ 15544 strings out of 478994
+ 287946 string characters out of 5864751
+ 569398 words of memory out of 5000000
+ 32723 multiletter control sequences out of 15000+600000
+ 413559 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,6n,102p,1340b,690s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 98i,6n,102p,435b,690s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/sha
 re/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-sup
-er/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
-></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on twims-6.pdf (1 page, 98337 bytes).
+fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+rm1728.pfb>
+Output written on twims-8.pdf (1 page, 33470 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 24 PDF objects out of 1000 (max. 8388607)
+ 17 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
