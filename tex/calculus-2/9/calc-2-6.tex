@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+
+\makeatletter
+\newcommand{\skipitems}[1]{%
+	\addtocounter{\@enumctr}{#1}%
+}
+\makeatother
+
+\newcommand{\numpy}{{\tt numpy}}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{amsthm,amstext,amsfonts,bm,amssymb}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{indentfirst}
+\setlength{\parindent}{5ex}
+\setlength{\parskip}{1em}
+\usepackage[utf8x]{inputenc} 
+\usepackage[russian]{babel}
+\topmargin -.5in
+\textheight 9in
+\oddsidemargin -.25in
+\evensidemargin -.25in
+\textwidth 7in
+
+
+\begin{document}
+	
+	\author{Биктимиров Данила, группа 204}
+	\title{ДЗ 6}
+	\date{}
+	\maketitle
+	
+	\medskip
+	
+	\begin{enumerate}
+		
+		\item \begin{enumerate}
+			\item $$f_n(x) = \frac{x^n}{1+x^n}$$
+				$$E = [0;1-\varepsilon]\Rightarrow \lim_{n\to\infty} x^n = 0\Rightarrow \lim_{n\to\infty} f_n(x) = \frac{0}{1+0} = 0$$ Отсюда $$f_n \to f$$ где $f=0$ $$ \forall x \in E, \: n\in N: \: 0\le f_n(x) \le f_n(1-\varepsilon) $$ Ну тогда:
+				$$ \forall \varepsilon' > 0 \: \exists N : \: \forall n \ge N \forall x \in E \Rightarrow $$
+				$$ \Rightarrow |f_n(x)-0|<|f_n(1-\varepsilon)-0|< \varepsilon'$$ Откуда получаем равномерную сходимость
+			\item $$1-\varepsilon \le x < 1 \Rightarrow \lim_{n\to\infty} f_n(x) = 0$$
+				$$ x = 1 \Rightarrow \lim_{n\to\infty} f_n(x) = \frac{1}{1+1} = \frac{1}{2}$$ $$ 1<x\le1+\varepsilon  \Rightarrow \lim_{n\to\infty} f_n(x) = \frac{1}{\frac{1}{\infty}+1} = 1$$
+				Поточечная сходимость есть
+				$$ f_n\to_E f = \begin{cases}
+					0, 1-\varepsilon \le x < 1\\
+					\frac{1}{2}, x=1\\
+					1, 1< x\le 1+\varepsilon
+				\end{cases}$$ А равномерной сходимости нет. 
+				$$ \exists \varepsilon' > 0: \forall N \in \mathbf{N}: \exists n \ge \mathbf{N}: \exists x \in E$$ $$ |f_n(x)-f(x)|\ge \varepsilon' $$
+				Берем $$ \varepsilon' = \frac{1}{3}, n = N, x= \max \left(1-\varepsilon, \sqrt[n]{\frac{1}{2}}\right) $$ Тогда $$ \forall N \in \mathbf{N}: |f_N(x)-f(x)|\ge \frac{\frac{1}{2}}{1+\frac{1}{2}}- 0= \frac{1}{3}\ge \varepsilon' $$
+			\item $$1+\varepsilon \le x \:\:\:\: \lim_{n\to\infty} f_n(x) = 1 \:\:\:\: f_n \to_E f=1$$ $$ \forall x \in E, n \in \mathbf{N}: f_n(1+\varepsilon)\le f_n(x)\le 1 $$ Ну тогда аналогично первому пункту получим равномерную сходимость.
+		\end{enumerate}
+		\item $$\sum_{n=1}^{\infty} \ln \left(1+ \frac{x^2}{n \ln^2 n}\right)$$ $$\ln \left(1+\frac{x^2}{n\ln^2 n}\right)\le \frac{x^2}{n \ln^2 n}\le \frac{A^2}{n \ln^2 n}$$ $$\sum_{n =2}^{\infty} \frac{A^2}{n \ln^2 n} \sim A^2 \sum_{n=2}^{\infty} \frac{1}{n \ln^2 n} \sim \int_{2}^{+\infty} \frac{1}{n \ln^2 n} dn = \frac{1}{\ln 2}$$ -- сходится $\Rightarrow$ по признаку Вейерштрасса $f_n\to_E f$
+		\item $$\forall x \in \mathbf{R}: |\arctg(x)|\le \frac{\pi}{2}\Rightarrow \left| \frac{\arctg nx}{\sqrt{n^2+x^2}} \right|\le \frac{\pi}{2\sqrt{n^3}}$$ Но $\sum_{n=1}^{\infty}\frac{\pi}{2\sqrt{n^3}}$ -- сходится $\Rightarrow$ по Вейерштрассу $f_n\to_E f$
+		\item 
+		\item 
+		\item $$\forall x \in E \:\:\:\: \sum_{n=1}^{\infty} \frac{x^2}{e^{x\sqrt{n}}}$$ -- сходится, ведь в знаменателе экспонента.
+		
+		То $f_n\to_E f$
+		
+		Отрицание Коши: $\varepsilon'=e^{-\sqrt{2}},n=N,p=N,x=\frac{1}{\sqrt{N}}$
+		$$|f_{n+p}-f_n| = f_{2n}-f_n = \sum_{k=1}^{2n}x^2 e^{-x\sqrt{k}}-\sum_{k=1}^{n}x^2 e^{-x\sqrt{k}}=$$
+		$$=\sum_{k = n+1}^{2n}x^2e^{-x\sqrt{k}}=\frac{1}{(\sqrt{n})^2}\left(\sum_{k=n+1}^{2n}e^{-\sqrt{\frac{k}{n}}}\right)\ge \frac{1}{n}\cdot n\cdot e^{\sqrt{\frac{2n}{n}}} = e^{-\sqrt{2}} = \varepsilon'$$ Это верно $\forall N\in \mathbf{N}\Rightarrow$ равномерной сходимости нет.
+	\end{enumerate}
+\end{document}
