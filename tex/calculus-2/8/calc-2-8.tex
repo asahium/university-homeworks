@@ -35,7 +35,77 @@
 	\medskip
 	
 	\begin{enumerate}
-		\item
-	
+		\item \begin{enumerate}
+			\item $$\sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)x^n, \: a,b>0$$
+			$$ \sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)x^n = \sum_{n=1}^{\infty} \frac{a^n}{n}x^n + \sum_{n=1}^{\infty} \frac{b^n}{n^2}x^n$$
+			
+			У первого $R_1=\frac{1}{\overline{\lim_{n\to \infty \sqrt[n]{\frac{a^n}{n}}}}} = \frac{1}{a}$
+			
+			У второго $R_2=\frac{1}{\overline{\lim_{n\to \infty \sqrt[n]{\frac{b^n}{n^2}}}}} = \frac{1}{b}$
+			
+			Соответственно радиус сходимости $R_0 = \min \left(\frac{1}{a};\frac{1}{b}\right)$
+			
+			Ну и проверим границы:
+			\begin{itemize}
+				\item $a<b\Rightarrow R_0=\frac{1}{b}$. исследуем  в $x=\pm\frac{1}{b}$
+				$$ \sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)\left(\frac{1}{b}\right)^n = \sum_{n=1}^{\infty} \frac{a^n}{nb^n}+\sum_{n=1}^{\infty} \frac{1}{n^2} \le \sum_{n=1}^{\infty} \frac{a^n}{b^n}+\sum_{n=1}^{\infty} \frac{1}{n^2} $$
+				
+				Оба слагаемых сходится, значит и наш ряд сходится
+				$$ \sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)\left(-\frac{1}{b}\right)^n = \sum_{n=1}^{\infty}(-1)^n \frac{a^n}{nb^n}+\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} $$
+				
+				$\sum_{n=1}^{\infty}(-1)^n
+				 \frac{a^n}{nb^n}$ -- сходится по Лейбницу, как и второй ряд. То есть, если $a<b$, то область сходимости $[-\frac{1}{b};\frac{1}{b}]$
+				
+				\item $a\ge b\Rightarrow R_0=\frac{1}{a}$. исследуем  в $x=\pm\frac{1}{a}$
+				$$ \sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)\left(\frac{1}{a}\right)^n = \sum_{n=1}^{\infty} \frac{1}{n}+\sum_{n=1}^{\infty} \frac{b^n}{a^nn^2} $$
+				
+				Первый ряд расходится, а второй сходится, значит и наш ряд расходится
+				$$ \sum_{n=1}^{\infty} \left(\frac{a^n}{n} + \frac{b^n}{n^2}\right)\left(-\frac{1}{a}\right)^n = \sum_{n=1}^{\infty} \frac{(-1)^n}{n}+\sum_{n=1}^{\infty} \frac{b^n}{a^nn^2} $$
+				
+				Оба сходятся по Лейбницу. То есть, если $a<b$, то область сходимости $[-\frac{1}{a};\frac{1}{a})$
+			\end{itemize}
+		\item $$\sum_{n=1}^{\infty} \frac{\sin n}{\sqrt{n}}x^n$$
+		$$ \frac{1}{R} = \overline{\lim_{n\to \infty}}\sqrt[n]{\left| \frac{\sin n}{\sqrt{n}} \right|} =\overline{\lim_{n\to \infty}} e^{\frac{1}{n}\left| \frac{\sin n}{\sqrt{n}} \right|} = \overline{\lim_{n\to \infty}} e^{\frac{\sin n}{n\sqrt{n}}}=e^0=1$$
+		
+		Смотрим в $x=1$:
+		$$ \sum_{n=1}^{\infty} \frac{\sin n}{\sqrt{n}}1^n=\sum_{n=1}^{\infty} \frac{\sin n}{\sqrt{n}}\text{ -- сходится по Дирихле} $$
+		
+		Смотрим в $x=-1$:
+		$$ \sum_{n=1}^{\infty} \frac{\sin n}{\sqrt{n}}(-1)^n=\sum_{n=1}^{\infty} \frac{\sin (n+\pi n)}{\sqrt{n}}\text{ -- точно так же сходится по Дирихле} $$
+		
+		И значит область сходимости $\left[-1;1\right]$
+		\end{enumerate}
+	\item \begin{enumerate}
+		\item $$f(x) = \arccos x = \frac{\pi}{2}-\arcsin x = \frac{\pi}{2}-\int_{0}^{x} \frac{1}{\sqrt{1-x^2}} $$
+		$$ \frac{1}{\sqrt{1-x^2}} = (1-x^2)^{-\frac{1}{2}} = \text{ по Тейлору }=1+\sum_{n = 1}^{\infty} \frac{(2n-1)!!}{2n!!} x^{2n} $$
+		$$ \arcsin x = \int_{0}^{x} \left( 1 + \sum_{n = 1}^{\infty} \frac{(2n-1)!!}{2n!!} y^{2n}  \right)dy = \sum_{n=0}^{\infty} \frac{2n!}{2^{2n}(n!)^2}\cdot \frac{x^{2n+1}}{2n+1} $$
+		$$ \arccos x = \frac{\pi}{2} - \sum_{n=0}^{\infty} \frac{2n!}{2^{2n}(n!)^2}\cdot \frac{x^{2n+1}}{2n+1} $$
+		$$ \frac{1}{R} = \overline{\lim_{n\to \infty}}\sqrt[2n+1]{\frac{(2n)!}{2^{2n}(n!)^2(2n+1)}} = \overline{\lim_{n\to \infty}} \sqrt[2n+1]{\frac{\sqrt{2\pi \cdot 2n}\cdot \left(\frac{2n}{e}\right)^{2n}}{ 2^{2n}\cdot 2\pi n\cdot \left(\frac{n}{e}\right)^{2n}\cdot (2n+1) }} = \overline{\lim_{n\to \infty}} \sqrt[2n+1]{\frac{1}{\sqrt{\pi n}\cdot (2n+1)}}=1 $$
+		
+		Тогда $R=1$. И смотрим $ x_0=\pm 1$. Ряд $$ \sum_{n=0}^{\infty} \left| \frac{2n!}{2^{2n}\cdot (n!)^2}\cdot \frac{x_0^{2n+1}}{2n+1} \right|\sim \sum_{n=0}^{\infty} \frac{1}{\sqrt{\pi n}(2n+1)}\sim \sum_{n=0}^{\infty} \frac{1}{n^{\frac{3}{2}}}$$ сходится абсолютно. Тогда область сходимости $\left[-1;1\right]$
+		\item $$ f(x) = x \arctg x - 1 n \sqrt{1+x^2} = \int_{0}^{x} f^\prime(y)dy $$
+		$$ f^\prime(y) = \arctg y + \frac{y}{1+y^2}-\frac{1}{\sqrt{1+y^2}}\cdot \frac{2y}{2\sqrt{1+y^2}} = \arctg y$$
+		$$ f(x ) = \int_{0}^{x} \arctg y dy$$
+		$$ \arctg y = \int_{0}^{y}\frac{1}{1+z^2}dz = \int_{0}^{y} \sum_{n=0}^{\infty} (-z^2)^n dz = \sum_{n =0}^{\infty} \frac{(-1)^ny^{2n+1}}{2n+1} $$
+		$$ f(x) = \int_{0}^{y}\sum_{n=0}^{\infty} \frac{(-1)^n y^{2n+1}}{2n+1}dy = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+2}}{(2n+2)(2n+1)} $$
+		\item $$ f(x) = \frac{\ln (1+x)}{1+x} $$
+		$$ \ln (1+x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n+1}\cdot x^{n+1} $$
+		$$ \frac{1}{1+x} = \sum_{n=0}^{\infty} (-1)^n x^n $$
+		$$ f(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{n+1}x^{n+1}\cdot \sum_{n=0}^{\infty} (-1)^n x^n $$
+		
+		Посчитаем коэффициенты $$ \sum_{i=0}^{n-1} \frac{(-1)^i (-1)^{n-i-1}}{i+1} = \sum_{i=0}^{n-1} \frac{(-1)^{n-1}}{i+1} $$
+		
+		Тогда $$ \frac{\ln (1+x)}{1+x}  = \sum_{n=1}^{\infty}\left(\sum_{i=0}^{n-1} \frac{(-1)^{n-1}}{i+1}\right)x^n$$
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item 
+		\item $$ f(x) = \sum_{k=0}^{\infty} \frac{2k+1}{k!}x^{2k}  = \left(\sum_{n=0}^{\infty} \frac{x^{2k+1}}{k!}\right)^\prime = \left(x\sum_{n=0}^{\infty} \frac{(x^2)^k}{k!}\right)^\prime = (x\cdot e^{x^2})^\prime = e^{x^2}\cdot (1+2^{x^2})$$
+	\end{enumerate}
+	\item \begin{enumerate}
+		\item $$ \sum_{n = 1}^{\infty} (a_n\pm b_n)x^n = \sum_{n = 1}^{\infty} a_nx^n \pm \sum_{n = 1}^{\infty} b_nx^n$$
+		
+		Ну тогда чтоб сходился наш ряд, надо чтоб сходились оба ряда, ну а такое достигается при $R\le \min (R_1, R_2)$
+		\item По теореме о радиусе сходимости, на промежутке сходимости ряд сходится абсолютно. Если взять два степенных ряда, то на общей части их промежутка сходимости, ряды будут абсолютно сходиться
+	\end{enumerate}
 	\end{enumerate}
 \end{document}
