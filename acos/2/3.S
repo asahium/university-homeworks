@@ -1,22 +1,21 @@
-	.global process
+    .global process
 process:
-    push %ebp
-    mov %esp, %ebp
-    mov %esp, %edx
+    push    %ebp
+    mov     %esp, %ebp
 loop:
-    call readi32
-    jc print
+    call    readi32
+    jc      print
 
-    push %eax
-    jmp loop
+    push    %eax
+    jmp     loop
 print:
-    cmp %esp, %edx
-    je exit
+    cmp     %esp, %ebp
+    je      exit
 
-    pop %eax
-    call writei32
-    jmp print
+    pop     %eax
+    call    writei32
+    jmp     print
 exit:
-    mov %ebp, %esp
-    pop %ebp
+    mov     %ebp, %esp
+    pop     %ebp
     ret
