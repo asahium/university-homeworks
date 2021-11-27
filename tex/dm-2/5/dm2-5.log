@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  27 NOV 2021 01:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.9.17)  27 NOV 2021 02:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -294,28 +294,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-! Misplaced alignment tab character &.
-l.44 ...�азываем импликацию A(x)&
-                                                  B(x)->C(x). Приняли...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-[1
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./dm2-5.aux) ) 
 Here is how much of TeX's memory you used:
  5261 strings out of 478994
  69382 string characters out of 5864751
- 381296 words of memory out of 5000000
+ 383296 words of memory out of 5000000
  22653 multiletter control sequences out of 15000+600000
  415728 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,6n,78p,967b,689s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,6n,78p,988b,689s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/s
 hare/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/
@@ -325,7 +314,7 @@ public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 e/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fo
 nts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/cm-super/sfrm1728.pfb>
-Output written on dm2-5.pdf (2 pages, 100034 bytes).
+Output written on dm2-5.pdf (2 pages, 100604 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  31 compressed objects within 1 object stream
