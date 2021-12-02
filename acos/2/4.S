@@ -18,8 +18,7 @@ up:
     inc    %edx
     jmp    loopread
 not_zero:
-    shl    $3, %ecx
-    add    $array, %ecx
+    lea    array(, %ecx, 8), %ecx
     mov    %ecx, array+4(, %edx, 8)
     mov    %eax, array(, %edx, 8)
     inc    %edx
