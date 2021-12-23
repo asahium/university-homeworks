@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-
+\usepackage[russian]{babel}
 \makeatletter
 \newcommand{\skipitems}[1]{%
 	\addtocounter{\@enumctr}{#1}%
@@ -10,14 +10,14 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{graphics}
-\usepackage{subfigure}
 \usepackage{amsthm,amstext,amsfonts,bm,amssymb}
 \usepackage{graphicx}
 \usepackage{indentfirst}
+\usepackage{subfigure}
 \setlength{\parindent}{5ex}
 \setlength{\parskip}{1em}
 \usepackage[utf8x]{inputenc} 
-\usepackage[russian]{babel}
+
 \topmargin -.5in
 \textheight 9in
 \oddsidemargin -.25in
@@ -289,6 +289,66 @@
 		$$ $$
 		$$ $$
 		$$ $$
-		\item
+		\item Составим уравнения и опишем используемые константы:
+		$$ \begin{cases}
+			\frac{dE}{dt} = \frac{a_1SE}{N}+\frac{a_2SI}{N}+\frac{a_3SH}{N}-bE-kE\\
+			\frac{dH}{dt} = cI-z_1fH-z_2dH-kH\\
+			\frac{dS}{dt} = -\frac{a_1SE}{N}-\frac{a_1SE}{N}-\frac{a_1SE}{N}+(1-i)mN-kS\\
+			\frac{dI}{dt} = bE-cI-gI-kI\\
+			\frac{dR}{dt} = gI+z_2dH-kR+imN\\
+			N = S+E+I+H+R
+		\end{cases} $$
+		
+		$a_1/a_2/a_3=0.6/0.3/0.1$ -- коэффициент контакта в обществе/при симптомах/в больнице
+		
+		$y_1/y_2 = 0.01/0.99$ -- вероятность госпитализации/выздороветь
+		
+		$z_1/z_2 = 0.001/0.99$ -- вероятность умереть/выздороветь при госпитализации
+		
+		$m/k/N$ -- рождаемость/смертность/население в Уфе
+		
+		$\frac{1}{b}=15$ -- инкубационный период
+		
+		$\frac{1}{c}=10$ -- время до госпитализации
+		
+		$\frac{1}{g}=7$ -- время до выздоровления
+		
+		$\frac{1}{f}=20$ -- время до смерти
+		
+		$\frac{1}{d}=10$ -- время от госпитализации до выздоровления
+		
+		Пусть начальные значение это число вакцинированных $95\%, R=1045000, S=54000, E=1000$ 
+		\begin{figure}[h]
+			\center{\includegraphics[scale=0.5]{model3.png}}
+			\caption{Схема модели системы уравнений}
+			\label{fig:image3}
+		\end{figure}
+		 
+		 Как можно убедиться из графиков далее, в связи с очень высокой заболеваемостью число заболевший будет сначало очень сильно расти, но так вероятность умереть очень маленькая, то умирать люди почти не будут от ветрянной оспы.
+		 \begin{figure}[h]
+		 	\center{\includegraphics[scale=0.3]{S1.png}}
+		 	\caption{S(t)}
+		 	\label{fig:image4}
+		 \end{figure}
+	 \begin{figure}[h]
+	 	\center{\includegraphics[scale=0.3]{E1.png}}
+	 	\caption{E(t)}
+	 	\label{fig:image5}
+	 \end{figure}
+ \begin{figure}[h]
+ 	\center{\includegraphics[scale=0.3]{I1.png}}
+ 	\caption{I(t)}
+ 	\label{fig:image6}
+ \end{figure}
+\begin{figure}[h]
+	\center{\includegraphics[scale=0.3]{H1.png}}
+	\caption{H(t)}
+	\label{fig:image7}
+\end{figure}
+\begin{figure}[ht]
+	\center{\includegraphics[scale=0.3]{R1.png}}
+	\caption{R(t)}
+	\label{fig:image8}
+\end{figure}
 	\end{enumerate}
 \end{document}
