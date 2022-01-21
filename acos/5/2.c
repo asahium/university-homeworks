@@ -17,5 +17,5 @@ int mystrcmp(const char *str1, const char *str2) {
     if (*string2) {
         return -1;
     }
-    return 0;
+    return 0;    
 }
