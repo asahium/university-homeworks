@@ -1,0 +1,34 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm18-2: unix/threads/mutex</h3>
+<p>Сделайте мьютекс на фьютексах.</p>
+<p>Определите тип <code>caos_mutex_t</code> и следующие функции:</p>
+<pre>void caos_mutex_init(caos_mutex_t *m);
+void caos_mutex_lock(caos_mutex_t *m);
+void caos_mutex_unlock(caos_mutex_t *m);</pre>
+<p>Тестирующая программа обязана инициализировать мьютекс перед использованием.
+          После этого пара вызовов <code>caos_mutex_lock/caos_mutex_unlock</code>
+          с одним и тем же мьютексом создаёт в программе критическую секцию,
+          в которой может одновременно находиться только один тред.</p>
+<p>Активное ожидание запрещено. Для ожидания используйте фьютексы.</p>
+<p>Можно считать, что мьютекс никогда не будет уничтожен (не будет
+          освобождена память, в которой он находится).</p>
+<p>В тестирующей программе определены следующие вспомогательные функции:</p>
+<pre>void futex_wait(int *addr, int val) {
+    // atomically: block on addr if (*addr == val)
+    syscall(SYS_futex, addr, FUTEX_WAIT, val, NULL, NULL, 0);
+}
+
+void futex_wake(int *addr, int num) {
+    // wake up to num threads blocked on addr
+    syscall(SYS_futex, addr, FUTEX_WAKE, num, NULL, NULL, 0);
+}</pre>
+<h3>Examples</h3><h4>Input</h4>
+<pre></pre>
+<h4>Output</h4>
+<pre></pre>
+</body></html>

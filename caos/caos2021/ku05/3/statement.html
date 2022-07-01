@@ -1,0 +1,18 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku05-3: kr05-3 (дореш)</h3>
+<p>Напишите программу <code>logto</code>, которая принимает три аргумента командной строки:
+            <code>logto cmd1 cmd2 outfile</code> и выполняет эквивалент команды шелла
+            <code>{ cmd1 || cmd2; } &gt;&gt;outfile</code>, а именно:</p>
+<ul>
+<li>cmd2 запускается только в случае неуспешного запуска или завершения cmd1.</li>
+<li>вывод запущенных команд дописывается в конец файла outfile.</li>
+<li>Программа завершается с кодом 0, если хотя бы одна из команд завершилась успешно, и с кодом 1 в остальных случаях.</li>
+</ul>
+<p>Команды cmd1 и cmd2 однословные, их нужно искать в PATH.</p>
+<p>Не используйте шелл или функцию system для запуска команд.</p>
+</body></html>

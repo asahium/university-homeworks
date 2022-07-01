@@ -1,0 +1,1 @@
+prefix_grep /usr/bin '#!/usr/bin/python'

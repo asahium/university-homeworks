@@ -1,0 +1,32 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm09-1: c/inline-asm/cpuid</h3>
+<p>Инструкция <a href="https://en.wikipedia.org/wiki/CPUID"><code>cpuid</code></a> позволяет программе получить
+            информацию о процессоре, на котором она исполняется — размер кэш-памяти, возможности управления питанием,
+            название модели и многое другое.</p>
+<p>Нас будет интересовать режим работы этой инструкции при <code>eax=1</code>,
+            позволяющий узнать номер модели процессора и
+            поддерживаемые возможности. Сведения об этом режиме проще всего
+            <a href="https://en.wikipedia.org/wiki/CPUID#EAX=1:_Processor_Info_and_Feature_Bits">прочитать в Википедии</a>.</p>
+<p>Ваша программа должна выполнить инструкцию cpuid, предварительно установив %eax=1,
+            и напечатать номера семейства и модели процессора (в виде десятичных чисел,
+            printf-формат <code>%d</code>), а также сведения о поддерживаемых возможностях,
+            оказавшиеся в регистрах <code>ecx</code> и <code>edx</code>
+            (в виде шестнадцатеричных чисел, printf-формат <code>0x%x</code>):</p>
+<pre>$ ./prog
+family=6 model=94 ecx=0x7ffafbff edx=0xbfebfbff</pre>
+<p>На вашем компьютере вывод программы, разумеется, будет каким-то другим.
+            Проверить корректность вычисления family и model можно, посмотрев в /proc/cpuinfo:</p>
+<pre>$ head /proc/cpuinfo
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 94
+model name	: Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz</pre>
+<p>Не используйте хедер <code>cpuid.h</code> и другие готовые обёртки над инструкцией CPUID —
+            напишите ассемблерную вставку, как будто на дворе 2006 год и cpuid.h ещё не написали.</p>
+</body></html>

@@ -1,0 +1,1 @@
+std_accumulate((void*)(&result), &{1, 2, 3, 4}, sizeof(int), 4, &int_zero, summator)

@@ -1,0 +1,30 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku06-2: kr06-2 (дореш)</h3>
+<p>Напишите функцию <code>void myfloorf(float *arg)</code>,
+            которая округляет число <code>*arg</code> вниз к ближайшему целому и записывает результат обратно в <code>*arg</code>.
+        Гарантируется, что в момент вызова <code>myfloorf</code> значение
+        <code>*arg</code> – положительное нормализованное число, не бесконечность
+            и не NaN.</p>
+<p>Используйте операции с целыми числами (битовые маски и т. д.)
+        Не используйте операции с вещественными числами, в том числе преобразование
+        типов (<code>int i = (int)*arg</code>).</p>
+<p>Решение будет тестироваться с флагами компилятора <code>-m32 -msoft-float -mfpmath=387</code>,
+        так что программы, использующие операции с вещественными числами, не скомпилируются.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>1.5</pre>
+<h4>Output</h4>
+<pre>1.0</pre>
+<h4>Input</h4>
+<pre>0.1</pre>
+<h4>Output</h4>
+<pre>0.0</pre>
+<h4>Input</h4>
+<pre>15.43</pre>
+<h4>Output</h4>
+<pre>15.0</pre>
+</body></html>
