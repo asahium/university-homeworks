@@ -1,0 +1,36 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>8M</tt></td></tr>
+</table>
+<h3>Problem ku07-2: kr07-2 (дореш)</h3>
+<p>Напишите программу <code>socket_echo PORT_NO</code>, которая
+        слушает указанный порт по протоколу TCP и отдаёт клиенту то же, что получил от него.
+        В случае, если клиент ничего не передал, следует ему передать сообщение
+        "Empty message #{MESS_NO}\n", где MESS_NO - номер пустого сообщения.
+        Нумерация начинается с единицы при старте программы. Нумеруются только пустые сообщения.
+        После отдачи результата клиенту закройте соединение.</p>
+<p>Все запросы следует обрабатывать последовательно. Новые процессы создавать НЕ НУЖНО.</p>
+<p>Сообщения бинарные, размер сообщений не ограничен.</p>
+<p>Гарантируется, что указанный порт всегда доступен. Используйте опции SO_REUSEADDR и SO_REUSEPORT.</p>
+<p>Вас убьют SIGTERM-ом, завершайтесь успешно.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>./socket_echo "$SOCKET_NO" &amp;
+echo -ne "Hello world\n" | nc -N localhost "$SOCKET_NO"
+kill "$(ps -C "./socket_echo" h | cut -f 2 -d " ")"</pre>
+<h4>Output</h4>
+<pre>Hello world
+</pre>
+<h4>Input</h4>
+<pre>./socket_echo "$SOCKET_NO" &amp;
+echo -n "" | nc -N localhost "$SOCKET_NO"
+echo -ne "test\n" | nc -N localhost "$SOCKET_NO"
+echo -n "" | nc -N localhost "$SOCKET_NO"
+kill "$(ps -C "./socket_echo" h | cut -f 2 -d " ")"</pre>
+<h4>Output</h4>
+<pre>Empty message #1
+test
+Empty message #2
+</pre>
+</body></html>

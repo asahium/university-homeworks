@@ -1,0 +1,36 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm04-4: asm/stack/backtrace</h3>
+<p>Напишите подпрограмму <code>print_tb</code>, которая печатает стек вызовов от самой себя до main.</p>
+<p>Вызывающая программа содержит подпрограммы <code>main</code> (точка входа), <code>foo</code>
+            и <code>bar</code>, поддерживающие стандартный стековый кадр.
+    Известно, что цепочка вызовов от <code>main</code> до <code>print_tb</code>
+    не содержит других подпрограмм, кроме foo и bar (которые, возможно, рекурсивно вызывают
+    себя и друг друга).
+    С помощью системного вызова <code>write</code> напечатайте на стандартный
+    выход имена подпрограмм в цепочке.</p>
+<p>Пример: для такой вызывающей программы:</p>
+<pre>
+    void foo() {
+        print_tb();
+    }
+    void bar() {
+        foo();
+    }
+    int main() {
+        bar();
+    }
+</pre>
+<p>вывод должен быть таким:</p>
+<pre>print_tb
+foo
+bar
+main
+</pre>
+<p>Отладочной информации в вызывающей программе нет. Использование функции <code>backtrace(3)</code>
+        и аналогов запрещено.</p>
+</body></html>

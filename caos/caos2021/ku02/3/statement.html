@@ -1,0 +1,20 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku02-3: kr02-3 (дореш)</h3>
+<p>Дана структура:</p>
+<pre>struct data {
+    int (*get_rank)(const struct data*);
+    char secret[];
+}</pre>
+<p>В массиве <code>struct data* elements[size]</code> лежат указатели на структуры data, причём
+            <nobr><code>elements[i]-&gt;get_rank(elements[i])</code></nobr>
+            возвращает «ранг» соответствующего элемента.</p>
+<p>Напишите функцию <code>void rank_sort(struct data* elements[], size_t size)</code>, которая
+            сортирует указатели в elements по возрастанию ранга элементов, на которые они указывают.
+            Можно пользоваться стандартной функцией <code>qsort(3)</code>.</p>
+<p>В каждом тесте ранги всех элементов различны.</p>
+</body></html>

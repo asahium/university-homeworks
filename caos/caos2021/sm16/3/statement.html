@@ -1,0 +1,59 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm16-3: c/longjmp/exc</h3>
+<p>Напишите функции <code>try, endtry</code> и <code>throw</code>, реализующие
+            механизм исключений на минималках. Сигнатуры функций:</p>
+<pre>jmp_buf* try(int exception);
+void endtry();
+void throw(int exception);</pre>
+<p>Синтаксис для пользователя такой:</p>
+<pre>if (!setjmp(*try(42))) { // добавили обработчик
+    puts("level 1");
+    if (!setjmp(*try(1))) { // и ещё один
+        puts("level 2");
+        throw(42); // выбросили исключение
+        puts("this string is not displayed");
+        endtry();
+    } else {
+        puts("handle exception 1");
+    }
+    endtry();
+} else {
+    puts("handle exception 42");
+}</pre>
+<p>Этот пример напечатает:</p>
+<pre>level 1
+level 2
+handle exception 42</pre>
+<p>Используйте механизм <code>setjmp/longjmp</code>. Обработчики исключений
+    образуют "параллельный стек", который можно хранить в глобальной переменной.
+    Гарантируется, что глубина этого стека не превышает 10.</p>
+<p>Если для выброшенного исключения не нашлось обработчика,
+    программа должна немедленно завершиться с кодом 13.</p>
+<details>
+<summary>Про "параллельный стек" и поведение функций</summary>
+<p>Обработчики исключений хранятся в стеке.</p>
+<p>Вызов <code>try(x)</code> добавляет обработчик для <code>x</code> на вершину стека ("начало блока <code>try { ... }</code>").</p>
+<p><code>endtry()</code> убирает один обработчик с вершины стека ("успешное завершение блока <code>try</code>"). Гарантируется, что пользователь вызывает <code>endtry</code> только для непустого стека.</p>
+<p><code>throw(x)</code> убирает обработчики из стека, пока не встретит обработчик для <code>x</code> ("переход на соответствующий catch") или пока стек не опустеет.</p>
+<pre>// Код                                          | // Эквивалентный код на C++
+if (!setjmp(*try(42))) { // добавили обработчик | try {
+    puts("level 1");                            |     puts("level 1");
+    if (!setjmp(*try(1))) { // и ещё один       |     try {
+        puts("level 2");                        |         puts("level 2");
+        throw(42); // выбросили исключение      |         throw MyException&lt;42&gt;();
+        puts("this string is not displayed");   |         puts("this string is not displayed");
+        endtry();                               |     }
+    } else {                                    |     catch (MyException&lt;1&gt;&amp;) {
+        puts("handle exception 1");             |         puts("handle exception 1");
+    }                                           |     }
+    endtry();                                   | }
+} else {                                        | catch (MyException&lt;42&gt;&amp;) {
+    puts("handle exception 42");                |     puts("handle exception 42");
+}                                               | }</pre>
+</details>
+</body></html>
