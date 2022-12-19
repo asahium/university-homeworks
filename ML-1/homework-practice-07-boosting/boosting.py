@@ -44,12 +44,14 @@ class Boosting:
         self.sigmoid = lambda x: 1 / (1 + np.exp(-x))
         self.loss_fn = lambda y, z: -np.log(self.sigmoid(y * z)).mean()
         self.loss_derivative = lambda y, z: -y * self.sigmoid(-y * z)
-        self.loss_derivative2 = lambda y, z: y ** 2 * self.sigmoid(-y * z) * (1 - self.sigmoid(-y * z))
+        self.loss_derivative_2 = lambda y, z: y ** 2 * self.sigmoid(-y * z) * (1 - self.sigmoid(-y * z))
         self.n_features = None
 
     def fit_new_base_model(self, x, y, predictions):
         idx = np.random.randint(0, x.shape[0], int(self.subsample * x.shape[0]))
-        x_boot, y_boot, pred_boot = x[idx], y[idx], predictions[idx]
+        x_boot = x[idx]
+        y_boot = y[idx]
+        pred_boot = predictions[idx]
         last_residuals = -self.loss_derivative(y, predictions)
         model = self.base_model_class(**self.base_model_params).fit(x_boot, last_residuals[idx])
         self.models.append(model)
@@ -112,8 +114,8 @@ class Boosting:
 
     @property
     def feature_importances_(self):
-        weights = np.zeros(self.n_features)
+        w = np.zeros(self.n_features)
         for model in self.models:
-            weights += model.feature_importances_ 
-        weights /= self.n_estimators
-        return weights / np.sum(weights)
+            w += model.feature_importances_ 
+        w /= self.n_estimators
+        return w / np.sum(w)
