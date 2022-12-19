@@ -44,10 +44,18 @@ class Boosting:
         self.sigmoid = lambda x: 1 / (1 + np.exp(-x))
         self.loss_fn = lambda y, z: -np.log(self.sigmoid(y * z)).mean()
         self.loss_derivative = lambda y, z: -y * self.sigmoid(-y * z)
+        self.loss_derivative2 = lambda y, z: y ** 2 * self.sigmoid(-y * z) * (1 - self.sigmoid(-y * z))
+        self.n_features = None
 
     def fit_new_base_model(self, x, y, predictions):
-        self.gammas.append()
-        self.models.append()
+        idx = np.random.randint(0, x.shape[0], int(self.subsample * x.shape[0]))
+        x_boot, y_boot, pred_boot = x[idx], y[idx], predictions[idx]
+        last_residuals = -self.loss_derivative(y, predictions)
+        model = self.base_model_class(**self.base_model_params).fit(x_boot, last_residuals[idx])
+        self.models.append(model)
+        gamma = self.find_optimal_gamma(y_boot, pred_boot, pred_boot + model.predict(x_boot))
+
+        self.gammas.append(gamma)
 
     def fit(self, x_train, y_train, x_valid, y_valid):
         """
@@ -58,16 +66,40 @@ class Boosting:
         """
         train_predictions = np.zeros(y_train.shape[0])
         valid_predictions = np.zeros(y_valid.shape[0])
+        self.history['train'] = []
+        self.history['val'] = []
+        self.n_features = x_train.shape[1]
 
         for _ in range(self.n_estimators):
-            self.fit_new_base_model()
+            self.fit_new_base_model(x_train, y_train, train_predictions)
+            model = self.models[-1]
+            gamma = self.gammas[-1]
+            train_predictions += self.learning_rate * gamma * model.predict(x_train)
+            train_loss = self.loss_fn(train_predictions, y_train)
+            val_pred = model.predict(x_valid)
+            val_loss = self.loss_fn(val_pred, y_valid)
+            self.history['train'].append(train_loss)
+            self.history['val'].append(val_loss)
 
-            if self.early_stopping_rounds is not None:
+            if self.early_stopping_rounds is not None and self.early_stopping_rounds > 2:
+                last_history = self.history['val'][self.early_stopping_rounds:]
+                if last_history[-1] > last_history[-2] and last_history[-1] > last_history[-3]:
+                    break
 
         if self.plot:
+            plt.figure(figsize=(10, 6))
+            plt.title('Train Loss', weight='bold', size=15)
+            plt.plot(self.history['train'])
+            plt.xlabel('Iteration', size=12)
+            plt.ylabel('Loss', size=12)
 
     def predict_proba(self, x):
+        preds = np.zeros(x.shape[0])
         for gamma, model in zip(self.gammas, self.models):
+            preds += gamma * model.predict(x)
+
+        preds = self.sigmoid(preds)
+        return np.hstack([(1 - preds).reshape(-1, 1), preds.reshape(-1, 1)])
 
     def find_optimal_gamma(self, y, old_predictions, new_predictions) -> float:
         gammas = np.linspace(start=0, stop=1, num=100)
@@ -80,4 +112,8 @@ class Boosting:
 
     @property
     def feature_importances_(self):
-        pass
+        weights = np.zeros(self.n_features)
+        for model in self.models:
+            weights += model.feature_importances_ 
+        weights /= self.n_estimators
+        return weights / np.sum(weights)
