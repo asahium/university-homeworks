@@ -44,7 +44,6 @@ class Boosting:
         self.sigmoid = lambda x: 1 / (1 + np.exp(-x))
         self.loss_fn = lambda y, z: -np.log(self.sigmoid(y * z)).mean()
         self.loss_derivative = lambda y, z: -y * self.sigmoid(-y * z)
-        self.loss_derivative_2 = lambda y, z: y ** 2 * self.sigmoid(-y * z) * (1 - self.sigmoid(-y * z))
         self.n_features = None
 
     def fit_new_base_model(self, x, y, predictions):
