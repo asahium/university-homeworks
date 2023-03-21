@@ -67,16 +67,15 @@ def training_epoch(model: LanguageModel, optimizer: torch.optim.Optimizer, crite
         """
         optimizer.zero_grad()
 
-        indices = indices[:, :lengths.max()]
-        indices = indices.to(device).long()
-        
+        indices = indices[:, :lengths.max()].to(device).long()
         logits = model(indices[:, :-1], lengths - 1)
         loss = criterion(logits.transpose(1, 2), indices[:, 1:])
 
-        train_loss += loss.item() * indices.shape[0]
-
         loss.backward()
         optimizer.step()
+        train_loss += loss.item() * indices.shape[0]
+
+        
 
     train_loss /= len(loader.dataset)
     return train_loss
@@ -103,8 +102,7 @@ def validation_epoch(model: LanguageModel, criterion: nn.Module,
         Process one validation step: calculate loss.
         Accumulate sum of losses for different batches in val_loss
         """
-        indices = indices[:, :lengths.max()]
-        indices = indices.to(device).long()
+        indices = indices[:, :lengths.max()].to(device).long()
         
         logits = model(indices[:, :-1], lengths - 1)
         loss = criterion(logits.transpose(1, 2), indices[:, 1:])
@@ -135,6 +133,7 @@ def train(model: LanguageModel, optimizer: torch.optim.Optimizer, scheduler: Opt
             model, optimizer, criterion, train_loader,
             tqdm_desc=f'Training {epoch}/{num_epochs}'
         )
+        
         val_loss = validation_epoch(
             model, criterion, val_loader,
             tqdm_desc=f'Validating {epoch}/{num_epochs}'

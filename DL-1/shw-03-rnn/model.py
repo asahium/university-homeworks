@@ -8,7 +8,7 @@ from torch.distributions.categorical import Categorical
 
 class LanguageModel(nn.Module):
     def __init__(self, dataset: TextDataset, embed_size: int = 256, hidden_size: int = 256,
-                 rnn_type: Type = nn.RNN, rnn_layers: int = 1, device = None):
+                 rnn_type: Type = nn.RNN, rnn_layers: int = 1):
         """
         Model for text generation
         :param dataset: text data dataset (to extract vocab_size and max_length)
@@ -29,7 +29,6 @@ class LanguageModel(nn.Module):
         self.embedding = nn.Embedding(num_embeddings=self.vocab_size, embedding_dim=embed_size, padding_idx=self.dataset.pad_id)
         self.rnn = rnn_type(input_size=embed_size, hidden_size=hidden_size, num_layers=rnn_layers, batch_first=True)
         self.linear = nn.Linear(in_features=hidden_size, out_features=self.vocab_size)
-        self.device = device if device is not None else torch.device('cpu')
 
     def forward(self, indices: torch.Tensor, lengths: torch.Tensor) -> torch.Tensor:
         """
@@ -55,8 +54,9 @@ class LanguageModel(nn.Module):
         :return: generated text
         """
         self.eval()
+        device = next(self.parameters()).device
         tokens = [self.dataset.bos_id] + self.dataset.text2ids(prefix)
-        tokens = torch.tensor(tokens).unsqueeze(0).to(self.device)
+        tokens = torch.tensor(tokens).unsqueeze(0).to(device)
         embeddings = self.embedding(tokens)
         output, hidden_T = self.rnn(embeddings)
         logits = self.linear(output) / temp
