@@ -4,6 +4,7 @@ from typing import Union, List, Tuple
 from sentencepiece import SentencePieceTrainer, SentencePieceProcessor
 from torch.utils.data import Dataset
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 
 class TextDataset(Dataset):
