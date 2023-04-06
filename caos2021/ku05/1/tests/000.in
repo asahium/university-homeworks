@@ -1,0 +1,1 @@
+int x = interact("tac", "abc\ndef\n", outbuf);

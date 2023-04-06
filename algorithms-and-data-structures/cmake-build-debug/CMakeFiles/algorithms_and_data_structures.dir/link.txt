@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/algorithms_and_data_structures.dir/3/C.cpp.o -o algorithms_and_data_structures 

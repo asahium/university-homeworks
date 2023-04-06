@@ -1,0 +1,4 @@
+/app/extra/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/wurm/Documents/GitHub/second-year/algorithms-and-data-structures/cmake-build-debug

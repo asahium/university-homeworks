@@ -1,0 +1,17 @@
+7
+Scheme: https://
+Host: miniyandex.com
+Port: 8081
+Args:
+  Key: a; Value: b
+  Key: c; Value: d
+
+Scheme: https://
+Host: yandex.com
+Args:
+  Key: a; Value: b
+  Key: c; Value: d
+
+Host: pikabu.ru
+Port: 1213
+

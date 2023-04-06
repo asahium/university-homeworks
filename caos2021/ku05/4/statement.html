@@ -1,0 +1,20 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku05-4: kr05-4 (дореш)</h3>
+<p>Напишите программу <code>ortofile</code>, которая принимает три аргумента: <code>ortofile cmd1 cmd2 outfile</code>
+                и выполняет эквивалент команды шелла <code>cmd1 || cmd2 &gt; outfile</code>, а именно:</p>
+<ul>
+<li>Команда cmd2 запускается только в случае неуспешного завершения cmd1.</li>
+<li>Если cmd2 запускается, то её stdout направляется в файл outfile,
+                прежнее содержимое которого теряется.</li>
+<li>Программа <code>ortofile</code> завершается со статусом 1,
+                если не удалось запустить cmd2 (или она завершилась с ошибкой)
+                или открыть outfile, и со статусом 0 во всех остальных случаях.</li>
+</ul>
+<p>Команды cmd1 и cmd2 однословные. При их запуске должна учитываться переменная PATH.</p>
+<p>Не используйте шелл или функцию system для запуска команд.</p>
+</body></html>

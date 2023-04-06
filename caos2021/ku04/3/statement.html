@@ -1,0 +1,26 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku04-3: kr04-3 (дореш)</h3>
+<p>Программе в аргументах командной строки передаются пути к файлам. Каждый путь PATH
+            следует напечатать на stdout в следующем виде:</p>
+<ul>
+<li><code>PATH (missing)</code>, если файл не существует;</li>
+<li><code>PATH (broken symlink)</code>, если файл является символической ссылкой,
+                указывающей на несуществующий путь;</li>
+<li><code>PATH</code> во всех остальных случаях.</li>
+</ul>
+<p>Например:</p>
+<pre>
+$ ln -s /non/existent symlink_bad
+$ ln -s regular symlink_good
+$ touch regular
+$ ./yourprog regular symlink_good symlink_bad /non/existent
+regular
+symlink_good
+symlink_bad (broken symlink)
+/non/existent (missing)</pre>
+</body></html>

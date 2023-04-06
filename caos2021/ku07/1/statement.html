@@ -1,0 +1,29 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku07-1: kr07-1 (дореш)</h3>
+<p>Напишите функцию</p>
+<pre>bool is_ipv4_subnet(const char* mask, const char* subnet_address, const char* address);</pre>
+<p>Функция по заданной маске подсети проверяет, входит ли данный адрес в данную подсеть.
+        Функция возвращает true, если адрес входит в подсеть.
+        Маска, подсеть и адрес даются в точечно-десятичной нотации IPv4.</p>
+<p>Адрес IPv4 состоит из четырёх октетов, разделённых точкой, например, 127.0.0.1.
+        Маска подсети также состоит из 4 октетов, разделённых точкой.
+        При наложении маски на адрес получается адрес подсети, которой принадлежит этот адрес.</p>
+<p>Гарантируется, что переданные строки - это всегда валидные IPv4 адреса.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>is_ipv4_subnet("255.255.255.0", "12.34.56.0", "12.34.56.78")</pre>
+<h4>Output</h4>
+<pre>true</pre>
+<h4>Input</h4>
+<pre>is_ipv4_subnet("255.255.255.128", "12.34.56.0", "12.34.56.126")</pre>
+<h4>Output</h4>
+<pre>true</pre>
+<h4>Input</h4>
+<pre>is_ipv4_subnet("255.255.255.192", "12.34.56.0", "12.34.56.126")</pre>
+<h4>Output</h4>
+<pre>false</pre>
+</body></html>

@@ -1,0 +1,27 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm03-1: asm/io/fmt-1</h3>
+<p>На стандартный вход подаётся текст в кодировке ASCII.
+            Напечатайте его на стандартный выход, добавив
+            минимальное количество символов перевода строки так,
+            чтобы ни одна строка не была длиннее 10 символов (не считая переноса строки). Каждый
+        добавленный перевод строки должен завершать строку ровно из 10 символов.</p>
+<p>Если текст на входе непуст и не заканчивается символом переноса строки, добавьте финальный перенос строки.</p>
+<p>Используйте системные вызовы read и write.
+        В тестирующей системе доступен заголовочный файл sys/syscall.h, определяющий константы SYS_read и SYS_write.</p>
+<p>Библиотека simpleio недоступна. Завершите программу с помощью системного вызова exit.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>Mary had a little lamb,
+its fleece was white as snow.</pre>
+<h4>Output</h4>
+<pre>Mary had a
+ little la
+mb,
+its fleece
+ was white
+ as snow.</pre>
+</body></html>

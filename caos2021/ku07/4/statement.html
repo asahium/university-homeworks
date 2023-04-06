@@ -1,0 +1,40 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku07-4: kr07-4 (дореш)</h3>
+<p>Напишите функцию <code>void fd_watcher(const struct file_t* files, size_t n) </code>, которая
+        слушает указанные дескрипторы на чтение и на каждые 2048 байт выводит результат
+        функции <code>void some_hash(char* data, size_t n, char* out) </code>
+        на стандартный вывод. Функция some_hash предоставляется извне.
+        Указатель <code>char* out</code> должен быть предоставлен вами.
+        Количество памяти, необходимое указателю, вы должны получить из функции
+        <code>size_t get_hash_size()</code>.</p>
+<p>Структура file_t определена так:</p>
+<pre>struct file_t {
+    int fd;
+    char* filename;
+};</pre>
+<p>Программа должна для каждого отдельного блока вывести строку
+        <code>[{filename}]\t[{block_number}]\t{hash}</code>, где
+        filename - имя файла, к которому относится блок,
+        block_number - номер блока в файле,
+        hash - значение хэш-функции от этого блока.</p>
+<p>После получения EOF из файла этот файл больше не нужно прослушивать.
+        Функция должна работать до тех пор, пока не получит сигнал на завершение.
+        Особым образом сигнал обрабатывать не надо, закрывать дескрипторы тоже.</p>
+<p>Гарантируется,
+        что все дескрипторы валидные, а имена файлов - null-terminated строки. Все дескрипторы открыты в неблокирующем режиме.
+        Гарантируется, что количество полученных из каждого дескриптора байтов кратно 2048.
+        Гарантируется, что file_t.filename - null-terminated строка.
+        Гарантируется, что char* out после вызова функции some_hash - null-terminated строка.</p>
+<p>Вывод программы перенаправлен в канал. Сбрасывайте буфер после вывода каждого блока.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>fd_watcher({ {3, "some_file.bin"} }, 1);</pre>
+<h4>Output</h4>
+<pre>[some_file.bin]\t[1]\tthis_block_is_even
+[some_file.bin]\t[2]\tthis_block_is_odd
+</pre>
+</body></html>

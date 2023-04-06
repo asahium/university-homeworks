@@ -1,0 +1,34 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku06-1: kr06-1 (дореш)</h3>
+<p>Дан тип указателя на функцию: <code>typedef int (*func_t)(void*)</code>.</p>
+<p>Напишите на языке ассемблера x86 функцию, соответствующую
+            прототипу:</p>
+<pre>int run_on_stack(func_t func, void* arg, void* stack_bottom);</pre>
+<p>Пользователь <code>run_on_stack</code> аллоцирует блок памяти <code>char* M</code>
+        некоторого неизвестного нам размера <code>size</code>,
+        который планирует использовать как стек для функции func,
+        и передаёт в <code>run_on_stack</code> адрес первого свободного байта после <code>M</code>
+            (указатель <code>M + size</code>).</p>
+<p><code>run_on_stack</code> должна запустить функцию func с аргументом arg
+        на переданном ей стеке
+        (то есть таким образом, чтобы локальные переменные функции func
+        хранились внутри блока памяти <code>M</code>) и вернуть то значение,
+        которое вернёт func.</p>
+<p>Например, должен работать такой код:</p>
+<pre>int i_love_large_stacks(void* arg) {
+    int local_array[4 &lt;&lt; 20]; // 16-megabyte array
+    local_array[0] = 42;
+    ...
+    return 3;
+}
+
+const size_t stacksize = 50 &lt;&lt; 20; // 50 MB
+char* stack = malloc(stacksize);
+int result = run_on_stack(i_love_large_stacks, NULL, stack + stacksize);
+assert(result == 3);</pre>
+</body></html>

@@ -1,0 +1,1 @@
+./cockroach_racing cat ';' echo hello; echo $?
