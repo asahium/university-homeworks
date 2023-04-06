@@ -1,0 +1,20 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku05-1: kr05-1 (дореш)</h3>
+<p>Напишите функцию <code>int interact(const char* cmd, const char* input, char* outbuf)</code>.
+            Функция запускает с помощью exec* однословную команду cmd без аргументов, подаёт ей на стандартный ввод
+            содержимое строки input и сохраняет данные, записанные командой на stdout, в буфере outbuf.</p>
+<p>Функция должна вернуть код завершения дочернего процесса (в случае, если команда запустилась и завершилась
+            с помощью системного вызова exit), либо 127 (во всех остальных случаях).</p>
+<p>Гарантируется, что строка input не длиннее PIPE_BUF, а буфер outbuf имеет достаточный размер,
+                    чтобы сохранить туда вывод команды и терминирующий нуль.</p>
+<p>Функция может быть вызвана в одной программе много раз, так что важно не допускать утечки ресурсов.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>int x = interact("tac", "abc\ndef\n", outbuf);</pre>
+<h4>Output</h4>
+<pre>x == 0; !strcmp(outbuf, "def\nabc\n");</pre>
+</body></html>

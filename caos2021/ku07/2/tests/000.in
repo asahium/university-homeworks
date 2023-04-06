@@ -1,0 +1,3 @@
+./socket_echo "$SOCKET_NO" &
+echo -ne "Hello world\n" | nc -N localhost "$SOCKET_NO"
+kill "$(ps -C "./socket_echo" h | cut -f 2 -d " ")"

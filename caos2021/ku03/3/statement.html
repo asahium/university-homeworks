@@ -1,0 +1,16 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku03-3: kr03-3 (дореш)</h3>
+<p>Напишите функцию <code>void print_parent_arg()</code>, которая печатает на stdout первый аргумент вызывающей
+            её функции как беззнаковое целое 32-битное число в шестнадцатеричной системе счисления (%x, PRIx32)
+	    и перевод строки. (Гарантируется, что у вызывающей функции есть хотя бы один аргумент.)</p>
+<p>Например, если определена функция <code>void calling_fun(int xyzzy) { print_parent_arg(); }</code>,
+            то <code>calling_fun(31)</code> напечатает на stdout 3 байта
+            "1f\n".</p>
+<p>Все функции поддерживают стандартный стековый кадр и пользуются обычным соглашением о вызовах
+            cdecl.</p>
+</body></html>

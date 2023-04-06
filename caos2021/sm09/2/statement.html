@@ -1,0 +1,23 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm09-2: c/inline-asm/hello-nostdlib</h3>
+<p>Напишите программу, которая печатает на стандартный поток вывода строку "hello world" (без кавычек)
+            и перевод строки, а затем успешно завершается.</p>
+<p>Ваша программа будет компилироваться с опцией <code>-nostdlib</code> и не сможет воспользоваться
+            функциями из стандартной библиотеки языка Си. Точка входа в программу — функция <code>_start</code>.</p>
+<p>Заготовка для программы:</p>
+<pre>#include &lt;sys/syscall.h&gt;
+
+void _start() {
+    // обратиться к системному вызову write
+    // обратиться к системному вызову exit
+}</pre>
+<p>Обратите внимание, что оптимизатор может удалить из программы ассемблерную вставку,
+            output-ы которой никак не используются. Чтобы этого не произошло, необходимо пометить вставку
+            как имеющую побочные эффекты c помощью ключевого слова <code>volatile</code>:</p>
+<pre>asm volatile ( "int $0x80" : ... ); // do not remove this asm block</pre>
+</body></html>

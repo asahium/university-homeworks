@@ -1,0 +1,41 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>8M</tt></td></tr>
+</table>
+<h3>Problem ku07-3: kr07-3 (дореш)</h3>
+<p>Напишите программу <code>socket_hash PORT BLOCK_SIZE</code>, которая
+        слушает указанный порт по протоколу TCP/IPv4 и на каждое входящее соединение
+        отдаёт значение функции сжатия данных <code>size_t compress(const char* prev_buf, char* data, size_t n, char* cur_buf) </code>,
+        определённой извне. Указатели <code>const char* prev_buf</code>, <code>char* cur_buf</code> должны быть предоставлены вами.
+        Количество памяти, необходимое указателям, вы должны получить из функции
+        <code>size_t get_compress_buf_size()</code>. Функция сжатия возвращает количество байт, полученное из сообщения после сжатия.</p>
+<p>В указателе <code>const char* prev_buf</code> могут находиться данные, необходимые для продолжения сжатия сообщения, и
+        полученные из некоторого префикса сообщения. Это нужно для того, чтобы
+        поддержать буферизацию при сжатии данных. Соответственно, в указатель
+        <code>char* cur_buf</code> функция пишет данные, необходимые для продолжения
+        сжатия сообщения после обработки текущего буфера (с учетом возможного предыдущего буфера).
+        Если предыдущего буфера не существует, в prev_buf должно быть значение NULL.</p>
+<p> После сжатия данных отдайте клиенту количество байт после сжатия в виде 32-битного беззнакового числа
+        в бинарном виде в сетевом порядке байт и закройте соединение.
+        Если полученное сообщение превышает BLOCK_SIZE, отдайте клиенту значение 0
+        в виде 32-битного беззнакового числа и закройте соединение.</p>
+<p>Сообщением от клиента считается всё, что клиент передал до EOF. Сообщения бинарные.
+        Сообщение в несжатом виде может не помещаться в памяти процесса.
+        Клиенты подключаются последовательно, параллельная обработка соединений не требуется.</p>
+<p>При получении SIGTERM программа должна завершиться с кодом 0.</p>
+<p>Гарантируется, что указанный порт доступен. Не забывайте про опцию SO_REUSEADDR.</p>
+<h3>Examples</h3><h4>Input</h4>
+<pre>./socket_hash "$SOCKET_NO" 2048 &amp;
+echo "Hello world" | nc -N localhost "$SOCKET_NO" | python3 -c 'import socket; print(socket.ntohl(int(input())))'
+kill "$(ps -C "./socket_hash" h | cut -f 2 -d " ")"</pre>
+<h4>Output</h4>
+<pre>9</pre>
+<h4>Input</h4>
+<pre>./socket_hash "$SOCKET_NO" 2 &amp;
+echo "Hello world" | nc -N localhost "$SOCKET_NO" | python3 -c 'import socket; print(socket.ntohl(int(input())))
+kill "$(ps -C "./socket_hash" h | cut -f 2 -d " ")"</pre>
+<h4>Output</h4>
+<pre>0</pre>
+</body></html>

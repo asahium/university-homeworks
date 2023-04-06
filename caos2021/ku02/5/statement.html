@@ -1,0 +1,26 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>2 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem ku02-5: kr02-5 (дореш)</h3>
+<p>Дана структура:</p>
+<pre>struct dag_node {
+    struct dag_node *left, *right;
+    void *data;
+}</pre>
+<p>Из вершин типа struct dag_node, аллоцированных с помощью
+          malloc, собран ориентированный ациклический граф (directed acyclic
+          graph, DAG) — «дерево», в котором несколько вершин могут иметь в
+          качестве потомка одну и ту же вершину (а также возможны кратные рёбра, то есть
+          указатели left и right у некоторой вершины A могут совпадать и ссылаться
+          на одну и ту же вершину B). Напишите функцию
+          <code>void free_dag(struct dag_node *root)</code>,
+          которая освобождает всю выделенную
+          память (вызывает <code>free</code> ровно один раз для каждой вершины графа).</p>
+<p>Указатели data изначально равны NULL или ссылаются
+          на глобальные переменные. Вызывать для них free не нужно.</p>
+<p>Пример возможной структуры графа:</p>
+<img src="https://caos.myltsev.ru/cgi-bin/new-client?SID=0dec847c8597efd6&amp;prob_id=59&amp;action=194&amp;file=dag.png" style="width: 190px; height: 354px;"/>
+</body></html>

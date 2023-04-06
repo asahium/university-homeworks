@@ -1,0 +1,29 @@
+<html><head><meta charset="utf-8"/></head>
+<body>
+<table border="1"><tr><td><b>Time limit:</b></td><td><tt>1 s</tt></td></tr>
+<tr><td><b>Real time limit:</b></td><td><tt>5 s</tt></td></tr>
+<tr><td><b>Memory limit:</b></td><td><tt>64M</tt></td></tr>
+</table>
+<h3>Problem sm18-3: unix/threads/create</h3>
+<p>Реализуйте создание и ожидание завершения треда
+            с помощью системного вызова <code>clone</code>.</p>
+<p>Определите тип <code>caos_thread_t</code> и функции:</p>
+<pre>caos_thread_t* caos_thread_create(int (*func)(void*), void *arg);
+int caos_thread_retval(caos_thread_t *thread);</pre>
+<p>Функция <code>caos_thread_create</code> аллоцирует пространство размером 1 MiB
+            для стека (и, возможно, для какой-то ещё служебной информации)
+            и c помощью <code>clone(2)</code> запускает на этом стеке функцию
+            <code>func</code> с аргументом <code>arg</code> в отдельном треде.</p>
+<p>Функция <code>caos_thread_retval</code> дожидается завершения треда
+            thread и возвращает значение, которое вернула func.
+            Память, аллоцированную для стека, освобождать не нужно.</p>
+<p>Используйте для clone флаги
+            <code>CLONE_THREAD | CLONE_VM | CLONE_SIGHAND</code>.</p>
+<p>Поскольку между тредами невозможен wait(), созданный тред должен сам
+            как-то сигнализировать о своём завершении после выхода из func.</p>
+<p>В реализации функций не должно быть активного ожидания.</p>
+<p>Тестирующая программа будет компилироваться без опции <code>-pthread</code>.</p>
+<p>Эта задача была практически
+<a href="https://github.com/avm/caos-sem-2021/blob/master/thread/thread.c">разобрана на семинаре 201 группы</a>.
+    Постарайтесь игнорировать этот факт и решить задачу самостоятельно.</p>
+</body></html>
