@@ -1,0 +1,53 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "applications" (
+	"id"	INTEGER,
+	"employee_id"	INTEGER NOT NULL,
+	"status"	TEXT NOT NULL,
+	"created_at"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY("employee_id") REFERENCES "employees"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "assessments" (
+	"id"	INTEGER,
+	"application_id"	INTEGER NOT NULL,
+	"evaluator_id"	INTEGER NOT NULL,
+	"result"	TEXT NOT NULL,
+	"created_at"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY("application_id") REFERENCES "applications"("id"),
+	FOREIGN KEY("evaluator_id") REFERENCES "employees"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "departments" (
+	"id"	INTEGER,
+	"name"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "employees" (
+	"id"	INTEGER,
+	"user_id"	INTEGER NOT NULL,
+	"department_id"	INTEGER NOT NULL,
+	"qualification"	TEXT NOT NULL,
+	FOREIGN KEY("user_id") REFERENCES "users"("id"),
+	FOREIGN KEY("department_id") REFERENCES "departments"("id"),
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "users" (
+	"id"	INTEGER,
+	"email"	TEXT NOT NULL UNIQUE,
+	"password"	TEXT NOT NULL,
+	"created_at"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+INSERT INTO "applications" VALUES (1,1,'ожидание','2023-04-11 12:17:16');
+INSERT INTO "applications" VALUES (2,2,'обработано','2023-04-11 12:17:16');
+INSERT INTO "assessments" VALUES (1,1,2,'недостаточно','2023-04-11 12:17:16');
+INSERT INTO "departments" VALUES (1,'Отдел медицинской аттестации');
+INSERT INTO "departments" VALUES (2,'Отдел кадров');
+INSERT INTO "employees" VALUES (1,1,1,'врач');
+INSERT INTO "employees" VALUES (2,2,2,'медицинская сестра');
+INSERT INTO "users" VALUES (1,'john.smith@example.com','123456','2023-04-11 12:17:16');
+INSERT INTO "users" VALUES (2,'jane.doe@example.com','qwerty','2023-04-11 12:17:16');
+INSERT INTO "users" VALUES (3,'michael.brown@example.com','password','2023-04-11 12:17:16');
+INSERT INTO "users" VALUES (4,'emily.jones@example.com','secret','2023-04-11 12:17:16');
+INSERT INTO "users" VALUES (5,'alex.wilson@example.com','letmein','2023-04-11 12:17:16');
+COMMIT;
