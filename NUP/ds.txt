@@ -1,0 +1,80 @@
+Given:
+pbs.twimg.com is an alias for cs5-wac.ecdns.net.
+cs5-wac.ecdns.net is an alias for cs3-wac.edgecastdns.net.
+cs3-wac.edgecastdns.net is an alias for cs1-wac.edgecastcdn.net.
+cs1-wac.edgecastcdn.net has address 51.187.172.176
+
+Solution:
+1. resolver.example.com -> e.root-servers.net: 
+    "A?.com" (Request for the ".com" TLD)
+2. e.root-servers.net -> resolver.example.com:
+    ".com NS b.gtld-servers.net (192.33.14.30), f.gtld-servers.net (192.35.51.30)" (Response designating the authoritative DNS servers for the ".com" TLD zone as b.gtld-servers.net and f.gtld-servers.net, with their respective IP addresses)
+
+3. resolver.example.com: -> b.gtld-servers.net (192.33.14.30): 
+    "A? twimg.com" (Request for the IP address of "twimg.com" to the authoritative DNS server b.gtld-servers.net)
+4. b.gtld-servers.net -> resolver.example.com:
+    "twimg.com NS a.r06.twtrdns.net (192.0.2.1), b.r06.twtrdns.net (192.0.2.2)" (Response designating the authoritative DNS servers for the "twimg.com." domain zone as a.r06.twtrdns.net and b.r06.twtrdns.net, with their respective IP addresses)
+    
+5. resolver.example.com -> a.r06.twtrdns.net (192.0.2.1):
+    "A? pbs.twimg.com" (Request for the IP address of "twimg.com" to the authoritative DNS server a.r06.twtrdns.net)
+6. a.r06.twtrdns.net -> resolver.example.com:
+    "pbs.twimg.com A a.u06.twtrdns.net (192.0.2.22)" (Response containing the IP address of "twimg.com" as A a.u06.twtrdns.net)
+
+7. resolver.example.com -> a.u06.twtrdns.net (192.0.2.22):
+    "A? pbs.twimg.com" (Request for the IP address of "pbs.twimg.com" to the authoritative DNS server a.u06.twtrdns.net)
+8. a.u06.twtrdns.net -> resolver.example.com:
+    our response "pbs.twimg.com CNAME cs5-wac.ecdns.net" (Response containing the IP address of "pbs.twimg.com" as CNAME cs5-wac.ecdns.net)
+
+
+
+9. resolver.example.com -> e.root-servers.net:
+    "A? .net" (Request for the ".net" TLD)
+10. e.root-servers.net -> resolver.example.com:
+    ".net NS b.gtld-servers.net (192.33.14.30)" (Response designating the authoritative DNS servers for the ".net" TLD zone as b.gtld-servers.net, with their respective IP addresses)
+
+11. resolver.example.com: -> b.gtld-servers.net (192.33.14.30):
+    "A? ecdns.net" (Request for the IP address of "ecdns.net" to the authoritative DNS server b.gtld-servers.net)
+12. b.gtld-servers.net -> resolver.example.com:
+    "ecnys.com NS ns1.ecdns.net (192.0.2.4), ns2.ecdns.net (192.0.2.5)" (Response designating the authoritative DNS servers for the "ecdns.net." domain zone as ns1.ecdns.net and ns2.ecdns.net, with their respective IP addresses)
+
+13. resolver.example.com -> ns1.ecdns.net (192.0.2.4):
+    "A? cs5-wac.ecdns.net" (Request for the IP address of "cs5-wac.ecdns.net" to the authoritative DNS server ns1.ecdns.net)
+14. ns1.ecdns.net -> resolver.example.com:
+    "cs5-wac.ecdns.net CNAME cs3-wac.edgecastdns.net" (Response containing the IP address of "cs5-wac.ecdns.net" as CNAME cs3-wac.edgecastdns.net)
+
+
+
+15. resolver.example.com -> e.root-servers.net:
+    "A? .net" (Request for the ".net" TLD)
+16. e.root-servers.net -> resolver.example.com:
+    ".net NS b.gtld-servers.net (192.33.14.30)" (Response designating the authoritative DNS servers for the ".net" TLD zone as b.gtld-servers.net, with their respective IP addresses)
+
+17. resolver.example.com: -> b.gtld-servers.net (192.33.14.30):
+    "A? edgecastdns.net" (Request for the IP address of "edgecastdns.net" to the authoritative DNS server b.gtld-servers.net)
+18. b.gtld-servers.net -> resolver.example.com:
+    "edgecastdns.net NS ns1.edgecastdns.net (192.0.2.8), ns2.edgecastdns.net (192.0.2.9)" (Response designating the authoritative DNS servers for the "edgecastdns.net." domain zone as ns1.edgecastdns.net and ns2.edgecastdns.net, with their respective IP addresses)
+
+19. resolver.example.com: -> ns1.edgecastdns.net (192.0.2.8):
+    "A? cs3-wac.edgecastdns.net" (Request for the IP address of "cs3-wac.edgecastdns.net" to the authoritative DNS server ns1.edgecastdns.net)
+20. b.gtld-servers.net -> resolver.example.com:
+    "cs3-wac.edgecastdns.net CNAME cs1-wac.edgecastcdn.net" (Response containing the IP address of "cs3-wac.edgecastdns.net" as CNAME cs1-wac.edgecastcdn.net)
+
+
+
+21. resolver.example.com -> e.root-servers.net:
+    "A? .net" (Request for the ".net" TLD)
+22. e.root-servers.net -> resolver.example.com:
+    ".net NS b.gtld-servers.net (192.33.14.30)" (Response designating the authoritative DNS servers for the ".net" TLD zone as b.gtld-servers.net, with their respective IP addresses)
+
+23. resolver.example.com: -> b.gtld-servers.net (192.33.14.30):
+    "A? edgecastcdn.net" (Request for the IP address of "edgecastcdn.net" to the authoritative DNS server b.gtld-servers.net)
+24. b.gtld-servers.net -> resolver.example.com:
+    "edgecastdns.net NS ns3.edgecastdns.net (192.0.2.10), ns4.edgecastdns.net (192.0.2.11)" (Response designating the authoritative DNS servers for the "edgecastcdn.net" domain zone as ns3.edgecastdns.net, ns4.edgecastdns.net, with their respective IP addresses)
+
+25. resolver.example.com -> ns3.edgecastdns.net (192.0.2.10):
+    "A? cs1-wac.edgecastcdn.net" (Request for the IP address of "cs1-wac.edgecastcdn.net" to the authoritative DNS server ns3.edgecastdns.net)
+26. ns3.edgecastdns.net -> resolver.example.com:
+    "cs1-wac.edgecastcdn.net A 51.187.172.176" (Response containing the IP address of "cs1-wac.edgecastcdn.net" as 51.187.172.176)
+
+
+P.S. вероятно что в 9-26 пунктах тоже надо было делать что и в 5-8, но я не получил ответа по почте поэтому предполагаю что так верно, иначе там просто получаем новый ответ который при еще запросе и выдаст новый cname.
