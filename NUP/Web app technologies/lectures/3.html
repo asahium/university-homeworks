@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h2>My Form</h2>
+</head>
+
+<body>
+    <form action="/action_page.php">
+        <div style="width: 50%; height: 100px; float: left;">
+            <h4>Personal Info:</h4>
+            Student ID: <input type="text" name="studentid" value="" placeholder="Type here..." /> <br><br>
+            <h4>Gender:</h4>
+            <input type="radio" name="gender" value="male" /> Male <br>
+            <input type="radio" name="gender" value="female" /> Female <br> <br>
+        </div>
+        <div style="width: 50%; height: 100px; float: right">
+            <h4>Choose your favorite browser:</h4>
+            <select name="favbrowser">
+                <option value="none"></option>
+                <option value="chrome">Chrome</option>
+                <option value="safari">Safari</option>
+                <option value="firefox">FireFox</option>
+                <option value="other">Other</option>
+            </select><br><br>
+            <h4>Language(s) you have used before (if any):</h4>
+            <input type="checkbox" name="lang" value="html" /> Html <br>
+            <input type="checkbox" name="lang" value="c" /> C <br>
+            <input type="checkbox" name="lang" value="java" /> Java <br><br>
+            <input type="submit" /> <input type="reset" />
+        </div>
+    </form>
+</body>
+
+</html>
