@@ -1,3 +1,27 @@
+<?php
+// Include the database configuration file
+require_once 'database.php';
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Retrieve the submitted user data
+  $username = $_POST['username'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  // Insert the user data into the database
+  $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+  if (mysqli_query($conn, $sql)) {
+    // Registration successful, redirect to the login page
+    header('Location: login.html'); // Update the URL as per your project structure
+    exit();
+  } else {
+    // Error occurred, display an error message
+    $error = 'Error: ' . mysqli_error($conn);
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +34,9 @@
 <body>
   <div class="container">
     <h1>Registration</h1>
+    <?php if (isset($error)): ?>
+      <div class="alert alert-danger"><?php echo $error; ?></div>
+    <?php endif; ?>
     <form method="POST" action="register.php">
       <div class="form-group">
         <label for="username">Username</label>
