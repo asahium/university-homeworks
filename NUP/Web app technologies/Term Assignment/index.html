@@ -1,29 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Online Bookstore</title>
+  <title>Homepage</title>
   <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Include custom CSS -->
   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">My Online Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="category.html">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Cart</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Recent Posts -->
+  <div class="container">
+    <h2>Recent Posts</h2>
+    <div class="row">
+      <?php
+        // Include the database configuration file
+        require_once 'database.php';
+
+        // Fetch recent posts from the database
+        $sql = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 6";
+        $result = mysqli_query($conn, $sql);
+
+        // Loop through the posts and display them
+        while ($row = mysqli_fetch_assoc($result)) {
+          $title = $row['title'];
+          $content = $row['content'];
+
+          echo '<div class="col-md-4">';
+          echo '<div class="card">';
+          echo '<div class="card-body">';
+          echo '<h5 class="card-title">' . $title . '</h5>';
+          echo '<p class="card-text">' . $content . '</p>';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      ?>
+    </div>
+  </div>
+
+  <!-- Posts by Specific Categories -->
+  <div class="container">
+    <h2>Posts by Specific Categories</h2>
+    <div class="row">
+      <?php
+        // Fetch posts from specific categories from the database
+        $sql = "SELECT * FROM posts WHERE category IN ('Category1', 'Category2', 'Category3') ORDER BY created_at DESC LIMIT 6";
+        $result = mysqli_query($conn, $sql);
+
+        // Loop through the posts and display them
+        while ($row = mysqli_fetch_assoc($result)) {
+          $title = $row['title'];
+          $content = $row['content'];
+
+          echo '<div class="col-md-4">';
+          echo '<div class="card">';
+          echo '<div class="card-body">';
+          echo '<h5 class="card-title">' . $title . '</h5>';
+          echo '<p class="card-text">' . $content . '</p>';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      ?>
+    </div>
+  </div>
+
   <!-- Include Bootstrap JS and jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-  <!-- Include custom JavaScript -->
-  <script src="script.js"></script>
-</head>
-<body class="pink-theme">
-  <!-- Cover page and other sections -->
-  <div id="cover-page">
-    <!-- Cover page content -->
-  </div>
-
-  <div id="recent-posts">
-    <!-- Display recent posts -->
-  </div>
-
-  <div id="category-posts">
-    <!-- Display posts from specific categories -->
-  </div>
 </body>
 </html>
