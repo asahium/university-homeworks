@@ -1,14 +1,13 @@
 import socket
 
-HOST = "habr.com"
-PORT = 443
+HOST = "8255344e21fcaf7b.annmuor.im" # "habr.ru"
+PORT = 8444  #443
 TIMEOUT = 10
 
-REQUEST = b"HEAD /ru/company/habr/blog/522330/ HTTP/1.1\r\nHost: habr.com\r\nConnection: close\r\n\r\n"
-
+REQUEST = b"GET / HTTP/1.1\r\nHost: 8255344e21fcaf7b.annmuor.im\r\n\r\n"
 # in tls 1.3 the version tls 1.2 is sent for better compatibility
 LEGACY_TLS_VERSION = b"\x03\x03"
-TLS_AES_128_GCM_SHA256 = b"\x13\x01"
+TLS_AES_128_GCM_SHA256 = b"\x13\x09"
 
 CHANGE_CIPHER = b"\x14"
 ALERT = b"\x15"
