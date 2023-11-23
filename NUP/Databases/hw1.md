@@ -1,13 +1,3 @@
-## (20 points) Practice "Installation and server managment"
-
-### Enabling checksum calculation in a cluster.
-1. stop the server.
-2. Verify that checksums are being calculated in the cluster.
-3. Enable checksum calculation.
-4. Start the server
-
-### Solution
-    
 Installing PostgreSQL from source code:
 
 `tar xzf /home/student/postgresql-13.6.tar.gz` - unpack the source code
@@ -38,8 +28,6 @@ Server Management:
 
 `pg_ctl -D /home/student/pgsql13/data1 -l /home/student/logfile start` - start the server
 
-`pg_ctl -D /home/student/pgsql13/data1 -l /home/student/logfile stop` - stop the server
-
 `psql -U postgres -p 5432 -c 'SELECT now();'` - connect to the server and execute a query
 
 ```bash
@@ -56,41 +44,89 @@ Optional (if port is busy):
 
 `sudo kill -9 <PID>` - kill process
 
+## (20 points) Practice "Installation and server managment"
 
+### Enabling checksum calculation in a cluster.
+1. Stop the server.
+2. Verify that checksums are being calculated in the cluster.
+3. Enable checksum calculation.
+4. Start the server
+
+### Solution
+   
+![](pictures/hw1-1.png)
 
 1. Stop the server
-```bash
-sudo systemctl stop postgresql
-```
+
+    `pg_ctl -D /home/student/pgsql13/data1 -l /home/student/logfile stop`
+
+![](pictures/hw1-2.png)
 
 2. Verify that checksums are being calculated in the cluster.
-```bash
-sudo -u postgres psql -c "SHOW data_checksums;"
-```
-Output:
-```
-data_checksums
------------------
-off
-(1 row)
-```
+
+    `pg_checksums -D /home/student/pgsql13/data1 -d`
+
+![](pictures/hw1-3.png)
 
 3. Enable checksum calculation.
-```bash
-sudo -u postgres psql -c "ALTER SYSTEM SET data_checksums TO on;"
-```
+
+    `pg_checksums -D /home/student/pgsql13/data1 -e`
+
+![](pictures/hw1-4.png)
 
 4. Start the server
-```bash
-sudo systemctl start postgresql
-```
- 
 
+    `pg_ctl -D /home/student/pgsql13/data1 -l /home/student/logfile start`
+![](pictures/hw1-5.png)
 ## (10 points) Practice+ (optional)
 
+1. Install PostgreSQL from source code as it is
+2. Create a database cluster, start the server.
+3. Verify that the server is running.
+4. Stop the server.
 
+### Solution
+
+I swear I did it, but I forgot to take a screenshot and cache of my terminal was full. I made it by given instructions in presentation. As proof i done first task in this homework and it's screenshot is above.
 
 ## (30 points) Practice "PSQL"
+
+1. Run psql and check the information about the current connection.
+2. Print all rows of the pg_tables table.
+3. Set the "less -XS" command for page-by-page view and once again output all rows of pg_tables.
+4. The default prompt shows the database name. Customize the prompt to additionally information about the user is displayed: role@database=#
+5. Configure psql so that all commands display the duration of execution. Make sure that this setting is preserved when you run it again
+
+### Solution
+
+1. Run psql and check the information about the current connection.
+
+    `psql -U postgres -p 5432 -c 'SELECT now();'`
+
+![](pictures/hw1-6.png)
+
+2. Print all rows of the pg_tables table.
+
+    `psql -U postgres -p 5432 -c 'SELECT * FROM pg_tables;'`
+
+![](pictures/hw1-7.png)
+
+On the screenshot above you can see not all rows of pg_tables table, because of my terminal.
+
+3. Set the "less -XS" command for page-by-page view and once again output all rows of pg_tables.
+
+    `psql -U postgres -p 5432 -c 'SELECT * FROM pg_tables;' | less -XS`
+
+Done and screenshot is the same as in previous task.
+
+4. The default prompt shows the database name. Customize the prompt to additionally information about the user is displayed: role@database=#
+
+    `export PS1='%n@%d=# '` - set the PS1 environment variable
+
+    
+
+
+
 
 
 ## (10 points) Practice+(optional)
