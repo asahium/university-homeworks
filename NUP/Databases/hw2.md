@@ -49,13 +49,21 @@
 
 ## (25 points) Practice "Pereodic tasks"
 
-
+1. disable the auto-cleaning process and make sure it is not running.
+2. In the new database, create a table with a single numeric column and an index on that table. Insert into the table 100,000 random numbers.
+3. Change half of the rows of the table several times, controlling the size of the table and index at each step.
+4. Perform a complete cleanup.
+5. Repeat step 4, calling after each change a after each change. Compare the results.
+6. Enable the auto-cleaning process.
 
 ### Solution
 
 
 ## (25 points) Practice "Buffer cache"
 
+1. Use the operating system to find the processes responsible for the buffer cache and the WAL log, responsible for the buffer cache and WAL log.
+2. Stop PostgreSQL in fast mode; start it again. Review the server's message log.
+3. Now stop in immediate mode and start it again. Review the server message log and compare with the previous one.
 
 
 ### Solution
