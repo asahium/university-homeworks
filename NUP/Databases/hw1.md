@@ -87,6 +87,8 @@ Optional (if port is busy):
 
 * I swear I did it, but I forgot to take a screenshot and cache of my terminal was full. I made it by given instructions in presentation. As proof i done first task in this homework and it's screenshot is above.
 
+    ![](pictures/hw1-1.png)
+
 ## (30 points) Practice "PSQL"
 
 1. Run psql and check the information about the current connection.
