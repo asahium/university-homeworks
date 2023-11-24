@@ -240,12 +240,12 @@
 
 ### Solution
 
-1. `psql -U postgres -p 5432 -c "SELECT * FROM pg_stat_bgwriter;"`
+1. `locate postmaster.pid` - find the processes responsible for the buffer cache and the WAL log
 
-    `psql -U postgres -p 5432 -c "SELECT * FROM pg_stat_wal;"`
+    ![](pictures/hw2-8.png)
 
-    ![](pictures/hw2-7.png)
+    `sudo ps -o pid,command --ppid 2722` - find the processes responsible for the buffer cache and the WAL log
 
-    pg_stat_wal was added in PostgreSQL 14, we use PostgreSQL 13.6, so we can't see it.
+    ![](pictures/hw2-9.png)
 
-2. `pg_ctl stop -m fast`
+    So, we can see that the processes responsible for the buffer cache and the WAL log are checkpointer, background writer, walwriter.  
