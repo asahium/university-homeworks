@@ -17,23 +17,73 @@
 
 ### Solution
 
-1. First transaction at the Read Committed and query the table:
+1. `psql -U postgres -p 5432` - first session
 
-    `psql -U postgres -p 5432`
+    ```
+    => CREATE TABLE test_table (id serial PRIMARY KEY, value numeric);
+    CREATE TABLE
+    => INSERT INTO test_table(value) SELECT random() FROM generate_series(1, 1);
+    INSERT 0 1
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    => BEGIN;
+    BEGIN
+    => COMMIT;
+    COMMIT
+    ```
 
-    ![](pictures/hw2-1.png)
+    `psql -U postgres -p 5432` - second session
 
-    In the second session, delete the row and commit the changes and check the first transaction:
+    ```
+    => DELETE FROM test_table;
+    DELETE 1
+    => COMMIT;
+    COMMIT
+    ```
 
-    ![](pictures/hw2-2.png)
+    `psql -U postgres -p 5432` - first session (continue)
 
-2. Both transactions at isolation level Repeatable Read:
+    ```
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+    (0 rows)
+    ```
 
-    `psql -U postgres -p 5432`
+    So, we can see that the first transaction see 1 row, because it started before the second transaction, and the second transaction deleted the row.
 
-    ![](pictures/hw2-3.png)
+2. `psql -U postgres -p 5432` - first session
 
-    As we can see, in the first case, the transaction sees the changes made by the second transaction, and in the second case, the transaction does not see the changes made by the second transaction.
+    ```
+    => BEGIN ISOLATION LEVEL REPEATABLE READ;
+    BEGIN
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    ```
+
+    `psql -U postgres -p 5432` - second session
+
+    ```
+    => DELETE FROM test_table;
+    DELETE 1
+    => COMMIT;
+    COMMIT
+    ```
+
+    `psql -U postgres -p 5432` - first session (continue)
+
+    ```
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    ```
+
+    So, we can see that the first transaction see 1 row, because it started before the second transaction, and the second transaction deleted the row. But when we use `BEGIN ISOLATION LEVEL REPEATABLE READ;` we can see the row in first transaction, because we use Repeatable Read isolation level.
 
 ## (25 points) Practice+ "Isolation and multiversionality"(optional)
 
@@ -47,23 +97,104 @@
 
 ### Solution
 
-1. `psql -U postgres -p 5432`
+1. First transaction at the Read Committed and query the table:
 
-    ![](pictures/hw2-4.png)
+    Unfortunatelly, i don't have screenshot, but i can show you my terminal:
+    
+    `psql -U postgres -p 5432` - first session
 
-    As we can see, the transaction in the second session sees the changes made by the first transaction.
+    ```
+    => BEGIN; - we start transaction
+    BEGIN
+    => CREATE TABLE test_table (id serial PRIMARY KEY, value numeric);
+    CREATE TABLE
+    => INSERT INTO test_table(value) SELECT random() FROM generate_series(1, 1);
+    INSERT 0 1
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    ```
 
-2. `psql -U postgres -p 5432`
+    `psql -U postgres -p 5432` - second session
 
-    *here must be screenshot, but i lost it, btw we done everything like in previous task, but in second session we need write ROLLBACK; instead of query*
+    ```
+    => SELECT * FROM test_table;
+    ERROR:  relation "test_table" does not exist
+    LINE 1: SELECT * FROM t1;
+                            ^
+    ```
+    
+    So we cannot see the table in second session
 
-    As we can see, the transaction in the second session does not see the changes made by the first transaction.
+    `psql -U postgres -p 5432` - first session
 
-3. `psql -U postgres -p 5432`
+    ```
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    => COMMIT;
+    COMMIT
+    ```
 
-    ![](pictures/hw2-5.png)
+2. `psql -U postgres -p 5432` - first session
 
-    As we can see, we can delete this table in the second session while the transaction is still in progress.
+    ```
+    => BEGIN ISOLATION LEVEL REPEATABLE READ;
+    BEGIN
+    => CREATE TABLE test_table (id serial PRIMARY KEY, value numeric);
+    CREATE TABLE
+    => INSERT INTO test_table(value) SELECT random() FROM generate_series(1, 1);
+    INSERT 0 1
+    ```
+
+    `psql -U postgres -p 5432` - second session
+
+    ```
+    => SELECT * FROM test_table;
+    ERROR:  relation "test_table" does not exist
+    LINE 1: SELECT * FROM t1;
+                            ^
+    ```
+
+    So we cannot see the table in second session, and if we ROLLBACK; in first session, we rollback all changes, so we cannot see the table in first session too
+
+    `psql -U postgres -p 5432` - first session (continue)
+
+    ```
+    => ROLLBACK;
+    ROLLBACK
+    => SELECT * FROM test_table;
+    ERROR:  relation "test_table" does not exist
+    LINE 1: SELECT * FROM t1;
+                            ^
+    ```
+
+    As we can see, we can see the table in second session, but we cannot see the row in second session.
+
+3. `psql -U postgres -p 5432` - first session
+
+    ```
+    => BEGIN;
+    BEGIN
+    => SELECT * FROM test_table;
+     id |       value
+    ----+-------------------
+      1 | 0.596793548583895
+    => DELETE FROM test_table;
+    DELETE 1
+    ```
+
+    `psql -U postgres -p 5432` - second session
+
+    ```
+    => DROP TABLE test_table;
+    ERROR:  cannot drop table test_table because other objects depend on it
+    ```
+
+    So we cannot delete the table in second session while the transaction is still in progress. But when we commit the transaction in first session, we can delete the table in second session.
+
 
 ## (25 points) Practice "Pereodic tasks"
 
@@ -109,4 +240,12 @@
 
 ### Solution
 
-1. 
+1. `psql -U postgres -p 5432 -c "SELECT * FROM pg_stat_bgwriter;"`
+
+    `psql -U postgres -p 5432 -c "SELECT * FROM pg_stat_wal;"`
+
+    ![](pictures/hw2-7.png)
+
+    pg_stat_wal was added in PostgreSQL 14, we use PostgreSQL 13.6, so we can't see it.
+
+2. `pg_ctl stop -m fast`
