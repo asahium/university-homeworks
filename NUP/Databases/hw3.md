@@ -33,6 +33,11 @@ Create a database. For all sessions in this database set the temp_buffers parame
 
 ### Solution
 
+* [Here we can find the default value of `temp_buffers`](https://postgresqlco.nf/doc/en/param/temp_buffers/) Spoiler: it's 8MB. So we need to set it to 32MB.
+
+    ![](pictures/hw3-4.png)
+
+
 
 
 ## (15 points) Practice "System catalog"
