@@ -47,6 +47,24 @@
 
 ### Solution
 
+1. `psql -U postgres -p 5432`
+
+    ![](pictures/hw2-4.png)
+
+    As we can see, the transaction in the second session sees the changes made by the first transaction.
+
+2. `psql -U postgres -p 5432`
+
+    *here must be screenshot, but i lost it, btw we done everything like in previous task, but in second session we need write ROLLBACK; instead of query*
+
+    As we can see, the transaction in the second session does not see the changes made by the first transaction.
+
+3. `psql -U postgres -p 5432`
+
+    ![](pictures/hw2-5.png)
+
+    As we can see, we can delete this table in the second session while the transaction is still in progress.
+
 ## (25 points) Practice "Pereodic tasks"
 
 1. disable the auto-cleaning process and make sure it is not running.
@@ -58,6 +76,29 @@
 
 ### Solution
 
+* in new session `psql -U postgres -p 5432`
+
+    ![](pictures/hw2-6.png)
+
+    ```
+    ALTER SYSTEM SET autovacuum = 'off';
+
+    CREATE TABLE test_table9 (id serial PRIMARY KEY, value numeric);
+
+    CREATE INDEX idx_value ON test_table9(value);
+
+    INSERT INTO test_table9(value) SELECT random() FROM generate_series(1, 100000);
+
+    UPDATE test_table9 SET value = random() WHERE id % 2 = 0;
+
+    VACUUM FULL test_table9;
+
+    VACUUM FULL ANALYZE test_table9;
+
+    ALTER SYSTEM SET autovacuum = 'on';
+    ```
+    
+    So, we can see that the size of the table and index is the same, because we disabled the auto-cleaning process.
 
 ## (25 points) Practice "Buffer cache"
 
@@ -67,3 +108,5 @@
 
 
 ### Solution
+
+1. 
