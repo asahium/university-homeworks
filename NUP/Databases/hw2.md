@@ -249,3 +249,19 @@
     ![](pictures/hw2-9.png)
 
     So, we can see that the processes responsible for the buffer cache and the WAL log are checkpointer, background writer, walwriter.  
+
+2. `pg_ctl -D /home/student/pgsql13/data3 -l /home/student/logfile restart` - restart PostgreSQL in fast mode
+
+    ![](pictures/hw2-10.png)
+
+    `cat /home/student/logfile` - review the server's message log
+
+    ![](pictures/hw2-11.png)
+
+3. `pg_ctl -D /home/student/pgsql13/data3 -l /home/student/logfile restart -m immediate` - restart PostgreSQL in immediate mode
+
+    ![](pictures/hw2-12.png)
+
+    `cat /home/student/logfile` - review the server's message log
+
+    ![](pictures/hw2-13.png)
