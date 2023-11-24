@@ -37,8 +37,7 @@ Create a database. For all sessions in this database set the temp_buffers parame
 
     ![](pictures/hw3-4.png)
 
-
-
+    ![](pictures/hw3-5.png)
 
 ## (15 points) Practice "System catalog"
 
@@ -50,6 +49,33 @@ Create a database. For all sessions in this database set the temp_buffers parame
 
 ### Solution
 
+1. `psql -U postgres -p 5432`
+
+    `postgres=# \d pg_class`
+
+    ![](pictures/hw3-6.png)
+
+2. `postgres=# \d+ pg_tables`
+
+    ![](pictures/hw3-7.png)
+
+3. So we create a database and a temporary table in it. And geting a complete list of schemas in the database, including system schemas.
+
+    ![](pictures/hw3-8.png)
+
+4. `postgres=# \dv information_schema.*`
+
+    ![](pictures/hw3-9.png)
+
+5. `postgres=# \d+ pg_views`
+
+    ![](pictures/hw3-10.png)
+
+    The command `\d+ pg_views` shows the description of the pg_views table, but we doesn't see any queries. To see the queries we need to use `\set ECHO_HIDDEN on` command, so we get the following result:
+
+    ![](pictures/hw3-11.png)
+
+    ![](pictures/hw3-12.png)
 
 ## (20 points) Practice "Tablespaces"
 
@@ -62,9 +88,11 @@ becomes pg_default?
 4. Look in the file system for a symbolic link in PGDATA to the tablespace directory.
 5. Delete the created tablespace.
 
-
 ### Solution
 
+1. `postgres=# CREATE TABLESPACE test_tablespace LOCATION '/var/lib/postgresql/test_tablespace';`
+
+    ![](pictures/hw3-13.png)
 
 ## (10 points) Practice+ "Tablespaces"(optional)
 
