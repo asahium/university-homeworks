@@ -6,11 +6,26 @@
 Create some tables in both schemas and populate them with some data.
 4. Check how much the size of the database has increased by.
 5. Set the search path so that when you connect to the database:
-* tables from both schemas will be accessible by unqualified name
-* the priority should be given to the "custom" schema.
+    * tables from both schemas will be accessible by unqualified name
+    * the priority should be given to the "custom" schema.
 
 ### Solution
 
+1. `psql -U postgres -p 5432`
+
+    ![](pictures/hw3-1.png)
+
+2. Using `CREATE TABLE`, `CREATE SCHEMA` and `INSERT INTO` commands, create a database with the structure.
+
+3. All done in the previous step.
+
+4. Check the size of the created database.
+
+    ![](pictures/hw3-2.png)
+
+5. Set the search path so that when you connect to the database:
+
+    ![](pictures/hw3-3.png)
 
 ## (10 points) Practice+ "Databases and schemas"(optional)
 
