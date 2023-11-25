@@ -90,13 +90,45 @@ becomes pg_default?
 
 ### Solution
 
-1. `postgres=# CREATE TABLESPACE test_tablespace LOCATION '/var/lib/postgresql/test_tablespace';`
+1. `sudo mkdir /home/student/pgsql13/data10`
 
-    ![](pictures/hw3-13.png)
+    `sudo chown postgres /home/student/pgsql13/data10`
+
+    Inside `psql -U postgres -p 5432`:
+
+    ```
+    CREATE TABLESPACE ts LOCATION '/home/student/pgsql13/data10';
+    ```
+
+2. `psql -U postgres -p 5432`
+
+    ```
+    ALTER DATABASE template1 SET TABLESPACE ts;
+    ```
+
+3. `psql -U postgres -p 5432`
+
+    ```
+    CREATE DATABASE data_databases6;
+
+    SELECT spcname
+    FROM pg_tablespace
+    WHERE oid = (SELECT dattablespace FROM pg_database WHERE datname = 'data_databases6');
+    ```
+
+4. `ls -l /home/student/pgsql13/data10`
+
+5. `DROP TABLESPACE ts;`
 
 ## (10 points) Practice+ "Tablespaces"(optional)
 
 Set the random_page_cost parameter to 1.1 for tablespace pg_default.
+
+### Solution
+
+* [Here we can find the default value of `random_page_cost`](https://postgresqlco.nf/doc/en/param/random_page_cost/)
+
+    ![](pictures/hw3-13.png)
 
 
 ## (20 points) Practice "Low level"
@@ -111,6 +143,23 @@ Set the random_page_cost parameter to 1.1 for tablespace pg_default.
 
 ### Solution
 
+1. `psql -U postgres -p 5432`
+
+    ```
+    CREATE TABLESPACE ts LOCATION '/home/student/pgsql13/data10';
+
+    CREATE TABLE test (id int) TABLESPACE ts;
+
+    SELECT * FROM pg_tablespace;
+
+    SELECT * FROM pg_tablespace_location;
+
+    SELECT * FROM pg_tablespace_location WHERE spcname = 'ts';
+
+    DROP TABLESPACE ts;
+    ```
+
+2. And here I died. :(
 
 ## (10 points) Practice+ "Low level"
 
@@ -118,6 +167,10 @@ Compare the database size returned by the pg_database_size function with the tot
 
 Explain the result obtained.
 
-
 ### Solution
 
+* This is because the database size includes the size of the system catalog with some system files, which is not included in the size of the tables. For example PG_VERSION file, which contains the version of the database.
+
+    ![](pictures/hw3-14.png)
+
+    
