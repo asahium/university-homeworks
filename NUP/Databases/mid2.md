@@ -61,7 +61,7 @@
 
 ### Solution
 
-1. `pg_basebackup --pgdata=/home/student/basebackup`
+1. we need con`pg_basebackup --pgdata=/home/student/basebackup`
 
     `sudo pg_ctlcluster 13 replica status`
 
@@ -77,4 +77,58 @@
 
     `sudo pg_ctlcluster 13 replica start`
 
-    after these commands we can start configuring our 
+    after these commands we can start configuring our main server with commands from statement:
+
+    ```
+    ALTER SYSTEM SET synchronous_commit = on;
+
+    ALTER SYSTEM SET synchronous_standby_names = 'replica';
+    ```
+
+    and restart server with `sudo pg_ctlcluster 13 main restart`
+
+2. ...and here happened something strange and my fedora stopped making screenshots, so here will be only my copy-pasty from terminal.
+
+    ```
+    CREATE DATABASE replica;
+    \\inside replica
+    CREATE TABLE t(n integer);
+    INSERT INTO t VALUES (1), (2), (3);
+    SELECT * FROM pg_stat_replication \gx
+    ```
+    
+    ```
+    -[ RECORD 1 ]----+------------------------------
+    pid              | 84456
+    usesysid         | 15674
+    usename          | student
+    application_name | replica
+    client_addr      | 
+    client_hostname  | 
+    client_port      | -1
+    backend_start    | 2024-01-07 23:28:33.643677+03
+    backend_xmin     | 
+    state            | streaming
+    sent_lsn         | 0/1401A688
+    write_lsn        | 0/1401A688
+    flush_lsn        | 0/1401A688
+    replay_lsn       | 0/14002B98
+    write_lag        | 00:00:00.000125
+    flush_lag        | 00:00:00.013254
+    replay_lag       | 00:00:00.313308
+    sync_priority    | 1
+    sync_state       | sync
+    reply_time       | 2024-01-07 23:32:34.658395+03
+    ```
+
+    and all working
+
+3. `sudo pg_ctlcluster 13 replica promote`
+
+    ```
+    ALTER SYSTEM RESET synchronous_standby_names;
+    ```
+
+    `sudo pg_ctlcluster 13 main reload`
+
+4. here I died :(
