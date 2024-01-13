@@ -345,9 +345,9 @@ read R BLOCK
 Fine, now send me the command
 ```
 
-и здесь надо ввести `getflag`, но через echo
+и здесь надо ввести `getflag`
 
-`echo -n "getflag" | openssl s_client -connect 127.0.0.1:4888 -servername kaxjqylqdsbrhpv.nup23.local`
+`openssl s_client -connect 127.0.0.1:4888 -servername kaxjqylqdsbrhpv.nup23.local`
 
 ```
 CONNECTED(00000003)
