@@ -328,6 +328,10 @@ Certificate:
         89:27:fe:95:95:cd:a8:09:10:8f:a6:be:7f:53:81:c6:bd
 ```
 
+P.S. надо получать имена серверов без выпендрежа через nmap:
+
+`nmap -p 4888 --script ssl-cert 127.0.0.1`
+
 подключаемся к серверу с указанием нужного нам сервера (конечно это последний)
 
 `openssl s_client -connect 127.0.0.1:4888 -servername kaxjqylqdsbrhpv.nup23.local`
