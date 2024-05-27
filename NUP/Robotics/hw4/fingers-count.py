@@ -88,19 +88,25 @@ while True:
         if handLandmarks[20][2] < handLandmarks[18][2]:     #Little finger
             count = count+1
 
-    # if count == 0:
-    #     stop(sock)
-    # elif count == 1:
-    #     forward(sock)
-    # elif count == 2:
-    #     backward(sock)
-    # elif count == 3:
-    #     right(sock)
-    # elif count == 4:
-    #     left(sock)
-    # else:
-    #     stop(sock)
+    if count == 0:
+        cv2.putText(image, "Stop", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # stop(sock)
+    elif count == 1:
+        cv2.putText(image, "Forward", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # forward(sock)
+    elif count == 2:
+        cv2.putText(image, "Backward", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # backward(sock)
+    elif count == 3:
+        cv2.putText(image, "Right", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # right(sock)
+    elif count == 4:
+        cv2.putText(image, "Left", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # left(sock)
+    else:
+        cv2.putText(image, "Stop", (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+        # stop(sock)
 
-    cv2.putText(image, str(count), (45, 375), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
+    # cv2.putText(image, str(count), (45, 475), cv2.FONT_HERSHEY_SIMPLEX, 5, (255, 0, 0), 25)
     cv2.imshow("Volume", image)
     cv2.waitKey(1)
