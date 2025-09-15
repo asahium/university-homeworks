@@ -1,3 +1,3 @@
 # university-homeworks
 
-here are my homework from HSE AMI 
+here are my homework from HSE CUB NUP 
