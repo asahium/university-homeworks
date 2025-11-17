@@ -72,11 +72,9 @@ class MoCo(nn.Module):
         
         ptr = int(self.queue_ptr)
         
-        # Replace the keys at ptr (dequeue and enqueue)
         if ptr + batch_size <= self.K:
             self.queue[:, ptr:ptr + batch_size] = keys.T
         else:
-            # Wrap around
             remaining = self.K - ptr
             self.queue[:, ptr:] = keys[:remaining].T
             self.queue[:, :batch_size - remaining] = keys[remaining:].T

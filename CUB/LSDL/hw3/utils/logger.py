@@ -23,7 +23,6 @@ class WandbLogger:
         self.experiment_name = experiment_name
         
         if self.enabled:
-            # Login with API key if provided in config
             if Config.WANDB_API_KEY is not None:
                 wandb.login(key=Config.WANDB_API_KEY)
             

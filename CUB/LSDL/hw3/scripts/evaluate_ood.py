@@ -39,17 +39,14 @@ def main():
     print("OOD Robustness Evaluation on CIFAR-10")
     print("="*60)
     
-    # Load OOD data
     ood_loader = get_cifar10_ood_loader(Config.SUPERVISED_BATCH_SIZE)
     print(f"Loaded CIFAR-10 OOD data (excluding frog class)")
     
     results = {}
     
-    # 1. Supervised baseline
     print("\n[1/7] Evaluating Supervised Baseline...")
     model = resnet18(num_classes=Config.NUM_CLASSES)
     state_dict = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'supervised_baseline.pth'), map_location=Config.DEVICE)
-    # Strip both _orig_mod. and model. prefixes
     state_dict = strip_prefix_from_state_dict(state_dict, prefix=['_orig_mod.', 'model.'])
     model.load_state_dict(state_dict)
     model = model.to(Config.DEVICE)
@@ -57,7 +54,6 @@ def main():
     results['supervised'] = acc
     print(f"Supervised: {acc:.2f}%")
     
-    # 2. SimCLR + Linear Probe
     print("\n[2/7] Evaluating SimCLR + Linear Probe...")
     ssl_model = SimCLR().to(Config.DEVICE)
     checkpoint = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'simclr_model_40.pth'), map_location=Config.DEVICE)
@@ -79,7 +75,6 @@ def main():
     results['simclr_linear_probe'] = acc
     print(f"SimCLR + Linear Probe: {acc:.2f}%")
     
-    # 3. SimCLR + Fine-tuning
     print("\n[3/7] Evaluating SimCLR + Fine-tuning...")
     model = resnet18(num_classes=Config.NUM_CLASSES)
     state_dict = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'simclr_finetuned.pth'), map_location=Config.DEVICE)
@@ -90,7 +85,6 @@ def main():
     results['simclr_finetuned'] = acc
     print(f"SimCLR + Fine-tuning: {acc:.2f}%")
     
-    # 4. BYOL + Linear Probe
     print("\n[4/7] Evaluating BYOL + Linear Probe...")
     ssl_model = BYOL().to(Config.DEVICE)
     checkpoint = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'byol_model_40.pth'), map_location=Config.DEVICE)
@@ -112,7 +106,6 @@ def main():
     results['byol_linear_probe'] = acc
     print(f"BYOL + Linear Probe: {acc:.2f}%")
     
-    # 5. BYOL + Fine-tuning
     print("\n[5/7] Evaluating BYOL + Fine-tuning...")
     model = resnet18(num_classes=Config.NUM_CLASSES)
     state_dict = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'byol_finetuned.pth'), map_location=Config.DEVICE)
@@ -123,7 +116,6 @@ def main():
     results['byol_finetuned'] = acc
     print(f"BYOL + Fine-tuning: {acc:.2f}%")
     
-    # 6. MoCo + Linear Probe
     print("\n[6/7] Evaluating MoCo + Linear Probe...")
     ssl_model = MoCo().to(Config.DEVICE)
     checkpoint = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'moco_model_40.pth'), map_location=Config.DEVICE)
@@ -145,7 +137,6 @@ def main():
     results['moco_linear_probe'] = acc
     print(f"MoCo + Linear Probe: {acc:.2f}%")
     
-    # 7. MoCo + Fine-tuning
     print("\n[7/7] Evaluating MoCo + Fine-tuning...")
     model = resnet18(num_classes=Config.NUM_CLASSES)
     state_dict = torch.load(os.path.join(Config.CHECKPOINT_DIR, 'moco_finetuned.pth'), map_location=Config.DEVICE)

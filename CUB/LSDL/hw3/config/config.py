@@ -64,9 +64,9 @@ class Config:
     FINETUNE_WEIGHT_DECAY = 5e-4
     
     # Weights & Biases
-    WANDB_PROJECT = "contrastive-learning-stl10"
-    WANDB_ENTITY = "asah1um-jetbrains"  # Set your wandb username here if needed
-    WANDB_API_KEY = "165a14846024e5e38cebc82334b2306114de0a76"  # Set your wandb API key here (or set WANDB_API_KEY env variable)
+    WANDB_PROJECT = None #"contrastive-learning-stl10"
+    WANDB_ENTITY = None #"asah1um-jetbrains"  
+    WANDB_API_KEY = None #""  
     
     # Class names
     CLASS_NAMES = ['airplane', 'bird', 'car', 'cat', 'deer', 'dog', 'horse', 'monkey', 'ship', 'truck']
