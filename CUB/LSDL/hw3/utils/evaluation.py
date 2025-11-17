@@ -19,7 +19,6 @@ def strip_prefix_from_state_dict(state_dict, prefix='_orig_mod.'):
     Returns:
         new_state_dict: State dictionary with prefix removed
     """
-    # Handle multiple prefixes
     if isinstance(prefix, str):
         prefixes = [prefix]
     else:
@@ -28,7 +27,6 @@ def strip_prefix_from_state_dict(state_dict, prefix='_orig_mod.'):
     new_state_dict = {}
     for key, value in state_dict.items():
         new_key = key
-        # Keep stripping prefixes until none match (handles chained prefixes like _orig_mod.model.xxx)
         changed = True
         while changed:
             changed = False
@@ -64,7 +62,6 @@ def extract_embeddings(model, loader, device, is_ssl=False):
             images = images.to(device)
             
             if is_ssl:
-                # For SSL models, use encoder directly
                 if hasattr(model, 'online_encoder'):
                     # BYOL
                     h = model.online_encoder(images)
@@ -77,7 +74,6 @@ def extract_embeddings(model, loader, device, is_ssl=False):
                 else:
                     h = model(images)
             else:
-                # For supervised model, extract features before final FC
                 original_fc = model.fc
                 model.fc = nn.Identity()
                 h = model(images)
@@ -150,7 +146,6 @@ def evaluate_ood(model, loader, device):
         for images, labels in tqdm(loader, desc="Evaluating OOD", leave=False):
             images, labels = images.to(device), labels.to(device)
             
-            # Mark step begin for CUDA graphs compatibility with torch.compile
             torch.compiler.cudagraph_mark_step_begin()
             
             with torch.amp.autocast('cuda', enabled=(device.type == 'cuda')):
