@@ -1,2 +1,7 @@
 .DS_Store
-CUB/LSDL/hw2/data/
+CUB/DL/hw3/SegTask
+CUB/DL/hw3/runs
+*.pth
+wandb/
+__pycache__/
+data/
