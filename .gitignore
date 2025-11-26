@@ -6,3 +6,5 @@ CUB/DL/hw3/runs
 wandb/
 __pycache__/
 data/
+.ipynb_checkpoints/
+.vscode/
