@@ -1,15 +1,9 @@
 import sys
 import time
 import numpy as np
+from nose.tools import ok_, eq_
 from numpy.testing import assert_almost_equal
 import Student as model
-
-# Compatibility replacements for nose.tools
-def ok_(expr, msg=None):
-    assert expr, msg
-
-def eq_(a, b, msg=None):
-    assert a == b, msg or f"{a} != {b}"
 
 
 def test_python3():
