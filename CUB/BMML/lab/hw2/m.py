@@ -199,7 +199,7 @@ def run_analysis_4(h, w, data_file='data_50.npy'):
     B_placeholder = np.zeros((X_criminal.shape[0], X_criminal.shape[1]))
 
     print("Running EM with restarts on criminal data...")
-    F, B, s, A, L = model.run_EM_with_restarts(X_criminal, h, w, tolerance=1e-3, max_iter=500, n_restarts=125)
+    F, B, s, A, L = model.run_EM_with_restarts(X_criminal, h, w, tolerance=1e-3, max_iter=100, n_restarts=10)
     
     print(f"Best L found: {L:.2f}")
     
@@ -238,17 +238,14 @@ def main():
     X, F_true, B_true = generate_test_data(H, W, K, h, w, noise_std)
     print(f"Generated X with shape {X.shape}")
     
-    # Run analyses
-    # run_analysis_1(X, h, w, F_true, B_true)
-    # run_analysis_2(H, W, h, w, F_true, B_true)
-    # run_analysis_3(X, h, w, F_true, B_true)
+    # Run all analyses
+    run_analysis_1(X, h, w, F_true, B_true, n_runs=5)
+    run_analysis_2(H, W, h, w, F_true, B_true)
+    run_analysis_3(X, h, w, F_true, B_true)
     
-    # Run analysis 4 - NOTE: This requires the real data file
-    # The h, w parameters for the real data must be specified
-    # in the assignment description. Update them here.
-    # H_real, W_real, K_real = (from data.shape)
-    h_real, w_real = 75, 60 # <-- IMPORTANT: Change this to your assignment's values
-    run_analysis_4(h_real, w_real, data_file='data_50.npy') #<-- Use your data file name
+    # Run analysis 4 - Criminal data
+    h_real, w_real = 75, 60  # Face size for criminal data
+    run_analysis_4(h_real, w_real, data_file='data_50.npy')
     
     print("\n--- Analysis complete. Plots saved to directory. ---")
 

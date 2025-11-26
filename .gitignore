@@ -2,6 +2,7 @@
 CUB/DL/hw3/SegTask
 CUB/DL/hw3/runs
 *.pth
+*.pt
 wandb/
 __pycache__/
 data/
