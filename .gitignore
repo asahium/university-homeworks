@@ -11,3 +11,4 @@ data/
 *.zip
 ESC-50-master/
 .venv/
+venv/
