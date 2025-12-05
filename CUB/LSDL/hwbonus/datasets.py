@@ -5,15 +5,26 @@ import os
 import torch
 import torchaudio
 import torchaudio.transforms as T
-
-# Use soundfile backend to avoid FFmpeg dependency issues
-torchaudio.set_audio_backend("soundfile")
+import soundfile as sf
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from collections import defaultdict
 
 from config.config import Config
+
+
+def load_audio(path):
+    """Load audio file using soundfile backend"""
+    data, sample_rate = sf.read(path)
+    # Convert to torch tensor and add channel dimension if mono
+    waveform = torch.from_numpy(data).float()
+    if waveform.dim() == 1:
+        waveform = waveform.unsqueeze(0)
+    else:
+        # If stereo, transpose to (channels, samples)
+        waveform = waveform.T
+    return waveform, sample_rate
 
 
 class LogMelSpectrogram(T.MelSpectrogram):
@@ -102,8 +113,8 @@ class AudioMNISTDataset(Dataset):
     def __getitem__(self, idx):
         sample = self.samples[idx]
         
-        # Load audio
-        waveform, sample_rate = torchaudio.load(sample['path'])
+        # Load audio using soundfile
+        waveform, sample_rate = load_audio(sample['path'])
         
         # Resample to target sample rate
         if sample_rate != Config.SAMPLE_RATE:
@@ -201,8 +212,8 @@ class AudioMNISTSpectrogramDataset(Dataset):
     def __getitem__(self, idx):
         sample = self.samples[idx]
         
-        # Load and process audio
-        waveform, sample_rate = torchaudio.load(sample['path'])
+        # Load and process audio using soundfile
+        waveform, sample_rate = load_audio(sample['path'])
         if sample_rate != Config.SAMPLE_RATE:
             waveform = self.resample(waveform)
         waveform = self._pad_or_truncate(waveform, Config.MAX_AUDIO_LENGTH)

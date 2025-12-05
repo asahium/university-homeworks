@@ -172,20 +172,20 @@ def extract_contrastive_embeddings(model, loader, device, return_mode='1d'):
     )
 
 
-def compute_tsne(embeddings, perplexity=30, n_iter=1000, seed=Config.SEED):
+def compute_tsne(embeddings, perplexity=30, max_iter=1000, seed=Config.SEED):
     """
     Compute t-SNE embedding.
     
     Args:
         embeddings: numpy array of shape (N, D)
         perplexity: t-SNE perplexity
-        n_iter: Number of iterations
+        max_iter: Number of iterations
         seed: Random seed
     
     Returns:
         tsne_embeddings: numpy array of shape (N, 2)
     """
-    tsne = TSNE(n_components=2, perplexity=perplexity, n_iter=n_iter, random_state=seed)
+    tsne = TSNE(n_components=2, perplexity=perplexity, max_iter=max_iter, random_state=seed)
     return tsne.fit_transform(embeddings)
 
 

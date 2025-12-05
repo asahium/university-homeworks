@@ -4,12 +4,26 @@ Configuration file for AudioMNIST self-supervised learning experiments
 import torch
 
 
+def get_device():
+    """Get the best available device: CUDA > MPS > CPU"""
+    if torch.cuda.is_available():
+        return torch.device('cuda')
+    elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available() and torch.backends.mps.is_built():
+        return torch.device('mps')
+    else:
+        return torch.device('cpu')
+
+
+# Compute device once at import time
+_DEVICE = get_device()
+
+
 class Config:
     # General settings
-    DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    DEVICE = _DEVICE
     SEED = 42
-    NUM_WORKERS = 4
-    PIN_MEMORY = True
+    NUM_WORKERS = 0  # Set to 0 for stability (MPS and some systems have issues with multiprocessing)
+    PIN_MEMORY = False  # Disable for MPS compatibility
     
     # Data settings
     DATA_ROOT = './AudioMNIST/data'

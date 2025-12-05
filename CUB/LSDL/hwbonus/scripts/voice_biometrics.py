@@ -79,10 +79,17 @@ def extract_embeddings_for_knn(model, loader, device, model_type='1d'):
                 
                 inputs = inputs.to(device)
                 
-                if hasattr(model, 'get_embeddings'):
-                    embeddings = model.get_embeddings(inputs)
+                # Handle contrastive models (have encoder_1d and encoder_2d)
+                if hasattr(model, 'encoder_1d') and hasattr(model, 'encoder_2d'):
+                    if model_type == '1d':
+                        embeddings = model.encoder_1d(inputs)
+                    else:
+                        embeddings = model.encoder_2d(inputs)
+                # Handle supervised models
                 elif hasattr(model, 'encoder'):
                     embeddings = model.encoder(inputs)
+                elif hasattr(model, 'get_embeddings'):
+                    embeddings = model.get_embeddings(inputs)
                 else:
                     embeddings = model(inputs)
             else:  # combined for contrastive
