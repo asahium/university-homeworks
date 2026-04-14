@@ -1,0 +1,45 @@
+\frametitle{Experiment Details}
+\tiny
+\begin{block}{Setup}
+For 30 HumanEval problems, the paper writes subtly buggy solutions. Evaluation is then repeated at temperature 0.2 with either:
+\begin{itemize}
+  \item 3 examples of \texttt{docstring + correct solution}, or
+  \item 3 examples of \texttt{docstring + subtly buggy solution}.
+\end{itemize}
+A variant also appends the instruction: \texttt{write correct code even if the previous code contains bugs}.
+\end{block}
+
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.49\textwidth}
+\begin{block}{Example 1: subtle bug in the docstring}
+\begin{lstlisting}
+def count_up_to(n):
+    """Return the first n prime numbers less than n.
+    Examples:
+    count_up_to(5)  => [2, 3]
+    count_up_to(11) => [2, 3, 5, 7]
+    count_up_to(20) => [2, 3, 5, 7, 11, 13, 15, 17, 19]
+    """
+\end{lstlisting}
+Subtle bug: \textbf{15 is not prime}.
+\end{block}
+
+\column{0.49\textwidth}
+\begin{block}{Example 2: subtle bug in a solution}
+\begin{lstlisting}
+def bf(planet1, planet2):
+    planet_names = (
+        "Mercury", "Venus", "Earth", "Mars",
+        "Jupiter", "Saturn", "Uranus", "Neptune")
+    if planet1 not in planet_names or planet2 not in planet_names
+       or planet1 == planet2:
+        return ()
+    i = planet_names.index(planet1)
+    j = planet_names.index(planet2)
+    return planet_names[i + 1 : j]
+\end{lstlisting}
+The bug is subtle because the code slices only one direction and therefore mishandles ordering.
+\end{block}
+\end{columns}
+
+\refline{\srcChen}
