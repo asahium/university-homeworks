@@ -46,20 +46,8 @@
 \headcommand {\beamer@appendixpages {21}}
 \headcommand {\slideentry {0}{0}{21}{21/21}{}{1}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {0}{0}{22}{22/22}{}{1}}
-\headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {0}{0}{23}{23/23}{}{1}}
-\headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {0}{0}{24}{24/24}{}{1}}
-\headcommand {\beamer@framepages {24}{24}}
-\headcommand {\slideentry {0}{0}{25}{25/25}{}{1}}
-\headcommand {\beamer@framepages {25}{25}}
-\headcommand {\slideentry {0}{0}{26}{26/26}{}{1}}
-\headcommand {\beamer@framepages {26}{26}}
-\headcommand {\slideentry {0}{0}{27}{27/27}{}{1}}
-\headcommand {\beamer@framepages {27}{27}}
-\headcommand {\beamer@partpages {21}{27}}
-\headcommand {\beamer@subsectionpages {21}{27}}
-\headcommand {\beamer@sectionpages {21}{27}}
-\headcommand {\beamer@documentpages {27}}
-\headcommand {\gdef \inserttotalframenumber {27}}
+\headcommand {\beamer@partpages {21}{21}}
+\headcommand {\beamer@subsectionpages {21}{21}}
+\headcommand {\beamer@sectionpages {21}{21}}
+\headcommand {\beamer@documentpages {21}}
+\headcommand {\gdef \inserttotalframenumber {21}}

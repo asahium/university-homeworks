@@ -13,3 +13,21 @@ ESC-50-master/
 .venv/
 venv/
 results/
+# tex files
+*.tex
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.blg
+*.bbl
+guided
+# audio hw2 data
+denoising_logs
+LibriSpeech
+musan*
+ruls*
+train-clean-100*

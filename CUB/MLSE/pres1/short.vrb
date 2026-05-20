@@ -1,35 +1,48 @@
-\frametitle{Code generation examples}
+\frametitle{Docstring complexity}
 \tiny
 \begin{columns}[T,totalwidth=\textwidth]
 \column{0.49\textwidth}
-\begin{block}{Completions 6--8}
+\begin{block}{Composing building blocks}
+The 13 building blocks are chained by concatenating:
 \begin{itemize}
-  \item \textbf{Completion 6 (correct):}
-\begin{lstlisting}
-prime = True
-if n == 1:
-    return False
-for i in range(2, n):
-    if n % i == 0:
-        prime = False
-return prime
-\end{lstlisting}
-Exhaustive check, but correct.
-  \item \textbf{Completion 7 (wrong):} repeats the same bug as Completion 1.
-  \item \textbf{Completion 8 (correct):} efficient primality test based on checking divisibility by 2, 3, and then numbers of the form \(6k\pm 1\).
+  \item their one-line descriptions into a docstring, and
+  \item their one-line implementations into a code body.
 \end{itemize}
+
+\begin{lstlisting}
+def string_manipulation(s: str):
+    """
+    This function takes a string as input, then
+    returns the result of performing the following
+    sequence of manipulations:
+    - make every other character uppercase
+    - replace spaces with triple spaces
+    """
+    s = "".join(char.upper() if i % 2 == 0 else char
+                for i, char in enumerate(s))
+    s = s.replace(" ", "   ")
+    return s
+\end{lstlisting}
 \end{block}
 
 \column{0.49\textwidth}
-\begin{block}{Why \(6k \pm 1\) matters}
-For primes greater than 3, any candidate factor must be of the form \(6k \pm 1\).
+\begin{block}{Results}
+    \begin{center}
+    \includegraphics[width=0.6\textwidth]{docstr.png}
+    \end{center}
+
 \begin{itemize}
-  \item Numbers of the form \(6k\), \(6k+2\), and \(6k+4\) are divisible by 2.
-  \item Numbers of the form \(6k+3\) are divisible by 3.
-  \item So after handling 2 and 3, only \(6k-1\) and \(6k+1\) remain worth testing.
+  \item As each component is added, the pass rate drops by about \textbf{2--3x}.
+  \item Human programmers do not show the same degradation once they can chain two operations.
+  \item Codex also makes variable-binding mistakes when many variables are mentioned.
 \end{itemize}
-This makes Completion 8 faster than checking every number up to \(n\).
 \end{block}
+
+\begin{alertblock}{Example binding failure}
+Prompt idea: ``Add 3 to \texttt{y}, then subtract 4 from both \texttt{x} and \texttt{w}. Return the product of the four numbers.''
+
+Observed failure: the generated code subtracts 4 from \texttt{x} but forgets to subtract 4 from \texttt{w}, and only multiplies two numbers.
+\end{alertblock}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://en.wikipedia.org/wiki/Primality_test}{standard primality-test observation.}}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}

@@ -1,4 +1,5 @@
-\documentclass[t,aspectratio=43,9pt]{beamer}
+\documentclass[aspectratio=43,9pt]{beamer}
+
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -72,22 +73,16 @@
 
 \newcommand{\reflink}[2]{\href{#1}{\mbox{#2}}}
 \newcommand{\refline}[1]{%
-  \par\vfill
-  \hrule
-  \vspace{0.3ex}
-  \begin{minipage}[t][4.8mm][t]{\linewidth}
-    \tiny\noindent\textbf{Refs:} #1
-  \end{minipage}
-  \vspace*{0.8mm}
+  \par\vspace*{\fill}\hrule\vspace{0.2ex}{\fontsize{4.2}{4.5}\selectfont\raggedright\textbf{References: }#1\par}%
 }
 
 \begin{document}
 % 1
 \begin{frame}[plain]
 \centering
-\vspace{0.35em}
+\vspace{4.35em}
 {\fontsize{25}{27}\selectfont\bfseries Evaluating Large Language\\[0.25em]Models Trained on Code (Codex)\par}
-\vspace{1.1em}
+\vspace{2.1em}
 {\tiny
 M. Chen, J. Tworek, H. Jun, Q. Yuan, H. Ponde de Oliveira Pinto, J. Kaplan, H. Edwards, Y. Burda, N. Joseph, G. Brockman, A. Ray, R. Puri, G. Krueger, M. Petrov, H. Khlaaf, G. Sastry, P. Mishkin, B. Chan, S. Gray, N. Ryder, M. Pavlov, A. Power, L. Kaiser, M. Bavarian, C. Winter, P. Tillet, F. Petroski Such, D. Cummings, M. Plappert, F. Chantzis, E. Barnes, A. Herbert-Voss, W. Hebgen Guss, A. Nichol, A. Paino, N. Tezak, J. Tang, I. Babuschkin, S. Balaji, S. Jain, W. Saunders, C. Hesse, A. N. Carr, J. Leike, J. Achiam, V. Misra, E. Morikawa, A. Radford, M. Knight, M. Brundage, M. Murati, K. Mayer, P. Welinder, B. McGrew, D. Amodei, S. McCandlish, I. Sutskever, W. Zaremba\\[0.3em]
 \reflink{https://arxiv.org/abs/2107.03374}{arXiv (2021)}}
@@ -111,12 +106,12 @@ M. Chen, J. Tworek, H. Jun, Q. Yuan, H. Ponde de Oliveira Pinto, J. Kaplan, H. E
 Codex is a GPT-style model specialized for code. The paper positions it as a model that can generate useful code across tasks and notes that it is used for \textbf{Copilot}.
 \end{exampleblock}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://arxiv.org/abs/1909.09436}{Husain et al. (2019)}; \reflink{https://arxiv.org/abs/2101.00027}{Gao et al. (2020)}; \reflink{https://aclanthology.org/2020.findings-emnlp.139/}{Feng et al. (2020)}; \reflink{https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html}{Brown et al. (2020)}; \reflink{https://www.eleuther.ai/projects/gpt-j/}{Wang et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://arxiv.org/abs/1909.09436}{H. Husain et al., ``CodeSearchNet Challenge: Evaluating the State of Semantic Code Search, arXiv (2019)}; \href{https://arxiv.org/abs/2101.00027}{L. Gao et al., ``The Pile: An 800GB Dataset of Diverse Text for Language Modeling, arXiv (2020)}; \href{https://aclanthology.org/2020.findings-emnlp.139/}{Z. Feng et al., ``CodeBERT: A Pre-Trained Model for Programming and Natural Languages, Findings of EMNLP (2020)}; \href{https://proceedings.neurips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html}{T. Brown et al., ``Language Models Are Few-Shot Learners, NeurIPS (2020)}; \href{https://www.eleuther.ai/projects/gpt-j/}{B. Wang and A. Komatsuzaki, ``GPT-J-6B: A 6 Billion Parameter Autoregressive Language Model, (2021)}.}
 \end{frame}
 
 % 52
 \begin{frame}{Related Work}
-% \tiny
+\tiny
 \begin{columns}[T,totalwidth=\textwidth]
 \column{0.49\textwidth}
 \begin{block}{Learning to Execute}
@@ -128,7 +123,7 @@ The SPoC dataset contains about 18K C++ programs and studies pseudocode-to-code 
 \end{block}
 
 \column{0.49\textwidth}
-\begin{block}{Naturalness of software}
+\begin{block}{Naturalness of Software}
 This work studies code with n-gram language models and shows that source code is statistically natural in ways that can be exploited for modeling and tooling.
 \end{block}
 
@@ -137,8 +132,42 @@ APPS introduces a benchmark with 10K programming problems across three difficult
 \end{block}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/1410.4615}{Zaremba et al. (2014)}; \reflink{https://dl.acm.org/doi/10.1109/ICSE.2012.6227135}{Hindle et al. (2012)}; \reflink{https://proceedings.neurips.cc/paper/2019/hash/7298332f04ac004a0ca44cc69ecf6f6b-Abstract.html}{Kulal et al. (2019)}; \reflink{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{Hendrycks et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/1410.4615}{W. Zaremba and I. Sutskever, ``Learning to Execute, arXiv (2014)}; \href{https://dl.acm.org/doi/10.1109/ICSE.2012.6227135}{A. Hindle et al., ``On the Naturalness of Software, ICSE (2012)}; \href{https://proceedings.neurips.cc/paper/2019/hash/7298332f04ac004a0ca44cc69ecf6f6b-Abstract.html}{S. Kulal et al., ``SPoC: Search-Based Pseudocode to Code, NeurIPS (2019)}; \href{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{D. Hendrycks et al., ``Measuring Coding Challenge Competence With APPS, NeurIPS (2021)}.}
 \end{frame}
+
+% importance
+\begin{frame}{Importance: why this paper changed the field}
+\scriptsize
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.32\textwidth}
+\begin{block}{Before Codex}
+\begin{itemize}
+  \item Program synthesis and code modeling already existed, but results were often shown on constrained tasks or with weaker text-similarity metrics.
+  \item The field still lacked a simple execution-based story for answering: can a language model actually solve a programming task?
+\end{itemize}
+\end{block}
+
+\column{0.34\textwidth}
+\begin{block}{What Codex changed}
+\begin{itemize}
+  \item It combined a large code-specialized LM with a clean hand-written benchmark.
+  \item It made \textbf{functional correctness} and \textbf{pass@k} the central evaluation language for code generation.
+  \item It shifted the question from ``can LMs autocomplete code?'' to ``how often can they solve a task?''
+\end{itemize}
+\end{block}
+
+\column{0.32\textwidth}
+\begin{exampleblock}{After Codex}
+\begin{itemize}
+  \item The area moved toward stronger coding assistants, open code LMs, and harder benchmarks.
+  \item Follow-up work pushed on competition-level generation, open model releases, and repository-level software engineering evaluation.
+\end{itemize}
+\end{exampleblock}
+\end{columns}
+
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code,'' arXiv (2021)}; \href{https://arxiv.org/abs/2203.07814}{Y. Li et al., ``Competition-Level Code Generation with AlphaCode,'' Science (2022)}; \href{https://arxiv.org/abs/2305.06161}{L. Ben Allal et al., ``StarCoder: May the Source Be with You!,'' arXiv (2023)}; \href{https://arxiv.org/abs/2308.12950}{B. Roziere et al., ``Code Llama: Open Foundation Models for Code,'' arXiv (2023)}; \href{https://arxiv.org/abs/2310.06770}{J. Jimenez et al., ``SWE-bench: Can Language Models Resolve Real-World GitHub Issues?,'' ICLR (2024)}.}
+\end{frame}
+
 
 % 5
 \begin{frame}{Task and approach}
@@ -177,7 +206,7 @@ Programming usually involves iteration and bug fixing. Repeated sampling approxi
 \end{exampleblock}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://www.eleuther.ai/projects/gpt-j/}{Wang et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://www.eleuther.ai/projects/gpt-j/}{B. Wang and A. Komatsuzaki, ``GPT-J-6B: A 6 Billion Parameter Autoregressive Language Model, (2021)}.}
 \end{frame}
 
 % 7
@@ -209,7 +238,7 @@ Advantage: using more generated samples reduces variance while keeping compariso
 \end{block}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://aclanthology.org/P02-1040/}{Papineni et al. (2002)}; \reflink{https://arxiv.org/abs/2009.10297}{Ren et al. (2020)}; \reflink{https://proceedings.neurips.cc/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html}{Roziere et al. (2020)}; \reflink{https://proceedings.neurips.cc/paper/2019/hash/7298332f04ac004a0ca44cc69ecf6f6b-Abstract.html}{Kulal et al. (2019)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://aclanthology.org/P02-1040/}{K. Papineni et al., ``BLEU: A Method for Automatic Evaluation of Machine Translation, ACL (2002)}; \href{https://arxiv.org/abs/2009.10297}{S. Ren et al., ``CodeBLEU: A Method for Automatic Evaluation of Code Synthesis, arXiv (2020)}; \href{https://proceedings.neurips.cc/paper/2020/hash/ed23fbf18c2cd35f8c7f8de44f85c08d-Abstract.html}{B. Roziere et al., ``Unsupervised Translation of Programming Languages, NeurIPS (2020)}; \href{https://proceedings.neurips.cc/paper/2019/hash/7298332f04ac004a0ca44cc69ecf6f6b-Abstract.html}{S. Kulal et al., ``SPoC: Search-Based Pseudocode to Code, NeurIPS (2019)}.}
 \end{frame}
 
 % 11
@@ -233,126 +262,9 @@ Advantage: using more generated samples reduces variance while keeping compariso
 \end{itemize}
 \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{Hendrycks et al. (2021)}; \reflink{https://github.com/openai/human-eval}{OpenAI HumanEval repository}; \reflink{https://gvisor.dev/}{gVisor}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{D. Hendrycks et al., ``Measuring Coding Challenge Competence With APPS, NeurIPS (2021)}; \href{https://github.com/openai/human-eval}{OpenAI, ``HumanEval benchmark repository}; \href{https://gvisor.dev/}{Google, ``gVisor sandboxed container runtime}.}
 \end{frame}
 
-% 8
-\begin{frame}{Nuances of pass@k estimation}
-\scriptsize
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.53\textwidth}
-\begin{block}{Estimating \texttt{pass@k}}
-Aim: estimate the probability that among \(k\) samples, at least one is correct.
-\begin{itemize}
-  \item If the true probability of a correct sample is \(p\), then:
-  \[
-  \Pr(\text{none correct}) = (1-p)^k,
-  \qquad
-  \mathrm{pass@}k = 1 - (1-p)^k.
-  \]
-  \item A naive plug-in estimate \(1-(1-\hat p)^k\) from \(\hat p = \mathrm{pass@}1\) systematically underestimates performance.
-  \item It also makes results look better simply by drawing more samples from the same pool.
-  \item The paper's estimator instead compares tasks across different numbers of samples in a consistent way.
-\end{itemize}
-\end{block}
-
-\column{0.43\textwidth}
-\begin{block}{Figure placeholder}
-\graphplaceholder[0.95\linewidth]{4.6cm}{Insert the two estimator-comparison plots from the original slide here.\\[0.5em]Top: \(1-(1-\hat p)^k\) estimator\\Bottom: unbiased combinatorial estimator}
-\end{block}
-
-\begin{alertblock}{Key point}
-Slightly higher initial variance is acceptable because the estimator enables fairer comparisons across different sample budgets.
-\end{alertblock}
-\end{columns}
-
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
-
-% 9
-\begin{frame}{Nuances of pass@k estimation}
-\scriptsize
-\begin{block}{Why the proposed estimator is unbiased}
-The second term in
-\[
-\mathbb{E}\left[1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}\right]
-\]
-directly estimates the probability of drawing \textbf{only failed samples} when choosing \(k\) items without replacement from \(n\) candidates.
-\end{block}
-
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.48\textwidth}
-\begin{block}{Setup}
-\begin{itemize}
-  \item Let \(c \sim \mathrm{Binom}(n,p)\), where \(p\) is \(\mathrm{pass@}1\).
-  \item If \(n-c < k\), then \(\binom{n-c}{k}=0\), so the estimator returns 1.
-  \item Otherwise, the estimator computes the probability that all \(k\) chosen samples are failures.
-\end{itemize}
-\end{block}
-
-\column{0.48\textwidth}
-\begin{block}{Sketch of the derivation}
-\[
-\mathbb{E}\!\left[\frac{\binom{n-c}{k}}{\binom{n}{k}}\right]
-= \sum_{i=0}^{n-k} \frac{\binom{n-i}{k}}{\binom{n}{k}}\binom{n}{i}p^i(1-p)^{n-i}
-\]
-\[
-= (1-p)^k \sum_{i=0}^{n-k} \binom{n-k}{i}p^i(1-p)^{n-k-i}
-= (1-p)^k
-\]
-Therefore,
-\[
-\mathbb{E}[\mathrm{estimator}] = 1-(1-p)^k = \mathrm{pass@}k.
-\]
-\end{block}
-\end{columns}
-
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
-
-% 10
-\begin{frame}[fragile]{Implementing the pass@k estimator}
-\scriptsize
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.47\textwidth}
-\begin{block}{Numerically stable implementation}
-\begin{lstlisting}
-def pass_at_k(n, c, k):
-    """
-    n: total number of samples
-    c: number of correct samples
-    k: k in pass@k
-    """
-    if n - c < k:
-        return 1.0
-    return 1.0 - np.prod(
-        1.0 - k / np.arange(n - c + 1, n + 1)
-    )
-\end{lstlisting}
-\end{block}
-
-\column{0.49\textwidth}
-\begin{block}{Rationale for \(n-c < k\)}
-If fewer than \(k\) failed samples exist, then it is impossible to draw \(k\) failures without replacement:
-\[
-\binom{n-c}{k}=0
-\quad\Rightarrow\quad
-1 - \frac{\binom{n-c}{k}}{\binom{n}{k}} = 1.
-\]
-\end{block}
-
-\begin{exampleblock}{Rationale for \(n-c \ge k\)}
-Rewrite the combinatorial ratio as a stable product:
-\[
-\frac{\binom{n-c}{k}}{\binom{n}{k}}
-= \prod_{j=n-c+1}^{n}\left(1-\frac{k}{j}\right)
-\]
-which is exactly what the NumPy implementation computes.
-\end{exampleblock}
-\end{columns}
-
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
 
 % 13
 \begin{frame}{Code Fine-tuning}
@@ -385,7 +297,7 @@ Codex is produced by fine-tuning GPT models of up to \textbf{12B} parameters. Un
 \end{block}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://arxiv.org/abs/1412.6980}{Kingma and Ba (2015)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://arxiv.org/abs/1412.6980}{D. P. Kingma and J. Ba, ``Adam: A Method for Stochastic Optimization, ICLR (2015)}.}
 \end{frame}
 
 % 24
@@ -405,7 +317,7 @@ GitHub data contains far more than clean ``function from docstring'' examples: i
 \end{itemize}
 \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
 
 % 25
@@ -430,7 +342,7 @@ GitHub data contains far more than clean ``function from docstring'' examples: i
 \end{itemize}
 \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://www.travis-ci.com/}{Travis CI}; \reflink{https://tox.wiki/}{Tox}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://www.travis-ci.com/}{Travis CI documentation}; \href{https://tox.wiki/}{Tox documentation}.}
 \end{frame}
 
 % 26
@@ -474,10 +386,9 @@ def solution(lst):
 \end{itemize}
 \end{block}
 
-\graphplaceholder[0.95\linewidth]{3.2cm}{Insert the ``best temperature for different k'' plot here\\(Codex vs. Codex-S)}
-\end{columns}
+\includegraphics[width=0.9\textwidth]{temp.png}\end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
 
 % 19
@@ -529,11 +440,11 @@ Codex-12B goes considerably beyond the performance of prior models.
 \end{alertblock}
 
 \begin{exampleblock}{Parameter note}
-The slide emphasizes that Codex-12B achieves this despite having roughly \textbf{20x fewer parameters than GPT-J-6B}. 
+Codex-300M achieves this despite having roughly \textbf{20x fewer parameters than GPT-J-6B}. 
 \end{exampleblock}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://github.com/EleutherAI/gpt-neo}{Black et al. (2021)}; \reflink{https://www.eleuther.ai/projects/gpt-j/}{Wang et al. (2021)}; \reflink{https://arxiv.org/abs/2101.00027}{Gao et al. (2020)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://github.com/EleutherAI/gpt-neo}{S. Black et al., ``GPT-Neo: Large Scale Autoregressive Language Modeling with Mesh-Tensorflow, (2021)}; \href{https://www.eleuther.ai/projects/gpt-j/}{B. Wang and A. Komatsuzaki, ``GPT-J-6B: A 6 Billion Parameter Autoregressive Language Model, (2021)}; \href{https://arxiv.org/abs/2101.00027}{L. Gao et al., ``The Pile: An 800GB Dataset of Diverse Text for Language Modeling, arXiv (2020)}.}
 \end{frame}
 
 % 20
@@ -554,7 +465,6 @@ The slide emphasizes that Codex-12B achieves this despite having roughly \textbf
 
 \column{0.54\textwidth}
 \begin{block}{Implementation details and results}
-Additional factors on the slide:
 \begin{itemize}
   \item Example cases: APPS gives 3 I/O examples; Codex uses one example as a formatting hint (``1-shot'').
   \item Timeouts: results are reported both with and without counting solutions that pass tests but time out after 3 seconds.
@@ -579,7 +489,7 @@ Temperature 0.6 is used for all \(k\) in \texttt{pass@k}.
 \end{block}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{Hendrycks et al. (2021)}; \reflink{https://github.com/EleutherAI/gpt-neo}{Black et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{D. Hendrycks et al., ``Measuring Coding Challenge Competence With APPS, NeurIPS (2021)}; \href{https://github.com/EleutherAI/gpt-neo}{S. Black et al., ``GPT-Neo: Large Scale Autoregressive Language Modeling with Mesh-Tensorflow, (2021)}.}
 \end{frame}
 
 % 27
@@ -591,11 +501,10 @@ Temperature 0.6 is used for all \(k\) in \texttt{pass@k}.
 \begin{itemize}
   \item Codex-S beats Codex by an average of \textbf{6.5\%} on \texttt{pass@1}.
   \item On \texttt{pass@100}, the average gain is \textbf{15.1\%}.
-  \item The slide shows both curves increasing with model size.
 \end{itemize}
 \end{block}
 
-\graphplaceholder[0.95\linewidth]{3.0cm}{Insert plot: Codex vs. Codex-S by model size}
+\includegraphics[width=0.9\textwidth]{s1.png}
 
 \column{0.49\textwidth}
 \begin{block}{Sample ranking heuristics}
@@ -606,26 +515,26 @@ Temperature 0.6 is used for all \(k\) in \texttt{pass@k}.
 \end{itemize}
 \end{block}
 
-\graphplaceholder[0.95\linewidth]{3.0cm}{Insert plot: sample-ranking heuristics for Codex and Codex-S}
+\includegraphics[width=0.9\textwidth]{s2.png}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
 
 % 28
 \begin{frame}{Comparing Codex and Codex-S}
 \small
 \begin{block}{Comparing training strategies on HumanEval}
-The original slide shows a single scaling plot across model sizes for GPT-3, Codex, and Codex-S, together with reranking variants.
 \begin{itemize}
   \item \textbf{Codex-S mean-logp reranking} solves \textbf{44.5\%} when reranking 100 samples.
   \item \textbf{Codex-S oracle reranking} solves \textbf{77.5\%} when selecting from 100 samples using the unit tests.
 \end{itemize}
 \end{block}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{s3.png}
+\end{center}
 
-\graphplaceholder[0.82\linewidth]{4.2cm}{Insert ``Codex and Codex-S performance'' plot here}
-
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
 
 % 35
@@ -640,7 +549,6 @@ The 13 building blocks are chained by concatenating:
   \item their one-line implementations into a code body.
 \end{itemize}
 
-Example from the slide:
 \begin{lstlisting}
 def string_manipulation(s: str):
     """
@@ -659,7 +567,9 @@ def string_manipulation(s: str):
 
 \column{0.49\textwidth}
 \begin{block}{Results}
-\graphplaceholder[0.95\linewidth]{2.5cm}{Insert ``Synthetic pass rate vs. components'' plot here}
+    \begin{center} 
+    \includegraphics[width=0.6\textwidth]{docstr.png}
+    \end{center}
 
 \begin{itemize}
   \item As each component is added, the pass rate drops by about \textbf{2--3x}.
@@ -675,8 +585,39 @@ Observed failure: the generated code subtracts 4 from \texttt{x} but forgets to 
 \end{alertblock}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
+
+% limitations-summary
+\begin{frame}{Limitations: where the method breaks}
+\scriptsize
+\begin{columns}[T,totalwidth=\textwidth]
+\column{0.49\textwidth}
+\begin{block}{Benchmark and evaluation limits}
+\begin{itemize}
+  \item \textbf{HumanEval is small and narrow}: only 164 problems, Python-only, and mostly single-function synthesis.
+  \item \textbf{pass@k can look stronger than real one-shot use}: many-sample success is not the same as a reliable first answer.
+  \item The benchmark omits repository context, debugging loops, retrieval, code review, and long-horizon maintenance.
+\end{itemize}
+\end{block}
+
+\column{0.49\textwidth}
+\begin{alertblock}{Model failure modes}
+\begin{itemize}
+  \item Performance degrades on longer and more compositional docstrings.
+  \item Multi-function prompts and more realistic full-program settings are harder than HumanEval.
+  \item Generated code can be plausible but still wrong, insecure, or misaligned with user intent.
+\end{itemize}
+\end{alertblock}
+
+\begin{exampleblock}{Takeaway}
+Codex is best viewed as a strong candidate generator plus verification story, not as a fully reliable end-to-end software engineer.
+\end{exampleblock}
+\end{columns}
+
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code,'' arXiv (2021)}; \href{https://proceedings.neurips.cc/paper/2021/hash/c24cd76e1ce41366a4bbe8a49b02a028-Abstract.html}{D. Hendrycks et al., ``Measuring Coding Challenge Competence With APPS,'' NeurIPS (2021)}.}
+\end{frame}
+
 
 % 37
 \begin{frame}{Broader Impacts and Hazard Analysis}
@@ -684,7 +625,6 @@ Observed failure: the generated code subtracts 4 from \texttt{x} but forgets to 
 \begin{columns}[T,totalwidth=\textwidth]
 \column{0.49\textwidth}
 \begin{block}{Applications of Codex}
-Potentially useful applications listed on the slide:
 \begin{itemize}
   \item onboarding users to new codebases,
   \item reducing context switches for experienced coders,
@@ -707,244 +647,384 @@ Potentially useful applications listed on the slide:
 \end{block}
 \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://arxiv.org/abs/1904.02069}{Leveson (2019)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://arxiv.org/abs/1904.02069}{N. Leveson, ``Improving the Standard Risk Matrix: Part 1, (2019)}.}
 \end{frame}
+
+% discussion
+\begin{frame}{What happened after Codex?}
+\scriptsize
+\begin{block}{Three directions the line of work took next}
+\begin{enumerate}
+  \item \textbf{Harder generation and filtering}: systems such as AlphaCode pushed large-scale sampling and selection on competition-style tasks.
+  \item \textbf{Open code LMs}: models such as StarCoder and Code Llama broadened access, reproducibility, and multilingual code modeling.
+  \item \textbf{More realistic ML4SE evaluation}: benchmarks such as SWE-bench shifted attention from isolated functions toward repository-level issue resolution.
+\end{enumerate}
+\end{block}
+
+% \begin{alertblock}{Connection to ML4SE more broadly}
+% The field moved from code completion to \textbf{software engineering systems}: generation plus repository context, testing, reranking, tool use, and human oversight.
+% \end{alertblock}
+Codex did not solve software engineering. It changed the field by giving a compelling first demonstration, a reusable benchmark story, and a new default question for code LMs: not ``can it write code?'' but ``can it solve tasks we can execute and verify?''
+
+% \begin{exampleblock}{Bottom line}
+% \end{exampleblock}
+
+\refline{\href{https://arxiv.org/abs/2203.07814}{Y. Li et al., ``Competition-Level Code Generation with AlphaCode,'' Science (2022)}; \href{https://arxiv.org/abs/2305.06161}{L. Ben Allal et al., ``StarCoder: May the Source Be with You!,'' arXiv (2023)}; \href{https://arxiv.org/abs/2308.12950}{B. Roziere et al., ``Code Llama: Open Foundation Models for Code,'' arXiv (2023)}; \href{https://arxiv.org/abs/2310.06770}{J. Jimenez et al., ``SWE-bench: Can Language Models Resolve Real-World GitHub Issues?,'' ICLR (2024)}.}
+\end{frame}
+
 
 % 53
 \begin{frame}{Summary}
 \small
 \begin{block}{Summary}
 \begin{itemize}
-  \item The paper studies whether large language models can be trained to generate code from docstrings.
-  \item After GitHub fine-tuning, Codex performs well on human-written problems, especially easy interview-style tasks.
-  \item Performance improves further when training is brought closer to the evaluation distribution and when multiple samples are considered.
-  \item Codex-D is introduced for code-to-docstring generation; it is weaker than code generation but still comparable.
-  \item The paper also emphasizes limitations, broader impacts, and safety risks such as over-reliance, bias, misalignment, insecurity, and economic change.
+  \item The paper showed that a code-specialized language model can solve a non-trivial fraction of docstring-to-function tasks.
+  \item Its deeper contribution was methodological: code generation should be judged by \textbf{functional correctness}, not just by textual similarity.
+  \item The strongest results rely on sampling, reranking, and task-aligned fine-tuning, so benchmark success should not be confused with reliable one-shot software engineering.
+  \item Historically, Codex helped launch the modern code-assistant era and influenced the move toward stronger benchmarks and more realistic ML4SE settings.
 \end{itemize}
 \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
+\refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
 \end{frame}
 
 \appendix
 \begin{frame}[plain]
 \centering
-{\fontsize{26}{28}\selectfont\bfseries Backup / Q\&A\par}
+{\fontsize{26}{28}\selectfont\bfseries Q\&A\par}
 \vfill
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code,'' arXiv (2021).}}
 \end{frame}
 
-% 14
-\begin{frame}[fragile]{Prompting for evaluation}
-\scriptsize
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.52\textwidth}
-\begin{block}{Prompting to compute \texttt{pass@k}}
-Each HumanEval problem is assembled into a prompt made from the function signature, the docstring, and any examples.
-\begin{lstlisting}
-def incr_list(l: list):
-    """Return list with elements incremented by 1.
-    >>> incr_list([1, 2, 3])
-    [2, 3, 4]
-    >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
-    [6, 4, 6, 3, 4, 4, 10, 1, 124]
-    """
-\end{lstlisting}
-Sampling continues until one of the following stop tokens is encountered:
-\texttt{'\textbackslash nclass'}, \texttt{'\textbackslash ndef'}, \texttt{'\textbackslash n\#'}, \texttt{'\textbackslash nif'}, or \texttt{'\textbackslash nprint'}.
-\end{block}
+% % 14
+% \begin{frame}[fragile]{Prompting for evaluation}
+% \scriptsize
+% \begin{columns}[T,totalwidth=\textwidth]
+% \column{0.52\textwidth}
+% \begin{block}{Prompting to compute \texttt{pass@k}}
+% Each HumanEval problem is assembled into a prompt made from the function signature, the docstring, and any examples.
+% \begin{lstlisting}
+% def incr_list(l: list):
+%     """Return list with elements incremented by 1.
+%     >>> incr_list([1, 2, 3])
+%     [2, 3, 4]
+%     >>> incr_list([5, 3, 5, 2, 3, 3, 9, 0, 123])
+%     [6, 4, 6, 3, 4, 4, 10, 1, 124]
+%     """
+% \end{lstlisting}
+% Sampling continues until one of the following stop tokens is encountered:
+% \texttt{'\textbackslash nclass'}, \texttt{'\textbackslash ndef'}, \texttt{'\textbackslash n\#'}, \texttt{'\textbackslash nif'}, or \texttt{'\textbackslash nprint'}.
+% \end{block}
 
-\column{0.44\textwidth}
-\begin{block}{Sampling details}
-\begin{itemize}
-  \item Nucleus sampling with \(p=0.95\) is used for all sampling evaluation.
-  \item For the simple single-function prompt on the slide, Codex 12B reaches about \textbf{pass@1 = 0.9}.
-\end{itemize}
-\end{block}
+% \column{0.44\textwidth}
+% \begin{block}{Sampling details}
+% \begin{itemize}
+%   \item Nucleus sampling with \(p=0.95\) is used for all sampling evaluation.
+%   \item For the simple single-function prompt on the slide, Codex 12B reaches about \textbf{pass@1 = 0.9}.
+% \end{itemize}
+% \end{block}
 
-\begin{alertblock}{Multi-function prompts}
-The paper notes a dramatic degradation when the prompt contains multiple functions. In the example on the slide, Codex 12B gets only about \textbf{pass@1 = 0.005}.
-\end{alertblock}
-\end{columns}
+% \begin{alertblock}{Multi-function prompts}
+% The paper notes a dramatic degradation when the prompt contains multiple functions. In the example on the slide, Codex 12B gets only about \textbf{pass@1 = 0.005}.
+% \end{alertblock}
+% \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://arxiv.org/abs/1904.09751}{Holtzman et al. (2019)}.}
-\end{frame}
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://arxiv.org/abs/1904.09751}{A. Holtzman et al., ``The Curious Case of Neural Text Degeneration, ICLR (2020)}.}
+% \end{frame}
 
-% 16
-\begin{frame}{Loss scaling and temperature}
-\scriptsize
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.49\textwidth}
-\begin{block}{Loss scaling}
-\begin{itemize}
-  \item Language model losses often follow a power law.
-  \item The paper finds a similar pattern for Codex test loss on a held-out GitHub validation set.
-  \item Approximate scaling law shown on the slide:
-  \[
-  \left(\frac{N}{5.92\times 10^7}\right)^{-0.13}
-  \]
-  \item Takeaway: Codex fine-tuning appears to scale smoothly with model size.
-\end{itemize}
-\end{block}
+% % 16
+% \begin{frame}{Loss scaling and temperature}
+% \scriptsize
+% \begin{columns}[T,totalwidth=\textwidth]
+% \column{0.49\textwidth}
+% \begin{block}{Loss scaling}
+% \begin{itemize}
+%   \item Language model losses often follow a power law.
+%   \item The paper finds a similar pattern for Codex test loss on a held-out GitHub validation set.
+% \end{itemize}
+% \end{block}
 
-\graphplaceholder[0.95\linewidth]{2.8cm}{Insert loss-scaling plot here}
+% \begin{center}
+%     \includegraphics[width=0.9\textwidth]{loss1.png}
+% \end{center}
+% \column{0.49\textwidth}
+% \begin{block}{Sampling temperature}
+% % \begin{itemize}
+% %   \item Best temperature depends on \(k\).
+% %   \item For larger \(k\), higher temperatures work better because \texttt{pass@k} rewards whether the model generates \emph{any} correct solution.
+% % \end{itemize}
+% \end{block}
 
-\column{0.49\textwidth}
-\begin{block}{Sampling temperature}
-\begin{itemize}
-  \item Best temperature depends on \(k\).
-  \item For larger \(k\), higher temperatures work better because \texttt{pass@k} rewards whether the model generates \emph{any} correct solution.
-  \item The slide shows both \texttt{pass@k} vs. \(k\) for several temperatures and a curve for the best temperature as a function of \(k\).
-\end{itemize}
-\end{block}
+% \begin{center}
+%     \includegraphics[width=0.9\textwidth]{loss2.png}
+% \end{center}
+% \end{columns}
 
-\graphplaceholder[0.95\linewidth]{2.8cm}{Insert temperature-vs-\texttt{pass@k} plots here}
-\end{columns}
+% \refline{\href{https://arxiv.org/abs/2001.08361}{J. Kaplan et al., ``Scaling Laws for Neural Language Models, arXiv (2020)}; \href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+% \end{frame}
 
-\refline{\reflink{https://arxiv.org/abs/2001.08361}{Kaplan et al. (2020)}; \reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
+% % 17
+% \begin{frame}{Model scaling at optimal temperatures}
+% \small
+% \begin{block}{Model scaling}
+% For a \textbf{679M}-parameter model, the best temperatures are:
+% \begin{itemize}
+%   \item \(T^* = 0.2\) for \texttt{pass@1}
+%   \item \(T^* = 0.8\) for \texttt{pass@100}
+% \end{itemize}
+% \end{block}
 
-% 17
-\begin{frame}{Model scaling at optimal temperatures}
-\small
-\begin{block}{Model scaling}
-For a \textbf{679M}-parameter model, the best temperatures reported on the slide are:
-\begin{itemize}
-  \item \(T^* = 0.2\) for \texttt{pass@1}
-  \item \(T^* = 0.8\) for \texttt{pass@100}
-\end{itemize}
-The main takeaway is that performance scales smoothly as a function of model size.
-\end{block}
+% \begin{center}
+%     \includegraphics[width=0.7\textwidth]{temp0.png}
+% \end{center}
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+% \end{frame}
 
-\graphplaceholder[0.85\linewidth]{4.0cm}{Insert the model-scaling plot here\\(influence of model size on pass rate)}
+% % 18
+% \begin{frame}{Sampling heuristics and BLEU score}
+% \scriptsize
+% \begin{columns}[T,totalwidth=\textwidth]
+% \column{0.49\textwidth}
+% \begin{block}{Effectiveness of sampling heuristics}
+% \begin{itemize}
+%   \item \texttt{pass@k} can be interpreted as evaluating the best out of \(k\) samples.
+%   \item An oracle that knows the unit tests is the upper bound.
+%   \item Without an oracle, a practical goal is to select one sample among \(k\) candidates.
+%   \item For Codex 12B at \(T=0.8\), the best non-oracle heuristic is \textbf{mean log-probability}.
+% \end{itemize}
+% \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
+% \begin{center}
+%     \includegraphics[width=0.9\textwidth]{bleu1.png}
+% \end{center}
+% \column{0.49\textwidth}
+% \begin{block}{BLEU score correlation}
+% \begin{itemize}
+%   \item BLEU scores are computed for HumanEval Codex 12B samples at \(T=0.8\).
+%   \item The comparison is made against reference solutions.
+%   \item Correct and wrong solutions are \textbf{not cleanly separable} by BLEU.
+% \end{itemize}
+% \end{block}
 
-% 18
-\begin{frame}{Sampling heuristics and BLEU score}
-\scriptsize
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.49\textwidth}
-\begin{block}{Effectiveness of sampling heuristics}
-\begin{itemize}
-  \item \texttt{pass@k} can be interpreted as evaluating the best out of \(k\) samples.
-  \item An oracle that knows the unit tests is the upper bound.
-  \item Without an oracle, a practical goal is to select one sample among \(k\) candidates.
-  \item For Codex 12B at \(T=0.8\), the best non-oracle heuristic is \textbf{mean log-probability}.
-\end{itemize}
-\end{block}
+% \begin{center}
+%     \includegraphics[width=0.9\textwidth]{bleu2.png}
+% \end{center}
+% \end{columns}
 
-\graphplaceholder[0.95\linewidth]{2.9cm}{Insert sample-ranking heuristic plot here}
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+% \end{frame}
 
-\column{0.49\textwidth}
-\begin{block}{BLEU score correlation}
-\begin{itemize}
-  \item BLEU scores are computed for HumanEval Codex 12B samples at \(T=0.8\).
-  \item The comparison is made against reference solutions.
-  \item Correct and wrong solutions are \textbf{not cleanly separable} by BLEU.
-\end{itemize}
-\end{block}
+% % 21
+% \begin{frame}[fragile]{Code generation examples}
+% \tiny
+% \begin{block}{Prompt}
+% \begin{lstlisting}
+% def is_prime(n):
+%     """Return true if a given number is prime.
+%     >>> is_prime(6)
+%     False
+%     >>> is_prime(101)
+%     True
+%     >>> is_prime(4)
+%     False
+%     >>> is_prime(1)
+%     False
+%     """
+% \end{lstlisting}
+% 8 random samples are shown on the original slide (temperature 0.8).
+% \end{block}
 
-\graphplaceholder[0.95\linewidth]{2.9cm}{Insert BLEU-score histograms here}
-\end{columns}
+% \begin{columns}[T,totalwidth=\textwidth]
+% \column{0.49\textwidth}
+% \begin{block}{Completions 1--3 (wrong)}
+% \begin{itemize}
+%   \item \textbf{Completion 1:}
+% \begin{lstlisting}
+% for i in range(2, n):
+%     if n % i == 0:
+%         return False
+% return True
+% \end{lstlisting}
+% Fails for \(n=1\) because it returns True.
+%   \item \textbf{Completion 2:} exactly the same as Completion 1.
+%   \item \textbf{Completion 3:}
+% \begin{lstlisting}
+% # TODO: implement this function
+% pass
+% \end{lstlisting}
+% Fails all unit tests.
+% \end{itemize}
+% \end{block}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
+% \column{0.49\textwidth}
+% \begin{block}{Completions 4--5}
+% \begin{itemize}
+%   \item \textbf{Completion 4 (correct):}
+%     handles \(n<2\), handles 2, rejects evens, and tests odd divisors up to \(\sqrt n\).
+%   \item \textbf{Completion 5 (wrong):}
+%     uses a helper to test divisibility up to \(\sqrt n\), but still returns True for \(n=1\).
+% \end{itemize}
 
-% 21
-\begin{frame}[fragile]{Code generation examples}
-\tiny
-\begin{block}{Prompt}
-\begin{lstlisting}
-def is_prime(n):
-    """Return true if a given number is prime.
-    >>> is_prime(6)
-    False
-    >>> is_prime(101)
-    True
-    >>> is_prime(4)
-    False
-    >>> is_prime(1)
-    False
-    """
-\end{lstlisting}
-8 random samples are shown on the original slide (temperature 0.8).
-\end{block}
+% \end{block}
+% \end{columns}
 
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.49\textwidth}
-\begin{block}{Completions 1--3 (wrong)}
-\begin{itemize}
-  \item \textbf{Completion 1:}
-\begin{lstlisting}
-for i in range(2, n):
-    if n % i == 0:
-        return False
-return True
-\end{lstlisting}
-Fails for \(n=1\) because it returns True.
-  \item \textbf{Completion 2:} exactly the same as Completion 1.
-  \item \textbf{Completion 3:}
-\begin{lstlisting}
-# TODO: implement this function
-pass
-\end{lstlisting}
-Fails all unit tests.
-\end{itemize}
-\end{block}
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+% \end{frame}
 
-\column{0.49\textwidth}
-\begin{block}{Completions 4--5}
-\begin{itemize}
-  \item \textbf{Completion 4 (correct):}
-    handles \(n<2\), handles 2, rejects evens, and tests odd divisors up to \(\sqrt n\).
-  \item \textbf{Completion 5 (wrong):}
-    uses a helper to test divisibility up to \(\sqrt n\), but still returns True for \(n=1\).
-\end{itemize}
+% % 22
+% \begin{frame}[fragile]{Code generation examples}
+% \tiny
+% \begin{columns}[T,totalwidth=\textwidth]
+% \column{0.49\textwidth}
+% \begin{block}{Completions 6--8}
+% \begin{itemize}
+%   \item \textbf{Completion 6 (correct):}
+% \begin{lstlisting}
+% prime = True
+% if n == 1:
+%     return False
+% for i in range(2, n):
+%     if n % i == 0:
+%         prime = False
+% return prime
+% \end{lstlisting}
+% Exhaustive check, but correct.
+%   \item \textbf{Completion 7 (wrong):} repeats the same bug as Completion 1.
+%   \item \textbf{Completion 8 (correct):} efficient primality test based on checking divisibility by 2, 3, and then numbers of the form \(6k\pm 1\).
+% \end{itemize}
+% \end{block}
 
-\end{block}
-\end{columns}
+% \column{0.49\textwidth}
+% \begin{block}{Why \(6k \pm 1\) matters}
+% For primes greater than 3, any candidate factor must be of the form \(6k \pm 1\).
+% \begin{itemize}
+%   \item Numbers of the form \(6k\), \(6k+2\), and \(6k+4\) are divisible by 2.
+%   \item Numbers of the form \(6k+3\) are divisible by 3.
+%   \item So after handling 2 and 3, only \(6k-1\) and \(6k+1\) remain worth testing.
+% \end{itemize}
+% This makes Completion 8 faster than checking every number up to \(n\).
+% \end{block}
+% \end{columns}
 
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}.}
-\end{frame}
+% \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}; \href{https://en.wikipedia.org/wiki/Primality_test}{Wikipedia, ``Primality test, accessed for the standard 6k±1 observation}}
+% \end{frame}
 
-% 22
-\begin{frame}[fragile]{Code generation examples}
-\tiny
-\begin{columns}[T,totalwidth=\textwidth]
-\column{0.49\textwidth}
-\begin{block}{Completions 6--8}
-\begin{itemize}
-  \item \textbf{Completion 6 (correct):}
-\begin{lstlisting}
-prime = True
-if n == 1:
-    return False
-for i in range(2, n):
-    if n % i == 0:
-        prime = False
-return prime
-\end{lstlisting}
-Exhaustive check, but correct.
-  \item \textbf{Completion 7 (wrong):} repeats the same bug as Completion 1.
-  \item \textbf{Completion 8 (correct):} efficient primality test based on checking divisibility by 2, 3, and then numbers of the form \(6k\pm 1\).
-\end{itemize}
-\end{block}
-
-\column{0.49\textwidth}
-\begin{block}{Why \(6k \pm 1\) matters}
-For primes greater than 3, any candidate factor must be of the form \(6k \pm 1\).
-\begin{itemize}
-  \item Numbers of the form \(6k\), \(6k+2\), and \(6k+4\) are divisible by 2.
-  \item Numbers of the form \(6k+3\) are divisible by 3.
-  \item So after handling 2 and 3, only \(6k-1\) and \(6k+1\) remain worth testing.
-\end{itemize}
-This makes Completion 8 faster than checking every number up to \(n\).
-\end{block}
-\end{columns}
-
-\refline{\reflink{https://arxiv.org/abs/2107.03374}{Chen et al. (2021)}; \reflink{https://en.wikipedia.org/wiki/Primality_test}{standard primality-test observation.}}
-\end{frame}
+% % 8
+% \begin{frame}{Nuances of pass@k estimation}
+%     \scriptsize
+%     \begin{columns}[T,totalwidth=\textwidth]
+%     \column{0.53\textwidth}
+%     \begin{block}{Estimating \texttt{pass@k}}
+%     Aim: estimate the probability that among \(k\) samples, at least one is correct.
+%     \begin{itemize}
+%       \item If the true probability of a correct sample is \(p\), then:
+%       \[
+%       \Pr(\text{none correct}) = (1-p)^k,
+%       \qquad
+%       \mathrm{pass@}k = 1 - (1-p)^k.
+%       \]
+%       \item A naive plug-in estimate \(1-(1-\hat p)^k\) from \(\hat p = \mathrm{pass@}1\) systematically underestimates performance.
+%       \item It also makes results look better simply by drawing more samples from the same pool.
+%       \item The paper's estimator instead compares tasks across different numbers of samples in a consistent way.
+%     \end{itemize}
+%     \end{block}
+    
+%     \column{0.43\textwidth}
+%     \begin{block}{Comparing estimators for pass@k}
+%         \includegraphics[width=0.78\textwidth]{estim.png}\end{block}
+    
+%     % \begin{alertblock}{Key point}
+%     % Slightly higher initial variance is acceptable because the estimator enables fairer comparisons across different sample budgets.
+%     % \end{alertblock}
+%     \end{columns}
+    
+%     \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+%     \end{frame}
+    
+%     % 9
+%     \begin{frame}{Nuances of pass@k estimation}
+%     \scriptsize
+%     \begin{block}{Why the proposed estimator is unbiased}
+%     The second term in
+%     \[
+%     \mathbb{E}\left[1 - \frac{\binom{n-c}{k}}{\binom{n}{k}}\right]
+%     \]
+%     directly estimates the probability of drawing \textbf{only failed samples} when choosing \(k\) items without replacement from \(n\) candidates.
+%     \end{block}
+    
+%     \begin{columns}[T,totalwidth=\textwidth]
+%     \column{0.48\textwidth}
+%     \begin{block}{Setup}
+%     \begin{itemize}
+%       \item Let \(c \sim \mathrm{Binom}(n,p)\), where \(p\) is \(\mathrm{pass@}1\).
+%       \item If \(n-c < k\), then \(\binom{n-c}{k}=0\), so the estimator returns 1.
+%       \item Otherwise, the estimator computes the probability that all \(k\) chosen samples are failures.
+%     \end{itemize}
+%     \end{block}
+    
+%     \column{0.48\textwidth}
+%     \begin{block}{Sketch of the derivation}
+%     \[
+%     \mathbb{E}\!\left[\frac{\binom{n-c}{k}}{\binom{n}{k}}\right]
+%     = \sum_{i=0}^{n-k} \frac{\binom{n-i}{k}}{\binom{n}{k}}\binom{n}{i}p^i(1-p)^{n-i}
+%     \]
+%     \[
+%     = (1-p)^k \sum_{i=0}^{n-k} \binom{n-k}{i}p^i(1-p)^{n-k-i}
+%     = (1-p)^k
+%     \]
+%     Therefore,
+%     \[
+%     \mathbb{E}[\mathrm{estimator}] = 1-(1-p)^k = \mathrm{pass@}k.
+%     \]
+%     \end{block}
+%     \end{columns}
+    
+%     \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+%     \end{frame}
+    
+%     % 10
+%     \begin{frame}[fragile]{Implementing the pass@k estimator}
+%     \scriptsize
+%     \begin{columns}[T,totalwidth=\textwidth]
+%     \column{0.47\textwidth}
+%     \begin{block}{Numerically stable implementation}
+%     \begin{lstlisting}
+%     def pass_at_k(n, c, k):
+%         """
+%         n: total number of samples
+%         c: number of correct samples
+%         k: k in pass@k
+%         """
+%         if n - c < k:
+%             return 1.0
+%         return 1.0 - np.prod(
+%             1.0 - k / np.arange(n - c + 1, n + 1)
+%         )
+%     \end{lstlisting}
+%     \end{block}
+    
+%     \column{0.49\textwidth}
+%     \begin{block}{Rationale for \(n-c < k\)}
+%     If fewer than \(k\) failed samples exist, then it is impossible to draw \(k\) failures without replacement:
+%     \[
+%     \binom{n-c}{k}=0
+%     \quad\Rightarrow\quad
+%     1 - \frac{\binom{n-c}{k}}{\binom{n}{k}} = 1.
+%     \]
+%     \end{block}
+    
+%     \begin{exampleblock}{Rationale for \(n-c \ge k\)}
+%     Rewrite the combinatorial ratio as a stable product:
+%     \[
+%     \frac{\binom{n-c}{k}}{\binom{n}{k}}
+%     = \prod_{j=n-c+1}^{n}\left(1-\frac{k}{j}\right)
+%     \]
+%     which is exactly what the NumPy implementation computes.
+%     \end{exampleblock}
+%     \end{columns}
+    
+%     \refline{\href{https://arxiv.org/abs/2107.03374}{M. Chen et al., ``Evaluating Large Language Models Trained on Code, arXiv (2021)}.}
+%     \end{frame}
 
 
 \end{document}
